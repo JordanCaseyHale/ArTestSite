@@ -1,7 +1,7 @@
 import * as THREE from './libs/three/three.module.js';
 import { OrbitControls } from './libs/three/jsm/OrbitControls.js';
 import { Stats } from './libs/stats.module.js';
-import { ARButton } from './libs/ARButton.js';
+import { ARButton } from './libs/three/jsm/ARButton.js';
 
 class App{
 	constructor(){
@@ -60,7 +60,9 @@ class App{
 		self.meshes.push(mesh);
 	}
 	    
-	const btn = new ARButton( this.renderer );
+	document.body.appendChild(
+		ARButton.createButton( this.renderer )
+	);
 	    
 	controller = this.renderer.xr.getController(0);
 	controller.addEventListener( 'select', onSelect );
