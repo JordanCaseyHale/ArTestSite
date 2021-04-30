@@ -1,7 +1,7 @@
-import * as THREE from './libs/three/three.module.js';
-import { OrbitControls } from './libs/three/jsm/OrbitControls.js';
+import * as THREE from './libs2/build/three.module.js';
+import { OrbitControls } from './libs2/examples/jsm/controls/OrbitControls.js';
 import { Stats } from './libs/stats.module.js';
-import { ARButton } from './libs/three/jsm/ARButton.js';
+import { ARButton } from './libs2/examples/jsm/webxr/ARButton.js';
 
 class App{
 	constructor(){
