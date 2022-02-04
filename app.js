@@ -51,8 +51,10 @@ class App{
 	const self = this;
 	let controller;
 	    
+	// When screen is clicked?
 	function onSelect() {
-		const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF * Math.random() });
+		//const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF * Math.random() });
+		const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF });
 		const mesh = new THREE.Mesh( self.geometry, material );
 		mesh.position.set( 0,0,-0.3).applyMatrix4( controller.matrixWorld );
 		mesh.quaternion.setFromRotationMatrix( controller.matrixWorld );
