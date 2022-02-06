@@ -75,12 +75,25 @@ class App{
 		self.scene.add(mesh);
 		self.meshes.push(mesh);
 
+		// Draw graph plane
 		const geometry = new THREE.PlaneGeometry(0.2,0.2);
-		const planeMaterial = new THREE.MeshBasicMaterial( {color: 0x800080, side: THREE.DoubleSide});
+		const planeMaterial = new THREE.MeshBasicMaterial( {color: 0xfffdd0, side: THREE.DoubleSide});
 		const plane = new THREE.Mesh ( geometry, planeMaterial );
 		plane.position.set(0,0,-0.5).applyMatrix4( controller.matrixWorld );
 		plane.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		self.scene.add(plane);
+
+		//Draw graph line
+		const lineMaterial = new THREE.LineBasicMaterial( {color: 0x800080} );
+
+		const linePoints = [];
+		linePoints.push( new THREE.Vector3(-0.075, -0.075, 0.02));
+		linePoints.push( new THREE.Vector3(0.075, 0.075, 0.02));
+		const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints);
+		const line = new THREE.Line( lineGeometry, lineMaterial );
+		line.position.set(0,0,-0.45).applyMatrix4( controller.matrixWorld );
+		line.quaternion.setFromRotationMatrix( controller.matrixWorld );
+		self.scene.add(line);
 	}
 	    
 	document.body.appendChild(
