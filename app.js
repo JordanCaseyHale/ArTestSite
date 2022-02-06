@@ -68,12 +68,12 @@ class App{
 	// When screen is clicked?
 	function onSelect() {
 		//const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF * Math.random() });
-		const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF });
-		const mesh = new THREE.Mesh( self.geometry, material );
-		mesh.position.set( 0,0,-1).applyMatrix4( controller.matrixWorld );
-		mesh.quaternion.setFromRotationMatrix( controller.matrixWorld );
-		self.scene.add(mesh);
-		self.meshes.push(mesh);
+		//const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF });
+		//const mesh = new THREE.Mesh( self.geometry, material );
+		//mesh.position.set( 0,0,-1).applyMatrix4( controller.matrixWorld );
+		//mesh.quaternion.setFromRotationMatrix( controller.matrixWorld );
+		//self.scene.add(mesh);
+		//self.meshes.push(mesh);
 
 		// Draw graph plane
 		const geometry = new THREE.PlaneGeometry(0.2,0.2);
@@ -87,8 +87,8 @@ class App{
 		const lineMaterial = new THREE.LineBasicMaterial( {color: 0x800080} );
 		const linePoints = [];
 		linePoints.push( new THREE.Vector3(-0.065, -0.065, 0.02));
-		linePoints.push( new THREE.Vector3(0.075, 0, 0.02));
-		linePoints.push( new THREE.Vector3(0.075, -0.13, 0.02));
+		linePoints.push( new THREE.Vector3(0, 0.075, 0.02));
+		linePoints.push( new THREE.Vector3(0.075, -0.09, 0.02));
 		const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints);
 		const line = new THREE.Line( lineGeometry, lineMaterial );
 		line.position.set(0,0,-0.45).applyMatrix4( controller.matrixWorld );
@@ -97,9 +97,9 @@ class App{
 
 		//Create axes lines
 		const axesPoints = [];
-		axesPoints.push( new THREE.Vector3(-0.1,0.1,0.02));
-		axesPoints.push( new THREE.Vector3(-0.1,-0.1,0.02));
-		axesPoints.push( new THREE.Vector3(0.1,-0.1,0.02));
+		axesPoints.push( new THREE.Vector3(-0.09,0.09,0.02));
+		axesPoints.push( new THREE.Vector3(-0.09,-0.09,0.02));
+		axesPoints.push( new THREE.Vector3(0.09,-0.09,0.02));
 		const axesGeometry = new THREE.BufferGeometry().setFromPoints(axesPoints);
 		const axes = new THREE.Line( axesGeometry, lineMaterial );
 		axes.position.set(0,0,-0.45).applyMatrix4( controller.matrixWorld );
