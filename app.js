@@ -85,15 +85,26 @@ class App{
 
 		//Draw graph line
 		const lineMaterial = new THREE.LineBasicMaterial( {color: 0x800080} );
-
 		const linePoints = [];
-		linePoints.push( new THREE.Vector3(-0.075, -0.075, 0.02));
-		linePoints.push( new THREE.Vector3(0.075, 0.075, 0.02));
+		linePoints.push( new THREE.Vector3(-0.065, -0.065, 0.02));
+		linePoints.push( new THREE.Vector3(0.075, 0, 0.02));
+		linePoints.push( new THREE.Vector3(0.075, -0.13, 0,02));
 		const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints);
 		const line = new THREE.Line( lineGeometry, lineMaterial );
 		line.position.set(0,0,-0.45).applyMatrix4( controller.matrixWorld );
 		line.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		self.scene.add(line);
+
+		//Create axes lines
+		const axesPoint = [];
+		axesPoint.push( new THREE.Vector3(-0.1,0.1,0.02));
+		axesPoint.push( new THREE.Vector3(-0.1,-0.1,0.02));
+		axesPoint.push( new THREE.Vector3(0.1,-0.1,0.02));
+		const axesGeometry = new THREE.BufferGeometry().setFromPoints(axesPoints);
+		const axes = new THREE.Line( axesGeometry, lineMaterial );
+		axes.position.set(0,0,-0.45).applyMatrix4( controller.matrixWorld );
+		axes.quaternion.setFromRotationMatrix( controller.matrixWorld );
+		self.scene.add(axes);
 	}
 	    
 	document.body.appendChild(
