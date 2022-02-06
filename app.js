@@ -88,7 +88,7 @@ class App{
 		const linePoints = [];
 		linePoints.push( new THREE.Vector3(-0.065, -0.065, 0.02));
 		linePoints.push( new THREE.Vector3(0.075, 0, 0.02));
-		linePoints.push( new THREE.Vector3(0.075, -0.13, 0,02));
+		linePoints.push( new THREE.Vector3(0.075, -0.13, 0.02));
 		const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints);
 		const line = new THREE.Line( lineGeometry, lineMaterial );
 		line.position.set(0,0,-0.45).applyMatrix4( controller.matrixWorld );
