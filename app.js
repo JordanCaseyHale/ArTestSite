@@ -76,9 +76,9 @@ class App{
 		self.meshes.push(mesh);
 
 		const geometry = new THREE.PlaneGeometry(0.2,0.2);
-		geometry.position.set(0,0,-0.5).applyMatrix4( controller.matrixWorld );
 		const planeMaterial = new THREE.MeshBasicMaterial( {color: 0x800080, side: THREE.DoubleSide});
 		const plane = new THREE.Mesh ( geometry, planeMaterial );
+		plane.position.set(0,0,-0.5).applyMatrix4( controller.matrixWorld );
 		self.scene.add(plane);
 	}
 	    
