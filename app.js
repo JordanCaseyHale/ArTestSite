@@ -46,9 +46,9 @@ class App{
 		});
 
 		const points = [];
-		points.push( new THREE.Vector3( - 10, 0, 0 ) );
-		points.push( new THREE.Vector3( 0, 10, 0 ) );
-		points.push( new THREE.Vector3( 10, 0, 0 ) );
+		points.push( new THREE.Vector3( - 0.3, 0, 0 ) );
+		points.push( new THREE.Vector3( 0, 0.3, 0 ) );
+		points.push( new THREE.Vector3( 0.3, 0, 0 ) );
 
 		const geometry = new THREE.BufferGeometry().setFromPoints( points );
 
@@ -74,6 +74,8 @@ class App{
 		mesh.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		self.scene.add(mesh);
 		self.meshes.push(mesh);
+
+
 	}
 	    
 	document.body.appendChild(
