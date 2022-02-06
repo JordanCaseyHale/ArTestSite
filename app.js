@@ -75,7 +75,8 @@ class App{
 		self.scene.add(mesh);
 		self.meshes.push(mesh);
 
-		const geometry = new THREE.PlaneGeometry(1,1);
+		const geometry = new THREE.PlaneGeometry(0.5,0.5);
+		geometry.translate(0,0,-0.5);
 		const planeMaterial = new THREE.MeshBasicMaterial( {color: 0x800080, side: THREE.DoubleSide});
 		const plane = new THREE.Mesh ( geometry, planeMaterial );
 		self.scene.add(plane);
