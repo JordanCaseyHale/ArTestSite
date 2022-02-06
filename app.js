@@ -96,10 +96,10 @@ class App{
 		self.scene.add(line);
 
 		//Create axes lines
-		const axesPoint = [];
-		axesPoint.push( new THREE.Vector3(-0.1,0.1,0.02));
-		axesPoint.push( new THREE.Vector3(-0.1,-0.1,0.02));
-		axesPoint.push( new THREE.Vector3(0.1,-0.1,0.02));
+		const axesPoints = [];
+		axesPoints.push( new THREE.Vector3(-0.1,0.1,0.02));
+		axesPoints.push( new THREE.Vector3(-0.1,-0.1,0.02));
+		axesPoints.push( new THREE.Vector3(0.1,-0.1,0.02));
 		const axesGeometry = new THREE.BufferGeometry().setFromPoints(axesPoints);
 		const axes = new THREE.Line( axesGeometry, lineMaterial );
 		axes.position.set(0,0,-0.45).applyMatrix4( controller.matrixWorld );
