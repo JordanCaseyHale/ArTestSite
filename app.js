@@ -70,12 +70,15 @@ class App{
 		//const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF * Math.random() });
 		const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF });
 		const mesh = new THREE.Mesh( self.geometry, material );
-		mesh.position.set( 0,0,-0.3).applyMatrix4( controller.matrixWorld );
+		mesh.position.set( 0,0,-1).applyMatrix4( controller.matrixWorld );
 		mesh.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		self.scene.add(mesh);
 		self.meshes.push(mesh);
 
-
+		const geometry = new THREE.PlaneGeometry(1,1);
+		const material = new THREE.MeshBasicMaterial( {color: 0x800080, side: THREE.DoubleSide});
+		const plane = new THREE.Mesh ( geometry, material );
+		self.scene.add(plane);
 	}
 	    
 	document.body.appendChild(
