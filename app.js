@@ -79,6 +79,7 @@ class App{
 		const planeMaterial = new THREE.MeshBasicMaterial( {color: 0x800080, side: THREE.DoubleSide});
 		const plane = new THREE.Mesh ( geometry, planeMaterial );
 		plane.position.set(0,0,-0.5).applyMatrix4( controller.matrixWorld );
+		plane.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		self.scene.add(plane);
 	}
 	    
