@@ -39,13 +39,13 @@
         </style>
 	</head>
     <body style="margin : 0px; overflow: hidden;">
-        <header style="text-align:center">
+        <!--<header style="text-align:center">
             <details open>
                 <summary>Ar Session</summary>
                 <p> AFrameTest 1.7.5 <a class="back" href="./">Back</a>
                 </p>
             </details>
-        </header>
+        </header>-->
         <!--
         <script src="./libs/fas.js"></script>
         <script type="module">
@@ -56,13 +56,14 @@
                 window.app = app;
             });
         </script>
+        <a-marker type="pattern" url="./pattern-dragon">
+            <a-box position="0 1 0" rotation="0 0 0" color="#4CC3D9"></a-box>
+        </a-marker>
         -->
 
         <!-- a-frame scene -->
         <a-scene embedded arjs>
-        <a-marker type="pattern" url="./pattern-dragon">
-            <a-box position="0 1 0" rotation="0 0 0" color="#4CC3D9"></a-box>
-        </a-marker>
+        
         <a-marker preset="hiro">
             <a-box position="0 0 0" rotation="0 0 0" color="#800080"></a-box>
         </a-marker>
