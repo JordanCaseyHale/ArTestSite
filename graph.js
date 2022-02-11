@@ -3,7 +3,7 @@ AFRAME.registerComponent('graph', {
         console.log('build graph');
         //this.el.visible = true;
         console.log(this.el);
-        this.el.color="#FFFFFF";
+        this.el.setAttribute('color', '#ffffff');
         console.log(this.el);
     }
 });
