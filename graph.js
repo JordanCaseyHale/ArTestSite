@@ -5,8 +5,9 @@ AFRAME.registerComponent('graph', {
     }
 });
 
-AFRAME.registerComponent('CreateLine', {
+AFRAME.registerComponent('createline', {
     init: function () {
+        console.log('create line');
         var entityEl = document.createElement('a-entity');
         entityEl.setAttribute('make-into-circle', '');
         this.el.appendChild(entityEl);
@@ -15,6 +16,7 @@ AFRAME.registerComponent('CreateLine', {
 
 AFRAME.registerComponent('make-into-circle', {
     init: function () {
+        console.log('make into circle');
         this.el.setAttribute('geometry', {
             primitive: 'circle',
             radius: 2
