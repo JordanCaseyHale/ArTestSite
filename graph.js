@@ -13,7 +13,7 @@ AFRAME.registerComponent('CreateLine', {
     }
 });
 
-AFRAME.registerComponent('make-into-circle' {
+AFRAME.registerComponent('make-into-circle', {
     init: function () {
         this.el.setAttribute('geometry', {
             primitive: 'circle',
