@@ -19,7 +19,9 @@ AFRAME.registerComponent('make-into-circle', {
         console.log('make into circle');
         this.el.setAttribute('geometry', {
             primitive: 'circle',
-            radius: 2
+            radius: 2,
+            position: 0 1 0,
+            color: '#800080'
         });
     }
 });
