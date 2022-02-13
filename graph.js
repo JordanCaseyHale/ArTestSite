@@ -25,3 +25,49 @@ AFRAME.registerComponent('make-into-circle', {
         });
     }
 });
+
+AFRAME.registerComponent('addLine', {
+    init: function () {
+        console.log('lineee');
+        this.lineID = 0;
+    }
+});
+
+//Creates lines from a given list of points
+function createLines(points, entity) {
+    var numberOfPoints = points.length;
+
+    var tempEntityEl;
+    for (var i=0; i<numberOfPoints; i++) {
+        tempEntityEl = document.createElement('a-entity');
+        tempEntityEl.setAttribute('make-into-line');
+        entity.appendChild(entityEl);
+    }
+
+};
+
+AFRAME.registerComponent('addLines', {
+    init: function () {
+        console.log('add lines');
+        var data = document.getElementById("data").innerHTML;
+        var dataPoints = data.split(',');
+        
+        for (var i=0; i<(dataPoints.length); i++) {
+            console.log(dataPoints[i]);
+
+            //Create Line ID
+            var lineID = 'line';
+            if (i>0) {
+                lineID = 'line__'+(i+1).toString();
+            }
+
+            // Add Line
+            this.el.setAttribute(lineID, {
+                start: dataPoints[i],
+                end: dataPoints[i+1],
+                color: '#FF5E7A'
+            });
+            console.log(lineID);
+        }  
+    }
+});
