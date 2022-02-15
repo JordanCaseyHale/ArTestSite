@@ -41,7 +41,21 @@ class App{
 	}	
     
     initScene(){
-        this.geometry = new THREE.BoxBufferGeometry( 0.06, 0.06, 0.06 ); 
+    	const material = new THREE.LineBasicMaterial({
+			color: 0x0000ff
+		});
+
+		const points = [];
+		points.push( new THREE.Vector3( - 0.3, 0, 0 ) );
+		points.push( new THREE.Vector3( 0, 0.3, 0 ) );
+		points.push( new THREE.Vector3( 0.3, 0, 0 ) );
+
+		const geometry = new THREE.BufferGeometry().setFromPoints( points );
+
+		const line = new THREE.Line( geometry, material );
+		this.scene.add( line );
+
+        this.geometry = new THREE.BoxBufferGeometry( 0.06, 0.06, 0.06 );
         this.meshes = [];
     }
     
@@ -54,12 +68,43 @@ class App{
 	// When screen is clicked?
 	function onSelect() {
 		//const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF * Math.random() });
-		const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF });
-		const mesh = new THREE.Mesh( self.geometry, material );
-		mesh.position.set( 0,0,-0.3).applyMatrix4( controller.matrixWorld );
-		mesh.quaternion.setFromRotationMatrix( controller.matrixWorld );
-		self.scene.add(mesh);
-		self.meshes.push(mesh);
+		//const material = new THREE.MeshPhongMaterial( { color: 0xFFFFFF });
+		//const mesh = new THREE.Mesh( self.geometry, material );
+		//mesh.position.set( 0,0,-1).applyMatrix4( controller.matrixWorld );
+		//mesh.quaternion.setFromRotationMatrix( controller.matrixWorld );
+		//self.scene.add(mesh);
+		//self.meshes.push(mesh);
+
+		// Draw graph plane
+		const geometry = new THREE.PlaneGeometry(0.2,0.2);
+		const planeMaterial = new THREE.MeshBasicMaterial( {color: 0xfffdd0, side: THREE.DoubleSide});
+		const plane = new THREE.Mesh ( geometry, planeMaterial );
+		plane.position.set(0,0,-0.5).applyMatrix4( controller.matrixWorld );
+		plane.quaternion.setFromRotationMatrix( controller.matrixWorld );
+		self.scene.add(plane);
+
+		//Draw graph line
+		const lineMaterial = new THREE.LineBasicMaterial( {color: 0x800080} );
+		const linePoints = [];
+		linePoints.push( new THREE.Vector3(-0.065, -0.065, 0.02));
+		linePoints.push( new THREE.Vector3(0, 0.075, 0.02));
+		linePoints.push( new THREE.Vector3(0.075, -0.09, 0.02));
+		const lineGeometry = new THREE.BufferGeometry().setFromPoints(linePoints);
+		const line = new THREE.Line( lineGeometry, lineMaterial );
+		line.position.set(0,0,-0.45).applyMatrix4( controller.matrixWorld );
+		line.quaternion.setFromRotationMatrix( controller.matrixWorld );
+		self.scene.add(line);
+
+		//Create axes lines
+		const axesPoints = [];
+		axesPoints.push( new THREE.Vector3(-0.09,0.09,0.02));
+		axesPoints.push( new THREE.Vector3(-0.09,-0.09,0.02));
+		axesPoints.push( new THREE.Vector3(0.09,-0.09,0.02));
+		const axesGeometry = new THREE.BufferGeometry().setFromPoints(axesPoints);
+		const axes = new THREE.Line( axesGeometry, lineMaterial );
+		axes.position.set(0,0,-0.45).applyMatrix4( controller.matrixWorld );
+		axes.quaternion.setFromRotationMatrix( controller.matrixWorld );
+		self.scene.add(axes);
 	}
 	    
 	document.body.appendChild(
