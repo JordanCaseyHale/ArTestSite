@@ -23,7 +23,9 @@ AFRAME.registerComponent('graph', {
         this.el.setAttribute('text', {
             value: 'Axis 2',
             position: '0 0 1.2',
-            rotation: '-45 0 0'
+            rotation: '45 0 0',
+            height: 0.5,
+            width: 0.5
         });
 
         // Add axes numbers
