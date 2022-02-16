@@ -14,27 +14,30 @@ AFRAME.registerComponent('graph', {
             end: '1 0 1',
             color: '#FFFFFF'
         });
-
-        // Add axes label
-        this.el.setAttribute('text', {
-            value: 'Axis 1',
-            position: '-1.2 0 0'
-        });
-        this.el.setAttribute('text', {
-            value: 'Axis 2',
-            position: '0 0 1.2',
-            rotation: '45 0 0',
-            height: 0.5,
-            width: 0.5
-        });
-
-        // Add axes numbers
-        this.el.setAttribute('numbers', {
-            value: 'numbers',
-            position: '1 0 -1'
-        });
     }
 });
+
+AFRAME.registerComponent('graphaxes', {
+    init: function () {
+            //position axes
+            this.el.setAttribute('position', '0 0 1.25');
+
+            // Add axes label
+            this.el.setAttribute('text', {
+                value: 'Axis 1'
+            });
+            this.el.setAttribute('text', {
+                value: 'Axis 2',
+                height: 0.5,
+                width: 0.5
+            });
+    
+            // Add axes numbers
+            this.el.setAttribute('numbers', {
+                value: 'numbers'
+            });
+    }
+})
 
 AFRAME.registerComponent('addlines', {
     init: function () {
