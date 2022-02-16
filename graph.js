@@ -21,6 +21,7 @@ AFRAME.registerComponent('graphaxes', {
     init: function () {
             //position axes
             this.el.setAttribute('position', '0 0 1.25');
+            this.el.setAttribute('scale', '5 5 5');
 
             // Add axes label
             this.el.setAttribute('text', {
