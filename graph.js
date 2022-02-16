@@ -12,21 +12,21 @@ AFRAME.registerComponent('addlines', {
         var dataPoints = data.split(',');
         
         for (var i=0; i<(dataPoints.length); i++) {
-            console.log(dataPoints[i]);
-
+            console.log("start:",dataPoints[i]);
+            console.log("end:",dataPoints[i+1]);
             //Create Line ID
             var lineID = 'line';
             if (i>0) {
                 lineID = 'line__'+(i+1).toString();
             }
+            console.log(lineID);
 
             // Add Line
             this.el.setAttribute(lineID, {
                 start: dataPoints[i],
                 end: dataPoints[i+1],
                 color: '#FF5E7A'
-            });
-            console.log(lineID);
+            }); 
         }  
     }
 });
@@ -52,7 +52,7 @@ AFRAME.registerComponent('make-into-circle', {
     }
 });
 
-AFRAME.registerComponent('addLine', {
+AFRAME.registerComponent('addline', {
     init: function () {
         console.log('lineee');
         this.lineID = 0;
