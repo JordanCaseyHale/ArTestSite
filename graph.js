@@ -5,13 +5,13 @@ AFRAME.registerComponent('graph', {
 
         // Create axes
         this.el.setAttribute('line', {
-            start: '-1 1 0',
-            end: '-1 -1 0',
+            start: '-1 0 -1',
+            end: '-1 0 1',
             color: '#800080'
         });
         this.el.setAttribute('line__1', {
-            start: '-1 -1 0',
-            end: '1 -1 0',
+            start: '-1 0 1',
+            end: '1 0 1',
             color: '#FFFFFF'
         });
 
