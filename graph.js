@@ -2,6 +2,22 @@ AFRAME.registerComponent('graph', {
     init: function () {
         console.log('build graph');
         this.el.setAttribute('color', '#ffffff');
+
+        // Create axes
+        this.el.setAttribute('line', {
+            start: '-1 1 0',
+            end: '-1 -1 0',
+            color: '#800080'
+        });
+        this.el.setAttribute('line__1', {
+            start: '-1 -1 0',
+            end: '1 -1 0',
+            color: '#FFFFFF'
+        });
+
+        // Add axes label
+
+        // Add axes numbers
     }
 });
 
@@ -14,11 +30,9 @@ AFRAME.registerComponent('addlines', {
         for (var i=0; i<(dataPoints.length-1); i++) {
             console.log("start:",dataPoints[i]);
             console.log("end:",dataPoints[i+1]);
-            //Create Line ID
-            var lineID = 'line';
-            if (i>0) {
-                lineID = 'line__'+(i+1).toString();
-            }
+
+            //Create Line ID ( +2 due to axes )
+            var lineID = 'line__'+(i+2).toString();
             console.log(lineID);
 
             // Add Line
@@ -30,6 +44,7 @@ AFRAME.registerComponent('addlines', {
         }  
     }
 });
+
 
 AFRAME.registerComponent('createline', {
     init: function () {
