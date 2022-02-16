@@ -16,6 +16,14 @@ AFRAME.registerComponent('graph', {
         });
 
         // Add axes label
+        this.el.setAttribute('text', {
+            value: 'Axis 1',
+            position: '-1.2 0 0'
+        });
+        this.el.setAttribute('text', {
+            value: 'Axis 2',
+            position: '0 0 1.2'
+        });
 
         // Add axes numbers
     }
