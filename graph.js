@@ -22,10 +22,15 @@ AFRAME.registerComponent('graph', {
         });
         this.el.setAttribute('text', {
             value: 'Axis 2',
-            position: '0 0 1.2'
+            position: '0 0 1.2',
+            rotation: '-45 0 0'
         });
 
         // Add axes numbers
+        this.el.setAttribute('numbers', {
+            value: 'numbers',
+            position: '1 0 -1'
+        });
     }
 });
 
