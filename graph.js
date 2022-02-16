@@ -11,7 +11,7 @@ AFRAME.registerComponent('addlines', {
         var data = document.getElementById("data").innerHTML;
         var dataPoints = data.split(',');
         
-        for (var i=0; i<(dataPoints.length); i++) {
+        for (var i=0; i<(dataPoints.length-1); i++) {
             console.log("start:",dataPoints[i]);
             console.log("end:",dataPoints[i+1]);
             //Create Line ID
