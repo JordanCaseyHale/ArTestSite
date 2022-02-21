@@ -86,7 +86,7 @@ AFRAME.registerComponent('graph_axis_left_numbers', {
         var labels_split = labels.split(',');
 
         //Centre numbers
-        this.el.setAttribute('position', '-1.4 0 0');
+        this.el.setAttribute('position', '-1.15 0 0.1');
         this.el.setAttribute('rotation', '-90 90 0');
         this.el.setAttribute('scale', '6 6 6');
 
