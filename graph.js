@@ -41,7 +41,7 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
         var labels_split = labels.split(',');
 
         //Centre numbers
-        this.el.setAttribute('position', '1.75 0 1.25');
+        this.el.setAttribute('position', '1.75 0 1.15');
         this.el.setAttribute('rotation', '-45 0 0');
         this.el.setAttribute('scale', '7.5 7.5 7.5');
 
@@ -56,7 +56,7 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
                 value: labels_split[i],
                 height: 0.3,
                 width: 0.3,
-                xOffset: i/10
+                xOffset: i/20
             });
         }
     }
