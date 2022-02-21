@@ -37,28 +37,28 @@ AFRAME.registerComponent('graph_axis_bottom', {
 
 AFRAME.registerComponent('graph_axis_bottom_numbers', {
     init: function () {
-        //var labels = document.getElementById("Axis_Bottom_Numbers").innerHTML;
-        //var lables_split = labels.split(',');
+        var labels = document.getElementById("Axis_Bottom_Numbers").innerHTML;
+        var labels_split = labels.split(',');
 
-        //position axis
+        //Centre numbers
         this.el.setAttribute('position', '1.75 0 1.25');
         this.el.setAttribute('rotation', '-45 0 0');
         this.el.setAttribute('scale', '7.5 7.5 7.5');
 
-        //Add label
-        this.el.setAttribute('text__test', {
-            value: 'Does this work?',
-            height: 0.5,
-            width: 0.5
-        });
+        for (var i=0; i<(labels_split.length); i++) {
+            console.log(labels_split[i]);
 
-        //Add label
-        this.el.setAttribute('text__test2', {
-            value: 'Really?',
-            height: 0.5,
-            width: 0.5,
-            xOffset: 0.5
-        });
+            //Create text ID
+            var textID = 'text__'+(i).toString();
+
+            //Add text
+            this.el.setAttribute(textID, {
+                value: labels_split[i],
+                height: 0.3,
+                width: 0.3,
+                xOffset: i/10
+            });
+        }
     }
 });
 
