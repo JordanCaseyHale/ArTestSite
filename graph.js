@@ -32,16 +32,32 @@ AFRAME.registerComponent('graph_axis_bottom', {
             height: 0.5,
             width: 0.5
         });
+    }
+});
 
-        // Add axes label
-        this.el.setAttribute('text', {
-            value: 'Axis 1'
+AFRAME.registerComponent('graph_axis_bottom_numbers', {
+    init: function () {
+        //var labels = document.getElementById("Axis_Bottom_Numbers").innerHTML;
+        //var lables_split = labels.split(',');
+
+        //position axis
+        this.el.setAttribute('position', '1.75 0 1.25');
+        this.el.setAttribute('rotation', '-45 0 0');
+        this.el.setAttribute('scale', '7.5 7.5 7.5');
+
+        //Add label
+        this.el.setAttribute('text__test', {
+            value: 'Does this work?',
+            height: 0.5,
+            width: 0.5
         });
-        
 
-        // Add axes numbers
-        this.el.setAttribute('numbers', {
-            value: 'numbers'
+        //Add label
+        this.el.setAttribute('text__test2', {
+            value: 'Really?',
+            height: 0.5,
+            width: 0.5,
+            xOffset: 0.5
         });
     }
 });
