@@ -107,6 +107,14 @@ AFRAME.registerComponent('graph_axis_left_numbers', {
     }
 });
 
+AFRAME.registerComponent('wetest', {
+    init: function () {
+        var yes = this.el.getAttribute('id');
+        console.log('id test');
+        console.log(yes);
+    }
+});
+
 AFRAME.registerComponent('addlines', {
     init: function () {
         console.log('add lines');
