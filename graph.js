@@ -80,6 +80,33 @@ AFRAME.registerComponent('graph_axis_left', {
     }
 });
 
+AFRAME.registerComponent('graph_axis_left_numbers', {
+    init: function () {
+        var labels = document.getElementById("Axis_Left_Numbers").innerHTML;
+        var labels_split = labels.split(',');
+
+        //Centre numbers
+        this.el.setAttribute('position', '-1.4 0 0');
+        this.el.setAttribute('rotation', '-90 90 0');
+        this.el.setAttribute('scale', '6 6 6');
+
+        for (var i=0; i<(labels_split.length); i++) {
+            console.log(labels_split[i]);
+
+            //Create text ID
+            var textID = 'text__'+(i).toString();
+
+            //Add text
+            this.el.setAttribute(textID, {
+                value: labels_split[i],
+                height: 0.3,
+                width: 0.3,
+                xOffset: i/(labels_split.length * 2.5)
+            });
+        }
+    }
+});
+
 AFRAME.registerComponent('addlines', {
     init: function () {
         console.log('add lines');
