@@ -1,6 +1,6 @@
 AFRAME.registerComponent('graph', {
     init: function () {
-        console.log('build graph');
+        console.log('start graph axis lines');
         this.el.setAttribute('color', '#ffffff');
 
         // Create axes
@@ -14,11 +14,14 @@ AFRAME.registerComponent('graph', {
             end: '1 0 1',
             color: '#FFFFFF'
         });
+
+        console.log('finish graph axis lines');
     }
 });
 
 AFRAME.registerComponent('graph_axis_bottom', {
     init: function () {
+        console.log('start bottom label');
         var label = document.getElementById("Axis_Bottom").innerHTML;
 
         //position axis
@@ -32,11 +35,13 @@ AFRAME.registerComponent('graph_axis_bottom', {
             height: 0.5,
             width: 0.5
         });
+        console.log('finish bottom label');
     }
 });
 
 AFRAME.registerComponent('graph_axis_bottom_numbers', {
     init: function () {
+        console.log('start bottom numbers');
         var labels = document.getElementById("Axis_Bottom_Numbers").innerHTML;
         var labels_split = labels.split(',');
 
@@ -46,7 +51,6 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
         this.el.setAttribute('scale', '6 6 6');
 
         for (var i=0; i<(labels_split.length); i++) {
-            console.log(labels_split[i]);
 
             //Create text ID
             var textID = 'text__'+(i).toString();
@@ -59,11 +63,14 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
                 xOffset: i/(labels_split.length * 2.5)
             });
         }
+
+        console.log('finish bottom numbers');
     }
 });
 
 AFRAME.registerComponent('graph_axis_left', {
     init: function () {
+        console.log('start left label');
         var label = document.getElementById("Axis_Left").innerHTML;
 
         //position axis
@@ -77,11 +84,15 @@ AFRAME.registerComponent('graph_axis_left', {
             height: 0.5,
             width: 0.5
         });
+
+        console.log('finish left label');
     }
 });
 
 AFRAME.registerComponent('graph_axis_left_numbers', {
     init: function () {
+        console.log('start left numbers');
+
         var labels = document.getElementById("Axis_Left_Numbers").innerHTML;
         var labels_split = labels.split(',');
 
@@ -91,7 +102,6 @@ AFRAME.registerComponent('graph_axis_left_numbers', {
         this.el.setAttribute('scale', '6 6 6');
 
         for (var i=0; i<(labels_split.length); i++) {
-            console.log(labels_split[i]);
 
             //Create text ID
             var textID = 'text__'+(i).toString();
@@ -104,24 +114,25 @@ AFRAME.registerComponent('graph_axis_left_numbers', {
                 xOffset: i/(labels_split.length * 2.5)
             });
         }
+
+        console.log('finish left numbers');
     }
 });
 
 AFRAME.registerComponent('graph_lines_id', {
     init: function () {
-        console.log('add lines id');
+        console.log('start add lines id');
         var graphID = this.el.getAttribute('id');
         var dataID = 'data_' + graphID.toString();
         var data = document.getElementById(dataID).innerHTML;
         var dataPoints = data.split(',');
         
         for (var i=0; i<(dataPoints.length-1); i++) {
-            console.log("start:",dataPoints[i]);
-            console.log("end:",dataPoints[i+1]);
+            //console.log("start:",dataPoints[i]);
+            //console.log("end:",dataPoints[i+1]);
 
             //Create Line ID ( +2 due to axes )
             var lineID = 'line__'+(i+2).toString();
-            console.log(lineID);
 
             // Add Line
             this.el.setAttribute(lineID, {
@@ -129,23 +140,24 @@ AFRAME.registerComponent('graph_lines_id', {
                 end: dataPoints[i+1],
                 color: '#FF5E7A'
             }); 
-        }  
+        }
+
+        console.log('finish add lines id');
     }
 });
 
 AFRAME.registerComponent('graph_lines', {
     init: function () {
-        console.log('add lines');
+        console.log('start add lines');
         var data = document.getElementById("data").innerHTML;
         var dataPoints = data.split(',');
         
         for (var i=0; i<(dataPoints.length-1); i++) {
-            console.log("start:",dataPoints[i]);
-            console.log("end:",dataPoints[i+1]);
+            //console.log("start:",dataPoints[i]);
+            //console.log("end:",dataPoints[i+1]);
 
             //Create Line ID ( +2 due to axes )
             var lineID = 'line__'+(i+2).toString();
-            console.log(lineID);
 
             // Add Line
             this.el.setAttribute(lineID, {
@@ -153,7 +165,9 @@ AFRAME.registerComponent('graph_lines', {
                 end: dataPoints[i+1],
                 color: '#FF5E7A'
             }); 
-        }  
+        }
+
+        console.log('finish add lines'); 
     }
 });
 
