@@ -39,7 +39,7 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
         <header>
-            <p>AFrameTest 1.17.2</p>
+            <p>AFrameTest 1.18</p>
         </header>
 
         <p id="data">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
@@ -47,6 +47,12 @@
         <p id="Axis_Left">Axis Left</p>
         <p id="Axis_Bottom_Numbers">0,0.25,0.5,0.75,1</p>
         <p id="Axis_Left_Numbers">0,0.25,0.5,0.75,1</p>
+
+        <p id="data_2">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
+        <p id="Axis_Bottom_2">Axis Bottom</p>
+        <p id="Axis_Left_2">Axis Left</p>
+        <p id="Axis_Bottom_Numbers_2">0,0.25,0.5,0.75,1</p>
+        <p id="Axis_Left_Numbers_2">0,0.25,0.5,0.75,1</p>
 
         <!-- a-frame scene -->
         <a-scene embedded arjs>
@@ -56,13 +62,17 @@
                 <a-entity position="0 0 0" graph_axis_bottom></a-entity>
                 <a-entity position="0 0 0" graph_axis_bottom_numbers></a-entity>
                 <a-entity position="0 0 0" graph_axis_left_numbers></a-entity>
-                <a-entity position="0 0 0" addlines></a-entity>
-                <!--<a-box position="0 0 0" rotation="0 0 0" color="#800080" addlines></a-box>
-                <a-box position="1 1 0" rotation ="0 45 0" color="#4CC3D9" graph></a-box>-->
+                <a-entity position="0 0 0" graph_lines></a-entity>
             </a-marker>
             <a-marker type="pattern" url="./pattern-Graph 2.patt">
                 <a-box id="Graph_2" position="0 1 0" rotation="0 0 0" color="#EA0F13"></a-box>
                 <a-entity id="Graph_2.2" position="0 0 0" wetest></a-entity>
+                <a-entity id="2" position="0 0 0" graph></a-entity>
+                <a-entity id="2" position="0 0 0" graph_axis_left></a-entity>
+                <a-entity id="2" position="0 0 0" graph_axis_bottom></a-entity>
+                <a-entity id="2" position="0 0 0" graph_axis_bottom_numbers></a-entity>
+                <a-entity id="2" position="0 0 0" graph_axis_left_numbers></a-entity>
+                <a-entity id="2" position="0 0 0" graph_lines></a-entity>
             </a-marker>
             <a-marker type="pattern" url="./pattern-Graph 3.patt">
                 <a-box position="0 1 0" rotation="0 0 0" color="#FF007A"></a-box>

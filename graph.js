@@ -107,16 +107,33 @@ AFRAME.registerComponent('graph_axis_left_numbers', {
     }
 });
 
-AFRAME.registerComponent('wetest', {
+AFRAME.registerComponent('graph_lines_id', {
     init: function () {
-        var yes = this.el.getAttribute('id');
-        console.log('id test');
-        console.log(yes);
-        console.log(yes.toString());
+        console.log('add lines id');
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'data_' + graphID.toString();
+        var data = document.getElementById(dataID).innerHTML;
+        var dataPoints = data.split(',');
+        
+        for (var i=0; i<(dataPoints.length-1); i++) {
+            console.log("start:",dataPoints[i]);
+            console.log("end:",dataPoints[i+1]);
+
+            //Create Line ID ( +2 due to axes )
+            var lineID = 'line__'+(i+2).toString();
+            console.log(lineID);
+
+            // Add Line
+            this.el.setAttribute(lineID, {
+                start: dataPoints[i],
+                end: dataPoints[i+1],
+                color: '#FF5E7A'
+            }); 
+        }  
     }
 });
 
-AFRAME.registerComponent('addlines', {
+AFRAME.registerComponent('graph_lines', {
     init: function () {
         console.log('add lines');
         var data = document.getElementById("data").innerHTML;
