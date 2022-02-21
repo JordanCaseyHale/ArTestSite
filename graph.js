@@ -112,6 +112,7 @@ AFRAME.registerComponent('wetest', {
         var yes = this.el.getAttribute('id');
         console.log('id test');
         console.log(yes);
+        console.log(yes.toString());
     }
 });
 
