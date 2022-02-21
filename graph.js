@@ -41,9 +41,9 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
         var labels_split = labels.split(',');
 
         //Centre numbers
-        this.el.setAttribute('position', '1.75 0 1.15');
+        this.el.setAttribute('position', '1.25 0 1.10');
         this.el.setAttribute('rotation', '-45 0 0');
-        this.el.setAttribute('scale', '7.5 7.5 7.5');
+        this.el.setAttribute('scale', '6 6 6');
 
         for (var i=0; i<(labels_split.length); i++) {
             console.log(labels_split[i]);
