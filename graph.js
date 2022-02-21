@@ -17,29 +17,52 @@ AFRAME.registerComponent('graph', {
     }
 });
 
-AFRAME.registerComponent('graphaxes', {
+AFRAME.registerComponent('graph_axis_bottom', {
     init: function () {
-            //position axes
-            this.el.setAttribute('position', '0 0 1.25');
-            this.el.setAttribute('rotation', '-45 0 0');
-            this.el.setAttribute('scale', '7.5 7.5 7.5');
+        var label = document.getElementById("Axis_Bottom").innerHTML;
 
-            // Add axes label
-            this.el.setAttribute('text', {
-                value: 'Axis 1'
-            });
-            this.el.setAttribute('text', {
-                value: 'Axis 2',
-                height: 0.5,
-                width: 0.5
-            });
-    
-            // Add axes numbers
-            this.el.setAttribute('numbers', {
-                value: 'numbers'
-            });
+        //position axis
+        this.el.setAttribute('position', '1.5 0 1.25');
+        this.el.setAttribute('rotation', '-45 0 0');
+        this.el.setAttribute('scale', '7.5 7.5 7.5');
+
+        //Add label
+        this.el.setAttribute('text', {
+            value: label,
+            height: 0.5,
+            width: 0.5
+        });
+
+        // Add axes label
+        this.el.setAttribute('text', {
+            value: 'Axis 1'
+        });
+        
+
+        // Add axes numbers
+        this.el.setAttribute('numbers', {
+            value: 'numbers'
+        });
     }
-})
+});
+
+AFRAME.registerComponent('graph_axis_left', {
+    init: function () {
+        var label = document.getElementById("Axis_Left").innerHTML;
+
+        //position axis
+        this.el.setAttribute('position', '-1.5 0 -1.5');
+        this.el.setAttribute('rotation', '-90 90 0');
+        this.el.setAttribute('scale', '7.5 7.5 7.5');
+
+        //Add label
+        this.el.setAttribute('text', {
+            value: label,
+            height: 0.5,
+            width: 0.5
+        });
+    }
+});
 
 AFRAME.registerComponent('addlines', {
     init: function () {
