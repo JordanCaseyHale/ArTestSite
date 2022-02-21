@@ -21,7 +21,7 @@ AFRAME.registerComponent('graphaxes', {
     init: function () {
             //position axes
             this.el.setAttribute('position', '0 0 1.25');
-            this.el.setAttribute('rotation', '90 0 0');
+            this.el.setAttribute('rotation', '-45 0 0');
             this.el.setAttribute('scale', '7.5 7.5 7.5');
 
             // Add axes label
