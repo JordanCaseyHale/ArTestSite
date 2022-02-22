@@ -29,7 +29,7 @@ AFRAME.registerComponent('graph_axis_bottom', {
 
         //position axis
         this.el.setAttribute('position', '1.5 0 1.25');
-        this.el.setAttribute('rotation', '-45 0 0');
+        this.el.setAttribute('rotation', '-90 0 0');
         this.el.setAttribute('scale', '7.5 7.5 7.5');
 
         //Add label
@@ -53,7 +53,7 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
 
         //Centre numbers
         this.el.setAttribute('position', '-0.1 0 1.10');
-        this.el.setAttribute('rotation', '-45 0 0');
+        this.el.setAttribute('rotation', '-90 0 0');
         this.el.setAttribute('scale', '6 6 6');
 
         for (var i=0; i<(labels_split.length); i++) {
