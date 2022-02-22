@@ -1,3 +1,5 @@
+import * as dataHandler from './dataHandler.js';
+
 AFRAME.registerComponent('graph', {
     init: function () {
         console.log('start graph axis lines');
@@ -153,5 +155,25 @@ AFRAME.registerComponent('graph_lines', {
         }
 
         console.log('finish add lines');
+    }
+});
+
+AFRAME.registerComponent('timetest', {
+    init: function () {
+        console.log('Time test start');
+
+        // Use function to get data
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'data_y_' + graphID.toString();
+        var minIndex = 0;
+        var maxIndex = 0;
+        var normalisedPoints = [];
+
+        minIndex, maxIndex, normalisedPoints = dataHandler.time_string_to_normalised_points(dataID);
+
+        console.log(minIndex);
+        console.log(maxIndex);
+        console.log(normalisedPoints);
+        console.log('Time test finish');
     }
 });
