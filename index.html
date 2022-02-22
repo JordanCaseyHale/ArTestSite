@@ -39,14 +39,14 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
         <header>
-            <p>AFrameTest 1.19.4</p>
+            <p>AFrameTest 1.20</p>
         </header>
 
-        <p hidden id="data">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
-        <p hidden id="Axis_Bottom">Axis Bottom</p>
-        <p hidden id="Axis_Left">Axis Left</p>
-        <p hidden id="Axis_Bottom_Numbers">0,0.25,0.5,0.75,1</p>
-        <p hidden id="Axis_Left_Numbers">0,0.25,0.5,0.75,1</p>
+        <p hidden id="data_1">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
+        <p hidden id="Axis_Bottom_1">Axis Bottom</p>
+        <p hidden id="Axis_Left_1">Axis Left</p>
+        <p hidden id="Axis_Bottom_Numbers_1">0,0.25,0.5,0.75,1</p>
+        <p hidden id="Axis_Left_Numbers_1">0,0.25,0.5,0.75,1</p>
 
         <p hidden id="data_2">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
         <p hidden id="Axis_Bottom_2">Axis Bottom</p>
@@ -57,22 +57,20 @@
         <!-- a-frame scene -->
         <a-scene embedded arjs>
             <a-marker type="pattern" url="./pattern-Graph 1.patt">
-                <a-entity position="0 0 0" graph></a-entity>
-                <a-entity position="0 0 0" graph_axis_left></a-entity>
-                <a-entity position="0 0 0" graph_axis_bottom></a-entity>
-                <a-entity position="0 0 0" graph_axis_bottom_numbers></a-entity>
-                <a-entity position="0 0 0" graph_axis_left_numbers></a-entity>
-                <a-entity position="0 0 0" graph_lines></a-entity>
+                <a-entity id="1" position="0 0 0" graph></a-entity>
+                <a-entity id="1" position="0 0 0" graph_axis_left></a-entity>
+                <a-entity id="1" position="0 0 0" graph_axis_bottom></a-entity>
+                <a-entity id="1" position="0 0 0" graph_axis_bottom_numbers></a-entity>
+                <a-entity id="1" position="0 0 0" graph_axis_left_numbers></a-entity>
+                <a-entity id="1" position="0 0 0" graph_lines></a-entity>
             </a-marker>
             <a-marker type="pattern" url="./pattern-Graph 2.patt">
-                <a-box id="Graph_2" position="0 0 0" rotation="0 0 0" color="#EA0F13"></a-box>
-                <a-entity id="Graph_2.2" position="0 0 0" wetest></a-entity>
                 <a-entity id="2" position="0 0 0" graph></a-entity>
                 <a-entity id="2" position="0 0 0" graph_axis_left></a-entity>
                 <a-entity id="2" position="0 0 0" graph_axis_bottom></a-entity>
                 <a-entity id="2" position="0 0 0" graph_axis_bottom_numbers></a-entity>
                 <a-entity id="2" position="0 0 0" graph_axis_left_numbers></a-entity>
-                <a-entity id="2" position="0 0 0" graph_lines_id></a-entity>
+                <a-entity id="2" position="0 0 0" graph_lines></a-entity>
             </a-marker>
             <a-marker type="pattern" url="./pattern-Graph 3.patt">
                 <a-box position="0 0 0" rotation="0 0 0" color="#FF007A"></a-box>

@@ -22,7 +22,10 @@ AFRAME.registerComponent('graph', {
 AFRAME.registerComponent('graph_axis_bottom', {
     init: function () {
         console.log('start bottom label');
-        var label = document.getElementById("Axis_Bottom").innerHTML;
+
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Axis_Bottom_' + graphID.toString();
+        var label = document.getElementById(dataID).innerHTML;
 
         //position axis
         this.el.setAttribute('position', '1.5 0 1.25');
@@ -42,7 +45,10 @@ AFRAME.registerComponent('graph_axis_bottom', {
 AFRAME.registerComponent('graph_axis_bottom_numbers', {
     init: function () {
         console.log('start bottom numbers');
-        var labels = document.getElementById("Axis_Bottom_Numbers").innerHTML;
+
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Axis_Bottom_Numbers_' + graphID.toString();
+        var labels = document.getElementById(dataID).innerHTML;
         var labels_split = labels.split(',');
 
         //Centre numbers
@@ -71,7 +77,10 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
 AFRAME.registerComponent('graph_axis_left', {
     init: function () {
         console.log('start left label');
-        var label = document.getElementById("Axis_Left").innerHTML;
+
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Axis_Left_' + graphID.toString();
+        var label = document.getElementById(dataID).innerHTML;
 
         //position axis
         this.el.setAttribute('position', '-1.5 0 -1.5');
@@ -93,7 +102,9 @@ AFRAME.registerComponent('graph_axis_left_numbers', {
     init: function () {
         console.log('start left numbers');
 
-        var labels = document.getElementById("Axis_Left_Numbers").innerHTML;
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Axis_Left_Numbers_' + graphID.toString();
+        var labels = document.getElementById(dataID).innerHTML;
         var labels_split = labels.split(',');
 
         //Centre numbers
@@ -119,9 +130,9 @@ AFRAME.registerComponent('graph_axis_left_numbers', {
     }
 });
 
-AFRAME.registerComponent('graph_lines_id', {
+AFRAME.registerComponent('graph_lines', {
     init: function () {
-        console.log('start add lines id');
+        console.log('start add lines');
         var graphID = this.el.getAttribute('id');
         var dataID = 'data_' + graphID.toString();
         var data = document.getElementById(dataID).innerHTML;
@@ -142,13 +153,13 @@ AFRAME.registerComponent('graph_lines_id', {
             }); 
         }
 
-        console.log('finish add lines id');
+        console.log('finish add lines');
     }
 });
 
-AFRAME.registerComponent('graph_lines', {
+AFRAME.registerComponent('graph_lines_old', {
     init: function () {
-        console.log('start add lines');
+        console.log('start add lines old');
         var data = document.getElementById("data").innerHTML;
         var dataPoints = data.split(',');
         
@@ -167,7 +178,7 @@ AFRAME.registerComponent('graph_lines', {
             }); 
         }
 
-        console.log('finish add lines'); 
+        console.log('finish add lines old'); 
     }
 });
 
