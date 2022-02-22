@@ -11,27 +11,6 @@
             }
         </style>
 
-        <!-- style for the loader 
-        <style>
-          .arjs-loader {
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-
-          .arjs-loader div {
-            text-align: center;
-            font-size: 1.25em;
-            color: white;
-          }
-        </style>-->
         <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
         <!-- we import arjs version without NFT but with marker + location based support -->
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
@@ -39,7 +18,7 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
         <header>
-            <p>AFrameTest 1.21</p>
+            <p>AFrameTest 1.22</p>
         </header>
 
         <p hidden id="data_1">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
@@ -48,11 +27,11 @@
         <p hidden id="Axis_Bottom_Numbers_1">0,0.25,0.5,0.75,1</p>
         <p hidden id="Axis_Left_Numbers_1">0,0.25,0.5,0.75,1</p>
 
-        <p hidden id="data_2">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
-        <p hidden id="Axis_Bottom_2">Axis Bottom</p>
-        <p hidden id="Axis_Left_2">Axis Left</p>
-        <p hidden id="Axis_Bottom_Numbers_2">0,0.25,0.5,0.75,1</p>
-        <p hidden id="Axis_Left_Numbers_2">0,0.25,0.5,0.75,1</p>
+        <p hidden id="data_2">-0.8 0 0.7,-0.7 0 0.4,-0.6 0 0.3,-0.5 0 0,-0.4 0 0.3,-0.3 0 -0.2,-0.2 0 -0.3,-0.1 0 -0.1,0 0 0.4,0.1 0 0.3,0.2 0 0.6,0.3 0 0.7,0.4 0 0.3,0.5 0 0.1,0.6 0 0.3,0.7 0 -0.3,0.8 0 -0.4</p>
+        <p hidden id="Axis_Bottom_2">Time</p>
+        <p hidden id="Axis_Left_2">Temperature</p>
+        <p hidden id="Axis_Bottom_Numbers_2">12:00,12:10,12:20,12:30,12:40</p>
+        <p hidden id="Axis_Left_Numbers_2">70,72.5,75,77.5,80</p>
 
         <!-- a-frame scene -->
         <a-scene embedded arjs>

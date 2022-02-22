@@ -1,7 +1,6 @@
 AFRAME.registerComponent('graph', {
     init: function () {
         console.log('start graph axis lines');
-        this.el.setAttribute('color', '#ffffff');
 
         // Create axes
         this.el.setAttribute('line', {
@@ -12,7 +11,7 @@ AFRAME.registerComponent('graph', {
         this.el.setAttribute('line__1', {
             start: '-1 0 1',
             end: '1 0 1',
-            color: '#FFFFFF'
+            color: '#800080'
         });
 
         console.log('finish graph axis lines');
@@ -156,70 +155,3 @@ AFRAME.registerComponent('graph_lines', {
         console.log('finish add lines');
     }
 });
-
-AFRAME.registerComponent('graph_lines_old', {
-    init: function () {
-        console.log('start add lines old');
-        var data = document.getElementById("data").innerHTML;
-        var dataPoints = data.split(',');
-        
-        for (var i=0; i<(dataPoints.length-1); i++) {
-            //console.log("start:",dataPoints[i]);
-            //console.log("end:",dataPoints[i+1]);
-
-            //Create Line ID ( +2 due to axes )
-            var lineID = 'line__'+(i+2).toString();
-
-            // Add Line
-            this.el.setAttribute(lineID, {
-                start: dataPoints[i],
-                end: dataPoints[i+1],
-                color: '#FF5E7A'
-            }); 
-        }
-
-        console.log('finish add lines old'); 
-    }
-});
-
-
-AFRAME.registerComponent('createline', {
-    init: function () {
-        console.log('create line');
-        var entityEl = document.createElement('a-entity');
-        entityEl.setAttribute('make-into-circle', '');
-        this.el.appendChild(entityEl);
-    }
-});
-
-AFRAME.registerComponent('make-into-circle', {
-    init: function () {
-        console.log('make into circle');
-        this.el.setAttribute('geometry', {
-            primitive: 'circle',
-            radius: 2,
-            position: '0 1 0',
-            color: '#800080'
-        });
-    }
-});
-
-AFRAME.registerComponent('addline', {
-    init: function () {
-        console.log('lineee');
-        this.lineID = 0;
-    }
-});
-
-//Creates lines from a given list of points
-function createLines(points, entity) {
-    var numberOfPoints = points.length;
-
-    var tempEntityEl;
-    for (var i=0; i<numberOfPoints; i++) {
-        tempEntityEl = document.createElement('a-entity');
-        tempEntityEl.setAttribute('make-into-line');
-        entity.appendChild(entityEl);
-    }
-
-};
