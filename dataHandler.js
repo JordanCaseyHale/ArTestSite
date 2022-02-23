@@ -35,5 +35,5 @@ function time_string_to_normalised_points(id) {
 	}
 	console.log('normalisedPoints',normalisedPoints);
 
-	return minIndex, maxIndex, normalisedPoints;
+	return { minIndex, maxIndex, normalisedPoints };
 }
