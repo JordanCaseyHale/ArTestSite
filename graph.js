@@ -167,11 +167,11 @@ AFRAME.registerComponent('timetest', {
         var maxIndex = 0;
         var normalisedPoints = [];
 
-        { minIndex, maxIndex, normalisedPoints } = time_string_to_normalised_points(dataID);
+        let normalisedPoints = time_string_to_normalised_points(dataID);
 
-        console.log(minIndex);
-        console.log(maxIndex);
-        console.log(normalisedPoints);
+        console.log(normalisedPoints.minIndex);
+        console.log(normalisedPoints.maxIndex);
+        console.log(normalisedPoints.normalisedPoints);
         console.log('Time test finish');
     }
 });
