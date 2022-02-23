@@ -19,12 +19,12 @@ function time_string_to_normalised_points(id) {
 	}
 
 	// Select Max
-	var maxValue = Math.max(timeValues);
+	var maxValue = Math.max.apply(null, timeValues);
 	var maxIndex = timeValues.indexOf(maxValue);
 	console.log(maxValue, maxIndex);
 
 	// Select Min
-	var minValue = Math.min(timeValues);
+	var minValue = Math.min.apply(null, timeValues);
 	var minIndex = timeValues.indexOf(minValue);
 	console.log(minValue, minIndex);
 
