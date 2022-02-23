@@ -163,9 +163,9 @@ AFRAME.registerComponent('timetest', {
         // Use function to get data
         var graphID = this.el.getAttribute('id');
         var dataID = 'data_y_' + graphID.toString();
-        var minIndex = 0;
-        var maxIndex = 0;
-        var normalisedPoints = [];
+        //var minIndex = 0;
+        //var maxIndex = 0;
+        //var normalisedPoints = [];
 
         let normalisedPoints = time_string_to_normalised_points(dataID);
 
