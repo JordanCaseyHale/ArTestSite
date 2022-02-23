@@ -1,4 +1,4 @@
-export function time_string_to_normalised_points(id) {
+function time_string_to_normalised_points(id) {
 	console.log('Time handler');
 
 	var data = document.getElementById(id).innerHTML;

@@ -1,5 +1,3 @@
-import * as dataHandler from './dataHandler.js';
-
 AFRAME.registerComponent('graph', {
     init: function () {
         console.log('start graph axis lines');
@@ -169,7 +167,7 @@ AFRAME.registerComponent('timetest', {
         var maxIndex = 0;
         var normalisedPoints = [];
 
-        minIndex, maxIndex, normalisedPoints = dataHandler.time_string_to_normalised_points(dataID);
+        minIndex, maxIndex, normalisedPoints = time_string_to_normalised_points(dataID);
 
         console.log(minIndex);
         console.log(maxIndex);
