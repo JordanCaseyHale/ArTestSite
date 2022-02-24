@@ -191,7 +191,7 @@ AFRAME.registerComponent('timetest', {
             this.el.setAttribute(lineID, {
                 start: startPoint,
                 end: endPoint,
-                color: '#00BCD4'
+                color: '#FF5E7A'
             });
         }
 
