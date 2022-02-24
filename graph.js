@@ -176,15 +176,22 @@ AFRAME.registerComponent('timetest', {
 
         var numDataPoints = Math.max(xDataSplit.length, normalisedPoints.normalisedPoints.length);
 
+        var startPoint = '0 0 0';
+        var endPoint = '0 0 0';
+
         // Loop through data points to create lines
         for (var i=0; i<(numDataPoints-1); i++) {
             // Create Line ID (+2 due to axes)
             var lineID = 'line__'+(i+2).toString();
 
+            // Create points
+            startPoint = '${xDataSplit[i]} 0 ${normalisedPoints.normalisedPoints[i]}';
+            endPoint = '${xDataSplit[i+1]} 0 ${normalisedPoints.normalisedPoints[i+1]}';
+
             // Add Line
             this.el.setAttribute(lineID, {
-                start: '${xDataSplit[i]} 0 ${normalisedPoints.normalisedPoints[i]}',
-                end: '${xDataSplit[i+1]} 0 ${normalisedPoints.normalisedPoints[i+1]}',
+                start: startPoint,
+                end: endPoint,
                 color: '#00BCD4'
             });
         }
