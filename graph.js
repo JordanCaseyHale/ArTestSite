@@ -167,14 +167,13 @@ AFRAME.registerComponent('timetest', {
         //var maxIndex = 0;
         //var normalisedPoints = [];
 
-        let normalisedPoints = time_string_to_normalised_points(dataID);
+        let yPoints = time_string_to_normalised_points(dataID);
 
         // get x data
         var dataXID = 'data_x_' + graphID.toString();
-        var xData = document.getElementById(dataXID).innerHTML;
-        var xDataSplit = xData.split(',');
+        let xPoints = numbers_to_normalised_points(dataXID);
 
-        var numDataPoints = Math.max(xDataSplit.length, normalisedPoints.normalisedPoints.length);
+        var numDataPoints = Math.max(xPoints.normalisedPoints.length, yPoints.normalisedPoints.length);
 
         var startPoint = '0 0 0';
         var endPoint = '0 0 0';
@@ -185,8 +184,8 @@ AFRAME.registerComponent('timetest', {
             var lineID = 'line__'+(i+2).toString();
 
             // Create points
-            startPoint = `${xDataSplit[i]} 0 ${normalisedPoints.normalisedPoints[i]}`;
-            endPoint = `${xDataSplit[i+1]} 0 ${normalisedPoints.normalisedPoints[i+1]}`;
+            startPoint = `${xPoints.normalisedPoints[i]} 0 ${yPoints.normalisedPoints[i]}`;
+            endPoint = `${xPoints.normalisedPoints[i+1]} 0 ${yPoints.normalisedPoints[i+1]}`;
 
             // Add Line
             this.el.setAttribute(lineID, {
