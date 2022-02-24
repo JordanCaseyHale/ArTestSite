@@ -185,8 +185,8 @@ AFRAME.registerComponent('timetest', {
             var lineID = 'line__'+(i+2).toString();
 
             // Create points
-            startPoint = '${xDataSplit[i]} 0 ${normalisedPoints.normalisedPoints[i]}';
-            endPoint = '${xDataSplit[i+1]} 0 ${normalisedPoints.normalisedPoints[i+1]}';
+            startPoint = `${xDataSplit[i]} 0 ${normalisedPoints.normalisedPoints[i]}`;
+            endPoint = `${xDataSplit[i+1]} 0 ${normalisedPoints.normalisedPoints[i+1]}`;
 
             // Add Line
             this.el.setAttribute(lineID, {
