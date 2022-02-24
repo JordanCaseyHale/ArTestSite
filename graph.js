@@ -161,19 +161,19 @@ AFRAME.registerComponent('timetest', {
         console.log('Time test start');
         var graphID = this.el.getAttribute('id');
 
-        // Use function to get y time data
-        var dataID = 'data_y_' + graphID.toString();
+        // Use function to get bottom axis time data
+        var dataBottomID = 'data_bottom_' + graphID.toString();
         //var minIndex = 0;
         //var maxIndex = 0;
         //var normalisedPoints = [];
 
-        let yPoints = time_string_to_normalised_points(dataID);
+        let bottomPoints = time_string_to_normalised_points(dataBottomID);
 
-        // get x data
-        var dataXID = 'data_x_' + graphID.toString();
-        let xPoints = numbers_to_normalised_points(dataXID);
+        // get left axis data
+        var dataLeftID = 'data_left_' + graphID.toString();
+        let leftPoints = numbers_to_normalised_points(dataLeftID);
 
-        var numDataPoints = Math.max(xPoints.normalisedPoints.length, yPoints.normalisedPoints.length);
+        var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
 
         var startPoint = '0 0 0';
         var endPoint = '0 0 0';
@@ -184,8 +184,8 @@ AFRAME.registerComponent('timetest', {
             var lineID = 'line__'+(i+2).toString();
 
             // Create points
-            startPoint = `${xPoints.normalisedPoints[i]} 0 ${yPoints.normalisedPoints[i]}`;
-            endPoint = `${xPoints.normalisedPoints[i+1]} 0 ${yPoints.normalisedPoints[i+1]}`;
+            startPoint = `${bottomPoints.normalisedPoints[i]} 0 ${leftPoints.normalisedPoints[i]}`;
+            endPoint = `${bottomPoints.normalisedPoints[i+1]} 0 ${leftPoints.normalisedPoints[i+1]}`;
 
             // Add Line
             this.el.setAttribute(lineID, {
