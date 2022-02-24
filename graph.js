@@ -159,9 +159,9 @@ AFRAME.registerComponent('graph_lines', {
 AFRAME.registerComponent('timetest', {
     init: function () {
         console.log('Time test start');
-
-        // Use function to get data
         var graphID = this.el.getAttribute('id');
+
+        // Use function to get y time data
         var dataID = 'data_y_' + graphID.toString();
         //var minIndex = 0;
         //var maxIndex = 0;
@@ -169,9 +169,26 @@ AFRAME.registerComponent('timetest', {
 
         let normalisedPoints = time_string_to_normalised_points(dataID);
 
-        console.log(normalisedPoints.minIndex);
-        console.log(normalisedPoints.maxIndex);
-        console.log(normalisedPoints.normalisedPoints);
+        // get x data
+        var dataXID = 'data_x_' + graphID.toString();
+        var xData = document.getElementById(dataXID).innerHTML;
+        var xDataSplit = xData.split(',');
+
+        var numDataPoints = Math.max(xDataSplit.length, normalisedPoints.normalisedPoints.length);
+
+        // Loop through data points to create lines
+        for (var i=0; i<(numDataPoints-1); i++) {
+            // Create Line ID (+2 due to axes)
+            var lineID = 'line__'+(i+2).toString();
+
+            // Add Line
+            this.el.setAttribute(lineID, {
+                start: '${xDataSplit[i]} 0 ${normalisedPoints.normalisedPoints[i]}',
+                end: '${xDataSplit[i+1]} 0 ${normalisedPoints.normalisedPoints[i+1]}',
+                color: '#00BCD4'
+            });
+        }
+
         console.log('Time test finish');
     }
 });
