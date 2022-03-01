@@ -20,7 +20,7 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
         <header>
-            <p>AFrameTest 3.6.1</p>
+            <p>AFrameTest 3.7</p>
         </header>
 
         <p hidden id="data_1">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
@@ -43,7 +43,7 @@
         <p hidden id="Axis_Left_Numbers_3">70,72.5,75,77.5,80</p>
 
         <!-- a-frame scene -->
-        <a-scene embedded arjs="trackingMethod: best;" gesture-detector>
+        <a-scene embedded arjs="trackingMethod: best;" renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" gesture-detector id="scene">
             <a-marker type="pattern" url="./pattern-Graph 1.patt">
                 <a-entity id="1" position="0 0 0" graph></a-entity>
                 <a-entity id="1" position="0 0 0" graph_axis_left></a-entity>
@@ -75,6 +75,32 @@
                 <a-entity id="3" position="0 0 0" timetest></a-entity>
             </a-marker>
             <a-entity camera></a-entity>
+
+            <a-assets>
+                <a-asset-item
+                  id="bowser"
+                  src="https://cdn.glitch.com/06bd98b4-97ee-4c07-a546-fe39ca205034%2Fbowser.glb"
+                >
+                </a-asset-item>
+            </a-assets>
+
+            <a-marker
+                preset="hiro"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                id="markerA"
+            >
+                <a-entity
+                    id="bowser-model"
+                    gltf-model="#bowser"
+                    position="0 0 0"
+                    scale="0.05 0.05 0.05"
+                    class="clickable"
+                    gesture-handler
+                >
+                </a-entity>
+            </a-marker>
         </a-scene>
 	</body>
 </html>
