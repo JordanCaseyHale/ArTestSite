@@ -20,7 +20,7 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
         <header>
-            <p>AFrameTest 3.4</p>
+            <p>AFrameTest 3.5</p>
         </header>
 
         <p hidden id="data_1">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
@@ -44,10 +44,10 @@
 
         <!-- a-frame scene -->
         <a-scene embedded arjs="trackingMethod: best;" gesture-detector>
-            <a-marker type="pattern" url="./pattern-Graph 1.patt">
+            <a-marker type="pattern" url="./pattern-Graph 1.patt" raycaster="objects: .clickable" emitevents="true">
                 <a-entity id="1" position="0 0 0" graph></a-entity>
                 <a-entity id="1" position="0 0 0" graph_axis_left></a-entity>
-                <a-entity id="1" position="0 0 0" graph_axis_bottom gesture-handler="minScale: 0.5; maxScale: 10"></a-entity>
+                <a-entity id="1" position="0 0 0" graph_axis_bottom gesture-handler="minScale: 0.5; maxScale: 10" class="clickable"></a-entity>
                 <a-entity id="1" position="0 0 0" graph_axis_bottom_numbers></a-entity>
                 <a-entity id="1" position="0 0 0" graph_axis_left_numbers></a-entity>
                 <a-entity id="1" position="0 0 0" graph_lines></a-entity>
