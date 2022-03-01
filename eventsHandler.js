@@ -49,6 +49,7 @@ AFRAME.registerComponent("gesture-handler", {
       el.object3D.scale.y = scaleFactor * initialScale.y;
       el.object3D.scale.z = scaleFactor * initialScale.z;
     }
+    this.el.setAttribute('text', {color: '#800080'});
   },
 });
 
