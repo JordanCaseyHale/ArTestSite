@@ -58,7 +58,15 @@ function numbers_to_normalised_points(id) {
 function data_from_csv(filePath) {
 	console.log('Data from CSV');
 
+	var data1 = [];
+	var data2 = [];
+
 	d3.csv(filePath, (d) => {
-		console.log(d)
+		for (var i=0; i<d.length; i++) {
+			data1[i] = d[i].Speed;
+			data2[i] = d[i].Time;
+		}
+		console.log('data 1',data1);
+		console.log('data 2',data2);
 	});
 }
