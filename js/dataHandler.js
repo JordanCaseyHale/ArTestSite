@@ -56,7 +56,7 @@ function numbers_to_normalised_points(id) {
 }
 
 function data_from_csv(filePath) {
-	Console.log('Data from CSV');
+	console.log('Data from CSV');
 
 	d3.csv(filePath, (d) => {
 		console.log(d)
