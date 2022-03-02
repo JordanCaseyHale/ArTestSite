@@ -14,14 +14,14 @@
         <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
         <!-- we import arjs version without NFT but with marker + location based support -->
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-        <script src="./dataHandler.js"></script>
-        <script src="./graph.js"></script>
-        <script src="./gesture-handler.js"></script>
-        <script src="./gesture-detector.js"></script>
+        <script src="./js/dataHandler.js"></script>
+        <script src="./js/graph.js"></script>
+        <script src="./js/gesture-handler.js"></script>
+        <script src="./js/gesture-detector.js"></script>
 	</head>
     <body style="margin : 0px; overflow: hidden;">
         <header>
-            <p>AFrameTest 3.10.1</p>
+            <p>AFrameTest 3.11</p>
         </header>
 
         <p hidden id="data_1">-0.6 0 0.4,0 0 0,0.5 0 0.8</p>
@@ -45,7 +45,8 @@
 
         <!-- a-frame scene -->
         <a-scene embedded arjs="trackingMethod: best;" renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" gesture-detector id="scene">
-            <a-marker type="pattern" url="./pattern-Graph 1.patt">
+            <!-- Simple graph example -->
+            <a-marker type="pattern" url="./pattern-Graph 1.patt" id="marker1">
                 <a-entity id="1" position="0 0 0" graph></a-entity>
                 <a-entity id="1" position="0 0 0" graph_axis_left></a-entity>
                 <a-entity id="1" position="0 0 0" graph_axis_bottom></a-entity>
@@ -53,7 +54,9 @@
                 <a-entity id="1" position="0 0 0" graph_axis_left_numbers></a-entity>
                 <a-entity id="1" position="0 0 0" graph_lines></a-entity>
             </a-marker>
-            <a-marker type="pattern" url="./pattern-Graph 2.patt">
+
+            <!-- More complex graph example -->
+            <a-marker type="pattern" url="./pattern-Graph 2.patt" id="marker2">
                 <a-entity id="2" position="0 0 0" graph></a-entity>
                 <a-entity id="2" position="0 0 0" graph_axis_left></a-entity>
                 <a-entity id="2" position="0 0 0" graph_axis_bottom></a-entity>
@@ -61,13 +64,19 @@
                 <a-entity id="2" position="0 0 0" graph_axis_left_numbers></a-entity>
                 <a-entity id="2" position="0 0 0" graph_lines></a-entity>
             </a-marker>
-            <a-marker type="pattern" url="./pattern-Graph 3.patt">
+
+            <!-- Currently unused -->
+            <a-marker type="pattern" url="./pattern-Graph 3.patt" id="marker3">
                 <a-box position="0 0 0" rotation="0 0 0" color="#FF007A"></a-box>
             </a-marker>
-            <a-marker type="pattern" url="./pattern-Graph 4.patt" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
-                <a-box position="0 2 0" rotation="0 0 0" color="#FDF600" class="clickable" gesture-handler></a-box>
+
+            <!-- More complex graph using gesture...js -->
+            <a-marker type="pattern" url="./pattern-Graph 4.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="marker4">
+                <a-entity id="2" position="0 0 0" graph_axis_bottom class="clickable" gesture-handler></a-entity>
             </a-marker>
-            <a-marker type="pattern" url="./pattern-Graph 5.patt">
+
+            <!-- More complex graph using dataHandler.js -->
+            <a-marker type="pattern" url="./pattern-Graph 5.patt" id="marker5">
                 <a-entity id="3" position="0 0 0" graph></a-entity>
                 <a-entity id="3" position="0 0 0" graph_axis_left></a-entity>
                 <a-entity id="3" position="0 0 0" graph_axis_bottom></a-entity>
