@@ -62,12 +62,10 @@ function data_from_csv(filePath) {
 	var data2 = [];
 
 	d3.csv(filePath, (d) => {
-		for (var i=0; i<d.length; i++) {
-			console.log(d[i].Speed);
-			data1[i] = d[i].Speed;
-			data2[i] = d[i].Time;
-		}
-		console.log('data 1',data1);
-		console.log('data 2',data2);
+		data1[i] = d.Speed;
+		data2[i] = d.Time;
 	});
+
+	console.log('data 1',data1);
+	console.log('data 2',data2);
 }
