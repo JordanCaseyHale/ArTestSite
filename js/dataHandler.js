@@ -55,18 +55,32 @@ function numbers_to_normalised_points(id) {
 	return { minIndex, maxIndex, normalisedPoints };
 }
 
-function data_from_csv(filePath) {
+function data_from_csv() {
 	console.log('Data from CSV');
 
-	var data1 = [];
-	var data2 = [];
+	var dataID = 'data_csv_';
+	var filePath = '';
+	var el;
 
+	for (var i=1; i<6; i++) {
 
-	d3.csv(filePath, (d) => {
-		data1.push(d.Speed);
-		data2.push(d.Time);
-	});
+		filePath = document.getElementById(dataID+i.toString()).innerHTML;
 
-	console.log('data 1',data1);
-	console.log('data 2',data2);
+		if (filePath != '') {
+			var dataLeft = [];
+			var dataBottom = [];
+			var values = [];
+
+			// extract data from csv file
+			d3.csv(filePath, (d) => {
+				values = d.values();
+				dataLeft.push(values[0]);
+				dataBottom.push(values[1]);
+			});
+
+			// Update graph line entity
+			el = document.getElementById('graph_'+i.toString());
+			el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
+		}
+	}
 }

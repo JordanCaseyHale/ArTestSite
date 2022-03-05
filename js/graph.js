@@ -156,6 +156,52 @@ AFRAME.registerComponent('graph_lines', {
     }
 });
 
+AFRAME.registerComponent('graph_lines_csv', {
+    schema: {
+        leftPoints: {default: []},
+        bottomPoints: {default: []}
+    }
+
+    init: function () {
+        var graphID = this.el.getAttribute('id').replace('graph_', '');
+        var dataLeftID = 'data_left_' + graphID.toString();
+        var dataBottomID = 'data_bottom_' + graphID.toString();
+        var dataLeft = document.getElementById(dataLeftID).innerHTML;
+        var dataBottom = document.getElementById(dataBottomID).innerHTML;
+        this.data.leftPoints = dataLeft.split(',');
+        this.data.bottomPoints = dataBottom.split(',');
+    }
+
+    update: function (oldData) {
+        console.log('start add lines');
+        var data = this.data;
+
+        var numDataPoints = Math.max(data.leftPoints.length, data.bottomPoints.length);
+
+        var startPoint = '0 0 0';
+        var endPoint = '0 0 0';
+
+        for (var i=0; i<(numDataPoints.length-1); i++) {
+
+            //Create Line ID ( +2 due to axes )
+            var lineID = 'line__'+(i+2).toString();
+
+            // Create points
+            startPoint = `${data.bottomPoints[i]} 0 ${data.leftPoints[i]}`;
+            endPoint = `${data.bottomPoints[i+1]} 0 ${data.leftPoints[i+1]}`;
+
+            // Add Line
+            this.el.setAttribute(lineID, {
+                start: startPoint,
+                end: endPoint,
+                color: '#FF5E7A'
+            }); 
+        }
+
+        console.log('finish add lines');
+    }
+});
+
 AFRAME.registerComponent('timetest', {
     init: function () {
         console.log('Time test start');
