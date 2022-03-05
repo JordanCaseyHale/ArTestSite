@@ -61,9 +61,10 @@ function data_from_csv(filePath) {
 	var data1 = [];
 	var data2 = [];
 
+
 	d3.csv(filePath, (d) => {
-		data1[i] = d.Speed;
-		data2[i] = d.Time;
+		data1.push(d.Speed);
+		data2.push(d.Time);
 	});
 
 	console.log('data 1',data1);
