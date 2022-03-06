@@ -195,14 +195,14 @@ AFRAME.registerComponent('graph_lines_csv', {
             // extract data from csv file
             d3.csv(filePath, (d) => {
                 values = Object.values(d);
-                //dataLeft.push(values[0]);
-                //dataBottom.push(values[1]);
-                data.leftPoints.push(values[0]);
-                data.bottomPoints.push(values[1]);
+                dataLeft.push(values[0]);
+                dataBottom.push(values[1]);
+                //data.leftPoints.push(values[0]);
+                //data.bottomPoints.push(values[1]);
 
                 // Update graph line entity
-                //console.log('Updating attribute');
-                //this.el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
+                console.log('Updating attribute');
+                this.el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
                 
             });
 
