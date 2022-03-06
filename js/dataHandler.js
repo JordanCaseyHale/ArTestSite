@@ -78,11 +78,9 @@ function data_from_csv() {
 				dataBottom.push(values[1]);
 			});
 
-			console.log(dataLeft);
-			console.log(dataBottom);
 			// Update graph line entity
-			//el = document.getElementById('graph_'+i.toString());
-			//el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
+			el = document.getElementById('graph_'+i.toString());
+			el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
 		}
 	}
 }
