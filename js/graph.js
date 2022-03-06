@@ -159,7 +159,8 @@ AFRAME.registerComponent('graph_lines', {
 AFRAME.registerComponent('graph_lines_csv', {
     schema: {
         leftPoints: {default: []},
-        bottomPoints: {default: []}
+        bottomPoints: {default: []},
+        id: {default: 0}
     },
 
     init: function () {
@@ -175,6 +176,37 @@ AFRAME.registerComponent('graph_lines_csv', {
     update: function (oldData) {
         console.log('start add lines');
         var data = this.data;
+
+        console.log('Data from CSV');
+
+        var dataID = 'data_csv_';
+        var filePath = '';
+        //var el;
+
+        var element = document.getElementById(dataID+this.data.id)
+        filePath = element.innerHTML;
+
+        if (filePath != '') {
+            var dataLeft = [];
+            var dataBottom = [];
+            var values = [];
+
+            // extract data from csv file
+            d3.csv(filePath, (d) => {
+                values = Object.values(d);
+                //dataLeft.push(values[0]);
+                //dataBottom.push(values[1]);
+                leftPoints.push(values[0]);
+                bottomPoints.push(values[1]);
+
+                // Update graph line entity
+                //console.log('Updating attribute');
+                //this.el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
+                
+            });
+
+            element.innerHTML = '';
+        }
 
         var numDataPoints = Math.max(data.leftPoints.length, data.bottomPoints.length);
 
