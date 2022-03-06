@@ -164,7 +164,8 @@ AFRAME.registerComponent('graph_lines_csv', {
     },
 
     init: function () {
-        this.data.id = this.el.getAttribute('id').replace('graph_', '');
+        var graphID = this.el.getAttribute('id').replace('graph_', '');
+        this.data.id = graphID;
         var dataLeftID = 'data_left_' + graphID.toString();
         var dataBottomID = 'data_bottom_' + graphID.toString();
         var dataLeft = document.getElementById(dataLeftID).innerHTML;
