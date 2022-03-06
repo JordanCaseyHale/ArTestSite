@@ -76,11 +76,11 @@ function data_from_csv() {
 				values = Object.values(d);
 				dataLeft.push(values[0]);
 				dataBottom.push(values[1]);
+				
+				// Update graph line entity
+				el = document.getElementById('graph_'+i.toString());
+				el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
 			});
-
-			// Update graph line entity
-			el = document.getElementById('graph_'+i.toString());
-			el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
 		}
 	}
 }
