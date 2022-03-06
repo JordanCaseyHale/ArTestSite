@@ -80,7 +80,7 @@ function data_from_csv() {
 				// Update graph line entity
 				el = document.getElementById('graph_'+i.toString());
 				console.log('el', el);
-				if (!el) {
+				if (el) {
 					console.log('Updating attribute');
 					el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
 				}
