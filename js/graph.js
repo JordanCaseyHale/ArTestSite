@@ -197,8 +197,8 @@ AFRAME.registerComponent('graph_lines_csv', {
                 values = Object.values(d);
                 //dataLeft.push(values[0]);
                 //dataBottom.push(values[1]);
-                leftPoints.push(values[0]);
-                bottomPoints.push(values[1]);
+                data.leftPoints.push(values[0]);
+                data.bottomPoints.push(values[1]);
 
                 // Update graph line entity
                 //console.log('Updating attribute');
