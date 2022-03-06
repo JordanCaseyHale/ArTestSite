@@ -73,7 +73,10 @@ function data_from_csv() {
 
 			// extract data from csv file
 			d3.csv(filePath, (d) => {
+				console.log('Loop');
 				console.log(d);
+				console.log(d.Speed);
+				console.log(d.Time);
 				//values = d.values();
 				//dataLeft.push(values[0]);
 				//dataBottom.push(values[1]);
