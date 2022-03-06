@@ -160,7 +160,7 @@ AFRAME.registerComponent('graph_lines_csv', {
     schema: {
         leftPoints: {default: []},
         bottomPoints: {default: []}
-    }
+    },
 
     init: function () {
         var graphID = this.el.getAttribute('id').replace('graph_', '');
@@ -170,7 +170,7 @@ AFRAME.registerComponent('graph_lines_csv', {
         var dataBottom = document.getElementById(dataBottomID).innerHTML;
         this.data.leftPoints = dataLeft.split(',');
         this.data.bottomPoints = dataBottom.split(',');
-    }
+    },
 
     update: function (oldData) {
         console.log('start add lines');
