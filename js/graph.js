@@ -181,6 +181,8 @@ AFRAME.registerComponent('graph_lines_csv', {
         var startPoint = '0 0 0';
         var endPoint = '0 0 0';
 
+        console.log('Create lines');
+
         for (var i=0; i<(numDataPoints.length-1); i++) {
 
             //Create Line ID ( +2 due to axes )
@@ -189,6 +191,10 @@ AFRAME.registerComponent('graph_lines_csv', {
             // Create points
             startPoint = `${data.bottomPoints[i]} 0 ${data.leftPoints[i]}`;
             endPoint = `${data.bottomPoints[i+1]} 0 ${data.leftPoints[i+1]}`;
+
+            console.log(lineID);
+            console.log('startPoint', startPoint);
+            console.log('endPoint', endPoint);
 
             // Add Line
             this.el.setAttribute(lineID, {
