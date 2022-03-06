@@ -73,14 +73,15 @@ function data_from_csv() {
 
 			// extract data from csv file
 			d3.csv(filePath, (d) => {
-				values = d.values();
-				dataLeft.push(values[0]);
-				dataBottom.push(values[1]);
+				console.log(d);
+				//values = d.values();
+				//dataLeft.push(values[0]);
+				//dataBottom.push(values[1]);
 			});
 
 			// Update graph line entity
-			el = document.getElementById('graph_'+i.toString());
-			el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
+			//el = document.getElementById('graph_'+i.toString());
+			//el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
 		}
 	}
 }
