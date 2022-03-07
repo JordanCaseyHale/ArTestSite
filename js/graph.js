@@ -160,7 +160,8 @@ AFRAME.registerComponent('graph_lines_csv', {
     schema: {
         leftPoints: {default: []},
         bottomPoints: {default: []},
-        id: {default: 0}
+        id: {default: 0},
+        filePath: {default: ''}
     },
 
     init: function () {
@@ -172,6 +173,7 @@ AFRAME.registerComponent('graph_lines_csv', {
         var dataBottom = document.getElementById(dataBottomID).innerHTML;
         this.data.leftPoints = dataLeft.split(',');
         this.data.bottomPoints = dataBottom.split(',');
+        this.data.filePath = document.getElementById('data_csv_'+this.data.id.toString()).innerHTML;
     },
 
     update: function (oldData) {
@@ -180,14 +182,7 @@ AFRAME.registerComponent('graph_lines_csv', {
 
         console.log('Data from CSV');
 
-        var dataID = 'data_csv_';
-        var filePath = '';
-        //var el;
-
-        var element = document.getElementById(dataID+this.data.id)
-        filePath = element.innerHTML;
-
-        if (filePath != '') {
+        if (data.filePath != '') {
             var dataLeft = [];
             var dataBottom = [];
             var values = [];
@@ -206,7 +201,7 @@ AFRAME.registerComponent('graph_lines_csv', {
                 
             });
 
-            element.innerHTML = '';
+            data.filePath = '';
         }
 
         var numDataPoints = Math.max(data.leftPoints.length, data.bottomPoints.length);
