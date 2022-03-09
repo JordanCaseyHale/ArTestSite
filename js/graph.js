@@ -188,7 +188,7 @@ AFRAME.registerComponent('graph_lines_csv', {
             var values = [];
 
             // extract data from csv file
-            d3.csv(filePath, (d) => {
+            d3.csv(data.filePath, (d) => {
                 values = Object.values(d);
                 dataLeft.push(values[0]);
                 dataBottom.push(values[1]);
