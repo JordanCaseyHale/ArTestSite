@@ -236,6 +236,151 @@ AFRAME.registerComponent('graph_lines_csv', {
     }
 });
 
+AFRAME.registerComponent('graph_lines_csv2', {
+    schema: {
+        leftPoints: {default: []},
+        bottomPoints: {default: []},
+        id: {default: 0},
+        filePath: {default: ''},
+        lineID: {default: 2}
+    },
+
+    init: function () {
+        var graphID = this.el.getAttribute('id').replace('graph_', '');
+        this.data.id = graphID;
+        var dataLeftID = 'data_left_' + graphID.toString();
+        var dataBottomID = 'data_bottom_' + graphID.toString();
+        var dataLeft = document.getElementById(dataLeftID).innerHTML;
+        var dataBottom = document.getElementById(dataBottomID).innerHTML;
+        this.data.leftPoints = dataLeft.split(',');
+        this.data.bottomPoints = dataBottom.split(',');
+        this.data.filePath = document.getElementById('data_csv_'+this.data.id.toString()).innerHTML;
+    },
+
+    update: function (oldData) {
+        //console.log('start add lines');
+        var data = this.data;
+
+        console.log('Data from CSV');
+
+        if (data.filePath != '') {
+            var dataLeft = [];
+            var dataBottom = [];
+            var values = [];
+
+            // extract data from csv file
+            d3.csv(data.filePath, (d) => {
+                values = Object.values(d);
+                dataLeft.push(values[0]);
+                dataBottom.push(values[1]);
+                //data.leftPoints.push(values[0]);
+                //data.bottomPoints.push(values[1]);
+
+                // Update graph line entity
+                console.log('Updating attribute');
+                this.el.setAttribute('graph_lines_csv', {leftPoints: dataLeft, bottomPoints: dataBottom});
+                
+            });
+
+            data.filePath = '';
+        }
+
+        var numDataPoints = Math.max(data.leftPoints.length, data.bottomPoints.length);
+
+        var startPoint = '0 0 0';
+        var endPoint = '0 0 0';
+
+        console.log('Create lines', numDataPoints);
+
+        for (var i=0; i<(numDataPoints.length-1); i++) {
+
+            //Create Line ID ( +2 due to axes )
+            var lineID = 'line__'+(i+2).toString();
+
+            // Create points
+            startPoint = `${data.bottomPoints[i]} 0 ${data.leftPoints[i]}`;
+            endPoint = `${data.bottomPoints[i+1]} 0 ${data.leftPoints[i+1]}`;
+
+            console.log(lineID);
+            console.log('startPoint', startPoint);
+            console.log('endPoint', endPoint);
+
+            // Add Line
+            this.el.setAttribute(lineID, {
+                start: startPoint,
+                end: endPoint,
+                color: '#FF5E7A'
+            }); 
+        }
+
+        console.log('finish add lines');
+    }
+});
+
+function read_from_csv(entityID, filePath) {
+    d3.csv(data.filePath, (d) => {
+        let el = document.getElementById(entityID)
+        var dataLeft = el.data.leftPoints;
+        var dataBottom = el.data.bottomPoints;
+        
+        values = Object.values(d);
+        dataLeft.push(values[0]);
+        dataBottom.push(values[1]);
+
+        // Update graph line entity
+        console.log('Updating attribute');
+        el.setAttribute('graph_csv_ahh', {leftPoints: dataLeft, bottomPoints: dataBottom});
+                
+    });
+}
+
+AFRAME.registerComponent('graph_csv_ahh', {
+    schema: {
+        id: {default: 0},
+        leftPoints: {default: null},
+        bottomPoints: {default: null}
+    },
+
+    init: function () {
+        if (this.data.id != 0) {
+            var filePath = document.getElementById('data_csv_'+this.data.id.toString()).innerHTML;
+            var entityID = 'graph_'+this.data.id.toString();
+            read_from_csv(entityID, filePath);
+        }
+    },
+
+    update: function () {
+        if (this.data.leftPoints != null && this.data.bottomPoints != null) {
+            
+            var numDataPoints = Math.max(this.data.leftPoints.length, this.data.bottomPoints.length);
+
+            var startPoint = '0 0 0';
+            var endPoint = '0 0 0';
+
+            for (var i=0; i<(numDataPoints.length-1); i++) {
+
+                //Create Line ID ( +2 due to axes )
+                var lineID = 'line__'+(i+2).toString();
+
+                // Create points
+                startPoint = `${this.data.bottomPoints[i]} 0 ${this.data.leftPoints[i]}`;
+                endPoint = `${this.data.bottomPoints[i+1]} 0 ${this.data.leftPoints[i+1]}`;
+
+                console.log(lineID);
+                console.log('startPoint', startPoint);
+                console.log('endPoint', endPoint);
+
+                // Add Line
+                this.el.setAttribute(lineID, {
+                    start: startPoint,
+                    end: endPoint,
+                    color: '#FF5E7A'
+                }); 
+            }
+        }
+    }
+});
+
 AFRAME.registerComponent('timetest', {
     init: function () {
         //console.log('Time test start');
