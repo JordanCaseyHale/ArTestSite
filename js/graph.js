@@ -318,7 +318,7 @@ AFRAME.registerComponent('graph_lines_csv2', {
 });
 
 function read_from_csv(entityID, filePath) {
-    d3.csv(data.filePath, (d) => {
+    d3.csv(filePath, (d) => {
         let el = document.getElementById(entityID)
         var dataLeft = el.data.leftPoints;
         var dataBottom = el.data.bottomPoints;
