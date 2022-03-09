@@ -1,6 +1,6 @@
 AFRAME.registerComponent('graph', {
     init: function () {
-        console.log('start graph axis lines');
+        //console.log('start graph axis lines');
 
         // Create axes
         this.el.setAttribute('line', {
@@ -14,13 +14,13 @@ AFRAME.registerComponent('graph', {
             color: '#800080'
         });
 
-        console.log('finish graph axis lines');
+        //console.log('finish graph axis lines');
     }
 });
 
 AFRAME.registerComponent('graph_axis_bottom', {
     init: function () {
-        console.log('start bottom label');
+        //console.log('start bottom label');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Bottom_' + graphID.toString();
@@ -37,13 +37,13 @@ AFRAME.registerComponent('graph_axis_bottom', {
             height: 0.5,
             width: 0.5
         });
-        console.log('finish bottom label');
+        //console.log('finish bottom label');
     }
 });
 
 AFRAME.registerComponent('graph_axis_bottom_numbers', {
     init: function () {
-        console.log('start bottom numbers');
+        //console.log('start bottom numbers');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Bottom_Numbers_' + graphID.toString();
@@ -69,13 +69,13 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
             });
         }
 
-        console.log('finish bottom numbers');
+        //console.log('finish bottom numbers');
     }
 });
 
 AFRAME.registerComponent('graph_axis_left', {
     init: function () {
-        console.log('start left label');
+        //console.log('start left label');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Left_' + graphID.toString();
@@ -93,13 +93,13 @@ AFRAME.registerComponent('graph_axis_left', {
             width: 0.5
         });
 
-        console.log('finish left label');
+        //console.log('finish left label');
     }
 });
 
 AFRAME.registerComponent('graph_axis_left_numbers', {
     init: function () {
-        console.log('start left numbers');
+        //console.log('start left numbers');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Left_Numbers_' + graphID.toString();
@@ -125,13 +125,13 @@ AFRAME.registerComponent('graph_axis_left_numbers', {
             });
         }
 
-        console.log('finish left numbers');
+        //console.log('finish left numbers');
     }
 });
 
 AFRAME.registerComponent('graph_lines', {
     init: function () {
-        console.log('start add lines');
+        //console.log('start add lines');
         var graphID = this.el.getAttribute('id');
         var dataID = 'data_' + graphID.toString();
         var data = document.getElementById(dataID).innerHTML;
@@ -152,7 +152,7 @@ AFRAME.registerComponent('graph_lines', {
             }); 
         }
 
-        console.log('finish add lines');
+        //console.log('finish add lines');
     }
 });
 
@@ -177,7 +177,7 @@ AFRAME.registerComponent('graph_lines_csv', {
     },
 
     update: function (oldData) {
-        console.log('start add lines');
+        //console.log('start add lines');
         var data = this.data;
 
         console.log('Data from CSV');
@@ -209,7 +209,7 @@ AFRAME.registerComponent('graph_lines_csv', {
         var startPoint = '0 0 0';
         var endPoint = '0 0 0';
 
-        console.log('Create lines');
+        console.log('Create lines', numDataPoints);
 
         for (var i=0; i<(numDataPoints.length-1); i++) {
 
@@ -238,7 +238,7 @@ AFRAME.registerComponent('graph_lines_csv', {
 
 AFRAME.registerComponent('timetest', {
     init: function () {
-        console.log('Time test start');
+        //console.log('Time test start');
         var graphID = this.el.getAttribute('id');
 
         // Use function to get bottom axis time data
@@ -275,6 +275,6 @@ AFRAME.registerComponent('timetest', {
             });
         }
 
-        console.log('Time test finish');
+        //console.log('Time test finish');
     }
 });
