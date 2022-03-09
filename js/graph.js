@@ -337,8 +337,8 @@ function read_from_csv(entityID, filePath) {
 AFRAME.registerComponent('graph_csv_ahh', {
     schema: {
         id: {default: 0},
-        leftPoints: {default: null},
-        bottomPoints: {default: null}
+        leftPoints: {default: []},
+        bottomPoints: {default: []}
     },
 
     init: function () {
@@ -350,7 +350,7 @@ AFRAME.registerComponent('graph_csv_ahh', {
     },
 
     update: function () {
-        if (this.data.leftPoints != null && this.data.bottomPoints != null) {
+        if (this.data.leftPoints.length != 0 && this.data.bottomPoints.length != 0) {
             
             var numDataPoints = Math.max(this.data.leftPoints.length, this.data.bottomPoints.length);
 
