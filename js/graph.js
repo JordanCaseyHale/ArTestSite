@@ -350,7 +350,8 @@ AFRAME.registerComponent('graph_csv_ahh', {
         }
     },
 
-    update: function () {
+    update: function (oldData) {
+        console.log('Update hit');
         if (this.data.leftPoints.length != 0 && this.data.bottomPoints.length != 0) {
             
             var numDataPoints = Math.max(this.data.leftPoints.length, this.data.bottomPoints.length);
