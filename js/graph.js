@@ -358,7 +358,7 @@ AFRAME.registerComponent('graph_csv_ahh', {
             var startPoint = '0 0 0';
             var endPoint = '0 0 0';
 
-            for (var i=0; i<(numDataPoints.length-1); i++) {
+            for (var i=0; i<(numDataPoints-1); i++) {
 
                 //Create Line ID ( +2 due to axes )
                 var lineID = 'line__'+(i+2).toString();
