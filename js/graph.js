@@ -331,7 +331,7 @@ function read_from_csv(entityID, filePath) {
         // Update graph line entity
         console.log('Updating attribute');
         el.setAttribute('graph_csv_ahh', {leftPoints: dataLeft, bottomPoints: dataBottom});
-                
+        el.setAttribute('graph_csv_ahh', {leftPoints: dataLeft, bottomPoints: dataBottom});
     });
 }
 
