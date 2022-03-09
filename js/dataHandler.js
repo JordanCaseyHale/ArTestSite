@@ -1,8 +1,5 @@
-function time_string_to_normalised_points(id) {
+function time_string_to_normalised_points(dataPoints) {
 	console.log('Time handler');
-
-	var data = document.getElementById(id).innerHTML;
-	var dataPoints = data.split(',');
 
 	// Get the data points into time values
 	const timeValues = [];
@@ -32,11 +29,15 @@ function time_string_to_normalised_points(id) {
 	return { minIndex, maxIndex, normalisedPoints };
 }
 
-function numbers_to_normalised_points(id) {
-	console.log('Number handler');
-
+function time_string_to_normalised_points_from_id(id) {
 	var data = document.getElementById(id).innerHTML;
 	var dataPoints = data.split(',');
+
+	return time_string_to_normalised_points(dataPoints);
+}
+
+function numbers_to_normalised_points(dataPoints) {
+	console.log('Number handler');
 
 	// Select Max
 	var maxValue = Math.max.apply(null, dataPoints);
@@ -53,6 +54,13 @@ function numbers_to_normalised_points(id) {
 	}
 
 	return { minIndex, maxIndex, normalisedPoints };
+}
+
+function numbers_to_normalised_points_from_id(id) {
+	var data = document.getElementById(id).innerHTML;
+	var dataPoints = data.split(',');
+
+	return numbers_to_normalised_points(dataPoints);
 }
 
 function data_from_csv() {

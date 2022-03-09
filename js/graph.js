@@ -353,10 +353,15 @@ AFRAME.registerComponent('graph_csv_ahh', {
         console.log('Update hit');
         if (this.data.leftPoints.length != 0 && this.data.bottomPoints.length != 0) {
             
-            var numDataPoints = Math.max(this.data.leftPoints.length, this.data.bottomPoints.length);
-
             var startPoint = '0 0 0';
             var endPoint = '0 0 0';
+
+            // Normalise data points
+            // bottom points through time function
+            let bottomPoints = time_string_to_normalised_points(this.data.bottomPoints);
+            let leftPoints = numbers_to_normalised_points(this.data.leftPoints);
+
+            var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
 
             for (var i=0; i<(numDataPoints-1); i++) {
 
@@ -364,8 +369,8 @@ AFRAME.registerComponent('graph_csv_ahh', {
                 var lineID = 'line__'+(i+2).toString();
 
                 // Create points
-                startPoint = `${this.data.bottomPoints[i]} 0 ${this.data.leftPoints[i]}`;
-                endPoint = `${this.data.bottomPoints[i+1]} 0 ${this.data.leftPoints[i+1]}`;
+                startPoint = `${bottomPoints.normalisedPoints[i]} 0 ${leftPoints.normalisedPoints[i]}`;
+                endPoint = `${bottomPoints.normalisedPoints[i+1]} 0 ${leftPoints.normalisedPoints[i+1]}`;
 
                 console.log(lineID);
                 console.log('startPoint', startPoint);
@@ -393,11 +398,11 @@ AFRAME.registerComponent('timetest', {
         //var maxIndex = 0;
         //var normalisedPoints = [];
 
-        let bottomPoints = time_string_to_normalised_points(dataBottomID);
+        let bottomPoints = time_string_to_normalised_points_from_id(dataBottomID);
 
         // get left axis data
         var dataLeftID = 'data_left_' + graphID.toString();
-        let leftPoints = numbers_to_normalised_points(dataLeftID);
+        let leftPoints = numbers_to_normalised_points_from_id(dataLeftID);
 
         var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
 
