@@ -321,8 +321,8 @@ function read_from_csv(entityID, filePath) {
     d3.csv(filePath, (d) => {
         let el = document.getElementById(entityID);
         let graph_data = el.components.graph_csv_ahh.data;
-        var dataLeft = graph_data.leftPoints;
-        var dataBottom = graph_data.bottomPoints;
+        var dataLeft = graph_data.leftPoints.slice();
+        var dataBottom = graph_data.bottomPoints.slice();
         
         values = Object.values(d);
         dataLeft.push(values[0]);
@@ -330,7 +330,6 @@ function read_from_csv(entityID, filePath) {
 
         // Update graph line entity
         console.log('Updating attribute');
-        el.setAttribute('graph_csv_ahh', {leftPoints: dataLeft, bottomPoints: dataBottom});
         el.setAttribute('graph_csv_ahh', {leftPoints: dataLeft, bottomPoints: dataBottom});
     });
 }
