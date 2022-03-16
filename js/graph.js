@@ -372,9 +372,9 @@ AFRAME.registerComponent('graph_csv_ahh', {
                 startPoint = `${bottomPoints.normalisedPoints[i]} 0 ${leftPoints.normalisedPoints[i]}`;
                 endPoint = `${bottomPoints.normalisedPoints[i+1]} 0 ${leftPoints.normalisedPoints[i+1]}`;
 
-                console.log(lineID);
-                console.log('startPoint', startPoint);
-                console.log('endPoint', endPoint);
+                //console.log(lineID);
+                //console.log('startPoint', startPoint);
+                //console.log('endPoint', endPoint);
 
                 // Add Line
                 this.el.setAttribute(lineID, {
