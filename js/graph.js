@@ -503,6 +503,11 @@ AFRAME.registerComponent('markerhandler', {
     init: function () {
         this.el.sceneEl.addEventListener("markerFound", (e) => {
             console.log('marker position found: ', this.el.getAttribute('position'));
+            let markerEl = document.getElementById('marker4');
+            var markerX = markerEl.getAttribute('position').x;
+            let graphEl = document.getElementById('myPlot');
+            var movementX = screen.width - 500;
+            graphEl.style.bottom = (movementX / 2).toString() + "px";
         });
         this.el.sceneEl.addEventListener("markerLost", (e) => {
             console.log('marker position lost: ', this.el.getAttribute('position'));
