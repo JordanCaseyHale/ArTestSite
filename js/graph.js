@@ -486,6 +486,10 @@ AFRAME.registerComponent('image_test', {
           .style("fill", "Red");
 
 
+        let markerEl = document.getElementById('marker4');
+        console.log('marker position: ', markerEl.getAttribute('position'));
+        console.log('marker visible: ', markerEl.getAttribute('visible'));
+
         html2canvas(document.body).then((canvas) => {
             let a = document.createElement("a");
             a.download = "ss.png";
