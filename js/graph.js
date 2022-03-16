@@ -429,3 +429,9 @@ AFRAME.registerComponent('timetest', {
         //console.log('Time test finish');
     }
 });
+
+AFRAME.registerComponent('graph_background', {
+    init: function() {
+        this.el.setAttribute('position', '-0.01 -1 -0.05');
+    }
+});
