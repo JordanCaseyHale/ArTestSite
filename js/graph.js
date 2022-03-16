@@ -500,14 +500,21 @@ AFRAME.registerComponent('markerhandler', {
         this.el.sceneEl.addEventListener("markerFound", (e) => {
             console.log('marker position found: ', this.el.getAttribute('position'));
             let markerEl = document.getElementById('marker4');
-            var markerY = markerEl.getAttribute('position').y;
+            var markerPos = markerEl.getAttribute('position');
             let graphEl = document.getElementById('myPlot');
             var movementAvailableY = screen.height - 500;
-            if (markerY > 0.8) {markerY = 0.8;}
-            else if (markerY < -0.8) {markerY = -0.8;}
-            var movementY = movementAvailableY * markerY / 0.8;
-            graphEl.style.bottom = movementY;
+            //if (markerY > 0.8) {markerY = 0.8;}
+            //else if (markerY < -0.8) {markerY = -0.8;}
+            //var movementY = movementAvailableY * markerY / 0.8;
+            
 
+            var scaledY = (markerPos.y / markerPos.z) / 1.4;
+
+            //Move the scaledY range from -0.3,0.3 to 0,0.6
+            scaledY += 0.3;
+            var movmentY = movementAvailableY * scaledY / 0.6;
+            
+            graphEl.style.bottom = movementY;
         });
         this.el.sceneEl.addEventListener("markerLost", (e) => {
             console.log('marker position lost: ', this.el.getAttribute('position'));
