@@ -512,8 +512,8 @@ AFRAME.registerComponent('markerhandler', {
 
             //Move the scaledY range from -0.3,0.3 to 0,0.6
             scaledY += 0.3;
-            var movmentY = movementAvailableY * scaledY / 0.6;
-            
+            var movementY = movementAvailableY * scaledY / 0.6;
+
             graphEl.style.bottom = movementY;
         });
         this.el.sceneEl.addEventListener("markerLost", (e) => {
