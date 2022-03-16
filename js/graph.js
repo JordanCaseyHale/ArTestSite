@@ -488,7 +488,7 @@ AFRAME.registerComponent('image_test', {
 
         let markerEl = document.getElementById('marker4');
         console.log('marker position: ', markerEl.getAttribute('position'));
-        console.log('marker visible: ', markerEl.getAttribute('visible'));
+        console.log('marker visible: ', markerEl.object3D.visible);
 
         html2canvas(document.body).then((canvas) => {
             let a = document.createElement("a");
@@ -496,5 +496,16 @@ AFRAME.registerComponent('image_test', {
             a.href = canvas.toDataURL("image/png");
             a.click();
         })
+    }
+});
+
+AFRAME.registerComponent('markerhandler', {
+    init: function () {
+        this.el.sceneEl.addEventListener("markerFound", (e) => {
+            console.log('marker position found: ', this.el.getAttribute('position'));
+        });
+        this.el.sceneEl.addEventListener("markerLost", (e) => {
+            console.log('marker position lost: ', this.el.getAttribute('position'));
+        });
     }
 });

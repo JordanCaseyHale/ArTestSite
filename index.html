@@ -26,7 +26,7 @@
 	</head>
     <body style="margin : 0px; overflow: hidden;">
         <header>
-            <p>AFrameTest 4.10</p>
+            <p>AFrameTest 4.11</p>
         </header>
 
         <svg id="myPlot" style="width:500px;height:500px"></svg>
@@ -105,7 +105,7 @@
             </a-marker>
 
             <!-- More complex graph using gesture...js -->
-            <a-marker type="pattern" url="./pattern-Graph 4.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="marker4">
+            <a-marker type="pattern" url="./pattern-Graph 4.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="marker4" markerhandler>
                 <a-entity id="2" position="0 0 0" graph_axis_bottom class="clickable" gesture-handler></a-entity>
                 <a-entity id="image_test" image_test></a-entity>
             </a-marker>
