@@ -486,16 +486,12 @@ AFRAME.registerComponent('image_test', {
           .style("fill", "Red");
 
 
-        let markerEl = document.getElementById('marker4');
-        console.log('marker position: ', markerEl.getAttribute('position'));
-        console.log('marker visible: ', markerEl.object3D.visible);
-
-        html2canvas(document.body).then((canvas) => {
-            let a = document.createElement("a");
-            a.download = "ss.png";
-            a.href = canvas.toDataURL("image/png");
-            a.click();
-        })
+        //html2canvas(document.body).then((canvas) => {
+            //let a = document.createElement("a");
+            //a.download = "ss.png";
+            //a.href = canvas.toDataURL("image/png");
+            //a.click();
+        //})
     }
 });
 
@@ -504,10 +500,10 @@ AFRAME.registerComponent('markerhandler', {
         this.el.sceneEl.addEventListener("markerFound", (e) => {
             console.log('marker position found: ', this.el.getAttribute('position'));
             let markerEl = document.getElementById('marker4');
-            var markerX = markerEl.getAttribute('position').x;
+            var markerY = markerEl.getAttribute('position').y;
             let graphEl = document.getElementById('myPlot');
-            var movementX = screen.width - 500;
-            graphEl.style.bottom = "200px";
+            var movementY = screen.height - 500;
+            graphEl.style.bottom = movementY * markerY / 0.8;
         });
         this.el.sceneEl.addEventListener("markerLost", (e) => {
             console.log('marker position lost: ', this.el.getAttribute('position'));
