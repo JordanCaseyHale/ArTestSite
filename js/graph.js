@@ -507,7 +507,7 @@ AFRAME.registerComponent('markerhandler', {
             var markerX = markerEl.getAttribute('position').x;
             let graphEl = document.getElementById('myPlot');
             var movementX = screen.width - 500;
-            graphEl.style.bottom = (movementX / 2).toString() + "px";
+            graphEl.style.bottom = "200px";
         });
         this.el.sceneEl.addEventListener("markerLost", (e) => {
             console.log('marker position lost: ', this.el.getAttribute('position'));
