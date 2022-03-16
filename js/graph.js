@@ -513,6 +513,7 @@ AFRAME.registerComponent('markerhandler', {
             //Move the scaledY range from -0.3,0.3 to 0,0.6
             scaledY += 0.3;
             var movementY = movementAvailableY * scaledY / 0.6;
+            console.log('movementY', movementY);
 
             graphEl.style.bottom = movementY;
         });
