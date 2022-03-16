@@ -435,3 +435,14 @@ AFRAME.registerComponent('graph_background', {
         this.el.setAttribute('position', '-0.01 -1 -0.05');
     }
 });
+
+AFRAME.registerComponent('image_test', {
+    init: function() {
+        html2canvas(document.body).then((canvas) => {
+            let a = document.createElement("a");
+            a.download = "ss.png";
+            a.href = canvas.toDataURL("image/png");
+            a.click();
+        })
+    }
+});

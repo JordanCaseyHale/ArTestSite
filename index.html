@@ -21,6 +21,8 @@
         <script src="./js/gesture-detector.js"></script>
 
         <script src="https://d3js.org/d3.v7.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.4/html2canvas.min.js"></script>
 	</head>
     <body style="margin : 0px; overflow: hidden;">
         <header>
@@ -104,6 +106,7 @@
             <!-- More complex graph using gesture...js -->
             <a-marker type="pattern" url="./pattern-Graph 4.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="marker4">
                 <a-entity id="2" position="0 0 0" graph_axis_bottom class="clickable" gesture-handler></a-entity>
+                <a-entity id="image_test" image_test></a-entity>
             </a-marker>
 
             <!-- More complex graph using dataHandler.js -->
