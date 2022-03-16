@@ -502,8 +502,12 @@ AFRAME.registerComponent('markerhandler', {
             let markerEl = document.getElementById('marker4');
             var markerY = markerEl.getAttribute('position').y;
             let graphEl = document.getElementById('myPlot');
-            var movementY = screen.height - 500;
-            graphEl.style.bottom = movementY * markerY / 0.8;
+            var movementAvailableY = screen.height - 500;
+            if (markerY > 0.8) {markerY = 0.8;}
+            else if (markerY < -0.8) {markerY = -0.8;}
+            var movementY = movementAvailableY * markerY / 0.8;
+            graphEl.style.bottom = movementY;
+
         });
         this.el.sceneEl.addEventListener("markerLost", (e) => {
             console.log('marker position lost: ', this.el.getAttribute('position'));
