@@ -491,7 +491,7 @@ AFRAME.registerComponent('image_test', {
             a.download = "ss.png";
             a.href = canvas.toDataURL("image/png");
             a.click();
-        });
+        })
     }
 });
 
