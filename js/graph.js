@@ -486,12 +486,12 @@ AFRAME.registerComponent('image_test', {
           .style("fill", "Red");
 
 
-        //html2canvas(document.body).then((canvas) => {
-            //let a = document.createElement("a");
-            //a.download = "ss.png";
-            //a.href = canvas.toDataURL("image/png");
-            //a.click();
-        //})
+        html2canvas(document.body,{backgroundColor:null}).then((canvas) => {
+            let a = document.createElement("a");
+            a.download = "ss.png";
+            a.href = canvas.toDataURL("image/png");
+            a.click();
+        });
     }
 });
 
