@@ -488,7 +488,7 @@ AFRAME.registerComponent('image_test', {
 
         html2canvas(document.body,{backgroundColor:null}).then((canvas) => {
             let a = document.createElement("a");
-            a.download = "ss.png";
+            a.download = "graph.png";
             a.href = canvas.toDataURL("image/png");
             a.click();
         })
@@ -521,4 +521,13 @@ AFRAME.registerComponent('markerhandler', {
             console.log('marker position lost: ', this.el.getAttribute('position'));
         });
     }
+});
+
+AFRAME.registerComponent('orientation-listener', {
+  init: function () {
+    var cameraEl = this.el.sceneEl.camera.el;
+    var cameraOrientation = cameraEl.getAttribute('rotation');
+
+    this.el.setAttribute('rotation', cameraOrientation);
+  }
 });
