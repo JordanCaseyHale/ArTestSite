@@ -1,17 +1,18 @@
 AFRAME.registerComponent('graph', {
     init: function () {
         //console.log('start graph axis lines');
+        var colour = localStorage.getItem('LineColour');
 
         // Create axes
         this.el.setAttribute('line', {
             start: '-1 0 -1',
             end: '-1 0 1',
-            color: '#800080'
+            color: colour
         });
         this.el.setAttribute('line__1', {
             start: '-1 0 1',
             end: '1 0 1',
-            color: '#800080'
+            color: colour
         });
 
         //console.log('finish graph axis lines');
