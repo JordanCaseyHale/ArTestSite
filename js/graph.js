@@ -22,6 +22,7 @@ AFRAME.registerComponent('graph', {
 AFRAME.registerComponent('graph_axis_bottom', {
     init: function () {
         //console.log('start bottom label');
+          
         var colour = localStorage.getItem('TextColour');
 
         var graphID = this.el.getAttribute('id');
