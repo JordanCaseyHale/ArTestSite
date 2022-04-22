@@ -35,6 +35,8 @@
             </select>
         </p><br>
 
+        <p>Text Colour: <input type="color" name="TextColour" id="TextColour" value="#000000"></p>
+
         <p>Graph label and Outline Colour: <input type="color" name="LineColour" id="LineColour" value="#000000"></p>
 
         <p>Data Line Colour: <input type="color" name="DataLineColour" id="DataLineColour" value="#000000"></p>
@@ -53,6 +55,10 @@
             var dlineEl = document.getElementById("DataLineColour");
             localStorage.setItem('DataLineColour', dlineEl.value);
             dlineEl.addEventListener("input", function() {localStorage.setItem('DataLineColour', dlineEl.value)} );
+
+            var tlineEl = document.getElementById("TextColour");
+            localStorage.setItem('TextColour', tlineEl.value);
+            tlineEl.addEventListener("input", function() {localStorage.setItem('TextColour', tlineEl.value)} );
         </script>
 	</body>
 </html>

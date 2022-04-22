@@ -22,7 +22,7 @@ AFRAME.registerComponent('graph', {
 AFRAME.registerComponent('graph_axis_bottom', {
     init: function () {
         //console.log('start bottom label');
-        var colour = localStorage.getItem('LineColour');
+        var colour = localStorage.getItem('TextColour');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Bottom_' + graphID.toString();
@@ -47,7 +47,7 @@ AFRAME.registerComponent('graph_axis_bottom', {
 AFRAME.registerComponent('graph_axis_bottom_numbers', {
     init: function () {
         //console.log('start bottom numbers');
-        var colour = localStorage.getItem('LineColour');
+        var colour = localStorage.getItem('TextColour');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Bottom_Numbers_' + graphID.toString();
@@ -81,7 +81,7 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
 AFRAME.registerComponent('graph_axis_left', {
     init: function () {
         //console.log('start left label');
-        var colour = localStorage.getItem('LineColour');
+        var colour = localStorage.getItem('TextColour');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Left_' + graphID.toString();
@@ -107,7 +107,7 @@ AFRAME.registerComponent('graph_axis_left', {
 AFRAME.registerComponent('graph_axis_left_numbers', {
     init: function () {
         //console.log('start left numbers');
-        var colour = localStorage.getItem('LineColour');
+        var colour = localStorage.getItem('TextColour');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Left_Numbers_' + graphID.toString();
