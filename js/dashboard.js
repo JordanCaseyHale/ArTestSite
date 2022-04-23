@@ -3,11 +3,11 @@ AFRAME.registerComponent('dashboard_ring_background', {
         // Add Background Ring
         this.el.setAttribute('geometry', {
             primitive: 'ring',
-            radiusInner: 0.2,
-            radiusOuter: 0.3
+            radiusInner: 0.15,
+            radiusOuter: 0.275
         });
 
-        this.el.setAttribute('position', '0.5 0.5 0');
+        this.el.setAttribute('position', '0.6 0.6 0');
 
         this.el.setAttribute('rotation', '-90 0 0');
 
@@ -19,28 +19,29 @@ AFRAME.registerComponent('dashboard_ring_background', {
 
 AFRAME.registerComponent('dashboard_ring_foreground', {
     init: function () {
-        //console.log('start add lines');
         var graphID = this.el.getAttribute('id');
-        var dataID = 'data_' + graphID.toString();
+        var dataID = 'Data_Ring_' + graphID.toString();
         var data = document.getElementById(dataID).innerHTML;
-        var dataPoints = data.split(',');
-        var colour = localStorage.getItem('DataLineColour');
+
+        // Percentage multipled for circle amount
+        var thetaData = data * 360;
+
+        //var colour = localStorage.getItem('DataLineColour');
         
-        for (var i=0; i<(dataPoints.length-1); i++) {
-            //console.log("start:",dataPoints[i]);
-            //console.log("end:",dataPoints[i+1]);
+        this.el.setAttribute('geometry', {
+            primitive: 'ring',
+            radiusInner: 0.15,
+            radiusOuter: 0.275,
+            thetaStart: 90,
+            thetaLength: thetaData
+        });
 
-            //Create Line ID ( +2 due to axes )
-            var lineID = 'line__'+(i+2).toString();
+        this.el.setAttribute('position', '0.6 0.6 0');
 
-            // Add Line
-            this.el.setAttribute(lineID, {
-                start: dataPoints[i],
-                end: dataPoints[i+1],
-                color: colour
-            }); 
-        }
+        this.el.setAttribute('rotation', '-90 0 0');
 
-        //console.log('finish add lines');
+        this.el.setAttribute('material', {
+            color: '#FF0000'
+        });
     }
 });
