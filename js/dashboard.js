@@ -4,11 +4,16 @@ AFRAME.registerComponent('dashboard_ring_background', {
         this.el.setAttribute('geometry', {
             primitive: 'ring',
             radiusInner: 0.2,
-            radiusOuter: 0.3,
-            color: '#FFFFFF'
+            radiusOuter: 0.3
         });
 
         this.el.setAttribute('position', '0.5 0.5 0');
+
+        this.el.setAttribute('rotation', '-90 0 0');
+
+        this.el.setAttribute('material', {
+            color: '#FFFFFF'
+        });
     }
 });
 
