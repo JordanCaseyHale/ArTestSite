@@ -84,7 +84,7 @@
                 <a-entity id="graph_1" graph_csv_ahh="id: 1"></a-entity>
             </a-marker>
 
-            <!-- More complex graph example -->
+            <!-- More complex graph example MAYBE BECOME USER CONTROL TIME EXAMPLE-->
             <a-marker type="pattern" url="./pattern-Graph 2.patt" id="marker2">
                 <a-entity id="2" position="0 0 0" graph></a-entity>
                 <a-entity id="2" position="0 0 0" graph_axis_left></a-entity>
@@ -105,10 +105,21 @@
                 <a-entity id="graph_3" graph_csv_ahh="id: 3"></a-entity>
             </a-marker>
 
-            <!-- More complex graph using gesture...js -->
+            <!-- More complex graph using gesture...js TO BECOME DASHBOARD-->
             <a-marker type="pattern" url="./pattern-Graph 4.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="marker4">
                 <a-entity id="2" position="0 0 0" graph_axis_bottom class="clickable" gesture-handler></a-entity>
                 <!--<a-entity id="image_test" image_test></a-entity>-->
+
+                <!-- Line graph top left -->
+
+                <!-- Ring top right -->
+                <a-entity id="4" position="0 0 0" dashboard_ring_background></a-entity>
+                <a-entity id="4" position="0 0 0" ></a-entity>
+
+                <!-- Progress bars bottom left -->
+
+                <!-- Line graph bottom right -->
+
             </a-marker>
 
             <!-- More complex graph using dataHandler.js -->
