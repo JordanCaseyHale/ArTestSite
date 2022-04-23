@@ -2,7 +2,7 @@ AFRAME.registerComponent('dashboard_ring_background', {
     init: function () {
         // Add Background Ring
         this.el.setAttribute('geometry', {
-            primitive: ring,
+            primitive: 'ring',
             radiusInner: 0.2,
             radiusOuter: 0.3,
             color: '#FFFFFF'
