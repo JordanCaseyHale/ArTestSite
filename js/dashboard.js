@@ -53,8 +53,6 @@ AFRAME.registerComponent('dashboard_progress_background', {
             primitive: 'box'
         });
 
-        this.el.setAttribute('position', '-0.6 0 0.6');
-
         this.el.setAttribute('scale', '1 0.01 0.15');
 
         this.el.setAttribute('material', {
@@ -77,12 +75,34 @@ AFRAME.registerComponent('dashboard_progress_foreground', {
             primitive: 'box'
         });
 
-        this.el.setAttribute('position', '-0.6 0.01 0.6');
-
         this.el.setAttribute('scale', scale);
 
         this.el.setAttribute('material', {
             color: '#FF0000'
         });
+    }
+});
+
+AFRAME.registerComponent('bar_top_front', {
+    init: function () {
+        this.el.setAttribute('position', '-0.6 0.01 0.6');
+    }
+});
+
+AFRAME.registerComponent('bar_top_back', {
+    init: function () {
+        this.el.setAttribute('position', '-0.6 0 0.6');
+    }
+});
+
+AFRAME.registerComponent('bar_bottom_front', {
+    init: function () {
+        this.el.setAttribute('position', '-0.6 0.01 0.8');
+    }
+});
+
+AFRAME.registerComponent('bar_bottom_back', {
+    init: function () {
+        this.el.setAttribute('position', '-0.6 0 0.8');
     }
 });
