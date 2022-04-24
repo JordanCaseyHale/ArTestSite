@@ -24,7 +24,7 @@ AFRAME.registerComponent('dashboard_ring_foreground', {
         var data = document.getElementById(dataID).innerHTML;
 
         // Percentage multipled for circle amount
-        var thetaData = data * 360;
+        var thetaData = data / 100 * 360;
 
         //var colour = localStorage.getItem('DataLineColour');
         
