@@ -77,7 +77,7 @@ AFRAME.registerComponent('dashboard_progress_foreground', {
 AFRAME.registerComponent('bar_top_front', {
     init: function () {
         var graphID = this.el.getAttribute('id');
-        var dataID = 'Data_Progress_Top' + graphID.toString();
+        var dataID = 'Data_Progress_Top_' + graphID.toString();
         var data = document.getElementById(dataID).innerHTML;
 
         // data, as percentage, into scale value
@@ -105,7 +105,7 @@ AFRAME.registerComponent('bar_top_back', {
 AFRAME.registerComponent('bar_bottom_front', {
     init: function () {
         var graphID = this.el.getAttribute('id');
-        var dataID = 'Data_Progress_Bottom' + graphID.toString();
+        var dataID = 'Data_Progress_Bottom_' + graphID.toString();
         var data = document.getElementById(dataID).innerHTML;
 
         // data, as percentage, into scale value
