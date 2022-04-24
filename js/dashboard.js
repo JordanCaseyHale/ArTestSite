@@ -36,7 +36,7 @@ AFRAME.registerComponent('dashboard_ring_foreground', {
             thetaLength: thetaData
         });
 
-        this.el.setAttribute('position', '0.6 0.6 0');
+        this.el.setAttribute('position', '0.6 0.61 0');
 
         this.el.setAttribute('rotation', '-90 0 0');
 
@@ -53,9 +53,9 @@ AFRAME.registerComponent('dashboard_progress_background', {
             primitive: 'box'
         });
 
-        this.el.setAttribute('position', '0 0 0');
+        this.el.setAttribute('position', '-0.6 0 0.6');
 
-        this.el.setAttribute('scale', '1 0.15 0.01');
+        this.el.setAttribute('scale', '1 0.01 0.15');
 
         this.el.setAttribute('material', {
             color: '#FFFFFF'
@@ -70,14 +70,14 @@ AFRAME.registerComponent('dashboard_progress_foreground', {
         var data = document.getElementById(dataID).innerHTML;
 
         // data, as percentage, into scale value
-        var scale = (data / 100).toString() + ' 0.15 0.01';
+        var scale = (data / 100).toString() + ' 0.01 0.15';
 
         //Add foreground bar
         this.el.setAttribute('geometry', {
             primitive: 'box'
         });
 
-        this.el.setAttribute('position', '0 0 0.01');
+        this.el.setAttribute('position', '-0.6 0.01 0.6');
 
         this.el.setAttribute('scale', scale);
 
