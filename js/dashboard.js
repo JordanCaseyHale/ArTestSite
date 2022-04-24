@@ -63,19 +63,10 @@ AFRAME.registerComponent('dashboard_progress_background', {
 
 AFRAME.registerComponent('dashboard_progress_foreground', {
     init: function () {
-        var graphID = this.el.getAttribute('id');
-        var dataID = 'Data_Progress_' + graphID.toString();
-        var data = document.getElementById(dataID).innerHTML;
-
-        // data, as percentage, into scale value
-        var scale = (data / 100).toString() + ' 0.01 0.15';
-
         //Add foreground bar
         this.el.setAttribute('geometry', {
             primitive: 'box'
         });
-
-        this.el.setAttribute('scale', scale);
 
         this.el.setAttribute('material', {
             color: '#FF0000'
@@ -85,7 +76,23 @@ AFRAME.registerComponent('dashboard_progress_foreground', {
 
 AFRAME.registerComponent('bar_top_front', {
     init: function () {
-        this.el.setAttribute('position', '-0.6 0.01 0.6');
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Data_Progress_Top' + graphID.toString();
+        var data = document.getElementById(dataID).innerHTML;
+
+        // data, as percentage, into scale value
+        var scaleValue = data / 100
+
+        var scale = scaleValue.toString() + ' 0.01 0.15';
+
+        // Base position on scale (-0.6 centre of bar)
+        var positionX = -0.6 - ((1 - scaleValue) / 2)
+
+        var position = positionX.toString() + ' 0.01 0.6'
+
+        this.el.setAttribute('scale', scale);
+
+        this.el.setAttribute('position', position);
     }
 });
 
@@ -97,7 +104,23 @@ AFRAME.registerComponent('bar_top_back', {
 
 AFRAME.registerComponent('bar_bottom_front', {
     init: function () {
-        this.el.setAttribute('position', '-0.6 0.01 0.8');
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Data_Progress_Bottom' + graphID.toString();
+        var data = document.getElementById(dataID).innerHTML;
+
+        // data, as percentage, into scale value
+        var scaleValue = data / 100
+
+        var scale = scaleValue.toString() + ' 0.01 0.15';
+
+        // Base position on scale (-0.6 centre of bar)
+        var positionX = -0.6 - ((1 - scaleValue) / 2)
+
+        var position = positionX.toString() + ' 0.01 0.8'
+
+        this.el.setAttribute('scale', scale);
+
+        this.el.setAttribute('position', position);
     }
 });
 
