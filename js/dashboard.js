@@ -45,3 +45,44 @@ AFRAME.registerComponent('dashboard_ring_foreground', {
         });
     }
 });
+
+AFRAME.registerComponent('dashboard_progress_background', {
+    init: function () {
+        //Add background bar
+        this.el.setAttribute('geometry', {
+            primitive: 'box'
+        });
+
+        this.el.setAttribute('position', '0 0 0');
+
+        this.el.setAttribute('scale', '1 0.15 0.01');
+
+        this.el.setAttribute('material', {
+            color: '#FFFFFF'
+        });
+    }
+});
+
+AFRAME.registerComponent('dashboard_progress_foreground', {
+    init: function () {
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Data_Progress_' + graphID.toString();
+        var data = document.getElementById(dataID).innerHTML;
+
+        // data, as percentage, into scale value
+        var scale = (data / 100).toString() + ' 0.15 0.01';
+
+        //Add foreground bar
+        this.el.setAttribute('geometry', {
+            primitive: 'box'
+        });
+
+        this.el.setAttribute('position', '0 0 0.01');
+
+        this.el.setAttribute('scale', scale);
+
+        this.el.setAttribute('material', {
+            color: '#FF0000'
+        });
+    }
+});
