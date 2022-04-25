@@ -82,6 +82,9 @@ AFRAME.registerComponent('dashboard_progress_label', {
 
         var colour = localStorage.getItem('TextColour');
 
+        this.el.setAttribute('rotation', '-90 0 0');
+        this.el.setAttribute('scale', '7.5 7.5 7.5');
+
         //Add label bar
         this.el.setAttribute('text', {
             value: label,
