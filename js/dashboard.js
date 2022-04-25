@@ -74,6 +74,25 @@ AFRAME.registerComponent('dashboard_progress_foreground', {
     }
 });
 
+AFRAME.registerComponent('dashboard_progress_label', {
+    init: function () {
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Progress_' + graphID.toString();
+        var label = document.getElementById(dataID).innerHTML;
+
+        var colour = localStorage.getItem('TextColour');
+
+        //Add label bar
+        this.el.setAttribute('text', {
+            value: label,
+            align: 'center',
+            height: 0.3,
+            width: 0.3,
+            color: colour
+        });
+    }
+});
+
 AFRAME.registerComponent('bar_top_front', {
     init: function () {
         var graphID = this.el.getAttribute('id');
@@ -86,9 +105,9 @@ AFRAME.registerComponent('bar_top_front', {
         var scale = scaleValue.toString() + ' 0.01 0.15';
 
         // Base position on scale (-0.6 centre of bar)
-        var positionX = -0.6 - ((1 - scaleValue) / 2)
+        var positionX = -0.7 - ((1 - scaleValue) / 2)
 
-        var position = positionX.toString() + ' 0.01 0.6'
+        var position = positionX.toString() + ' 0.01 0.45'
 
         this.el.setAttribute('scale', scale);
 
@@ -98,7 +117,7 @@ AFRAME.registerComponent('bar_top_front', {
 
 AFRAME.registerComponent('bar_top_back', {
     init: function () {
-        this.el.setAttribute('position', '-0.6 0 0.6');
+        this.el.setAttribute('position', '-0.7 0 0.45');
     }
 });
 
@@ -114,7 +133,7 @@ AFRAME.registerComponent('bar_bottom_front', {
         var scale = scaleValue.toString() + ' 0.01 0.15';
 
         // Base position on scale (-0.6 centre of bar)
-        var positionX = -0.6 - ((1 - scaleValue) / 2)
+        var positionX = -0.7 - ((1 - scaleValue) / 2)
 
         var position = positionX.toString() + ' 0.01 0.8'
 
@@ -126,10 +145,21 @@ AFRAME.registerComponent('bar_bottom_front', {
 
 AFRAME.registerComponent('bar_bottom_back', {
     init: function () {
-        this.el.setAttribute('position', '-0.6 0 0.8');
+        this.el.setAttribute('position', '-0.7 0 0.8');
     }
 });
 
+AFRAME.registerComponent('bar_top_label', {
+    init: function () {
+        this.el.setAttribute('position', '-0.7 0 0.6');
+    }
+});
+
+AFRAME.registerComponent('bar_bottom_label', {
+    init: function () {
+        this.el.setAttribute('position', '-0.7 0 0.95');
+    }
+});
 
 AFRAME.registerComponent('dashboard_graph_top', {
     init: function () {
