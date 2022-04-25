@@ -77,7 +77,7 @@ AFRAME.registerComponent('dashboard_progress_foreground', {
 AFRAME.registerComponent('dashboard_progress_label', {
     init: function () {
         var graphID = this.el.getAttribute('id');
-        var dataID = 'Progress_' + graphID.toString();
+        var dataID = 'Progress_Label_' + graphID.toString();
         var label = document.getElementById(dataID).innerHTML;
 
         var colour = localStorage.getItem('TextColour');
