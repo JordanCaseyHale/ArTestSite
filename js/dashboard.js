@@ -178,6 +178,13 @@ AFRAME.registerComponent('dashboard_graph_top_axis_bottom', {
     }
 });
 
+AFRAME.registerComponent('dashboard_graph_bottom_axis_bottom', {
+    init: function () {
+        //position axis
+        this.el.setAttribute('position', '0 0 0');
+    }
+});
+
 AFRAME.registerComponent('dashboard_graph_axis_left', {
     init: function () {
         var colour = localStorage.getItem('TextColour');
