@@ -253,7 +253,7 @@ AFRAME.registerComponent('dashboard_graph_axis_left_numbers', {
 AFRAME.registerComponent('dashboard_graph_top_axis_left_numbers', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '-1.15 0 -0.5');
+        this.el.setAttribute('position', '-1.1 0 -0.71');
     }
 });
 
@@ -264,7 +264,7 @@ AFRAME.registerComponent('dashboard_graph_bottom_axis_left_numbers', {
     }
 });
 
-AFRAME.registerComponent('graph_axis_bottom_numbers', {
+AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers', {
     init: function () {
         var colour = localStorage.getItem('TextColour');
 
