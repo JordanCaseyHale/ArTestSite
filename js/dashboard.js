@@ -163,7 +163,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom', {
         //Add label
         this.el.setAttribute('text', {
             value: label,
-            align: center,
+            align: 'center',
             height: 0.3,
             width: 0.3,
             color: colour
@@ -192,7 +192,7 @@ AFRAME.registerComponent('dashboard_graph_axis_left', {
         //Add label
         this.el.setAttribute('text', {
             value: label,
-            align: center,
+            align: 'center',
             height: 0.3,
             width: 0.3,
             color: colour
