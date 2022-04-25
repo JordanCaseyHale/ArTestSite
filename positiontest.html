@@ -21,7 +21,7 @@
         </header>
 
         <div id="plotContainer">
-          <svg id="myPlot" style="position:fixed;right:40%;bottom:0px;width:500px;height:500px"></svg>
+          <svg id="myPlot" style="width:500px;height:500px"></svg>
         </div>
 
     <script type="text/javascript">
@@ -72,11 +72,13 @@
           .attr("r", 3)
           .style("fill", "Red");
 
-        let screenWidth = screen.width;
-        console.log('width',screenWidth);
-        let screenHeight = screen.height;
-        console.log('height',screenHeight);
-        document.getElementById('myPlot').style.bottom = "300px";
+        let el = document.getElementById('plotContainer');
+        html2canvas(el,{backgroundColor:null}).then((canvas) => {
+            let a = document.createElement("a");
+            a.download = "ss.png";
+            a.href = canvas.toDataURL("image/png");
+            a.click();
+        });
     </script>
 	</body>
 </html>

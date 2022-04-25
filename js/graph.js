@@ -1,17 +1,18 @@
 AFRAME.registerComponent('graph', {
     init: function () {
         //console.log('start graph axis lines');
+        var colour = localStorage.getItem('LineColour');
 
         // Create axes
         this.el.setAttribute('line', {
             start: '-1 0 -1',
             end: '-1 0 1',
-            color: '#800080'
+            color: colour
         });
         this.el.setAttribute('line__1', {
             start: '-1 0 1',
             end: '1 0 1',
-            color: '#800080'
+            color: colour
         });
 
         //console.log('finish graph axis lines');
@@ -21,6 +22,8 @@ AFRAME.registerComponent('graph', {
 AFRAME.registerComponent('graph_axis_bottom', {
     init: function () {
         //console.log('start bottom label');
+          
+        var colour = localStorage.getItem('TextColour');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Bottom_' + graphID.toString();
@@ -35,7 +38,8 @@ AFRAME.registerComponent('graph_axis_bottom', {
         this.el.setAttribute('text', {
             value: label,
             height: 0.5,
-            width: 0.5
+            width: 0.5,
+            color: colour
         });
         //console.log('finish bottom label');
     }
@@ -44,6 +48,7 @@ AFRAME.registerComponent('graph_axis_bottom', {
 AFRAME.registerComponent('graph_axis_bottom_numbers', {
     init: function () {
         //console.log('start bottom numbers');
+        var colour = localStorage.getItem('TextColour');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Bottom_Numbers_' + graphID.toString();
@@ -65,7 +70,8 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
                 value: labels_split[i],
                 height: 0.3,
                 width: 0.3,
-                xOffset: i/(labels_split.length * 2.5)
+                xOffset: i/(labels_split.length * 2.5),
+                color: colour
             });
         }
 
@@ -76,6 +82,7 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
 AFRAME.registerComponent('graph_axis_left', {
     init: function () {
         //console.log('start left label');
+        var colour = localStorage.getItem('TextColour');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Left_' + graphID.toString();
@@ -90,7 +97,8 @@ AFRAME.registerComponent('graph_axis_left', {
         this.el.setAttribute('text', {
             value: label,
             height: 0.5,
-            width: 0.5
+            width: 0.5,
+            color: colour
         });
 
         //console.log('finish left label');
@@ -100,6 +108,7 @@ AFRAME.registerComponent('graph_axis_left', {
 AFRAME.registerComponent('graph_axis_left_numbers', {
     init: function () {
         //console.log('start left numbers');
+        var colour = localStorage.getItem('TextColour');
 
         var graphID = this.el.getAttribute('id');
         var dataID = 'Axis_Left_Numbers_' + graphID.toString();
@@ -121,7 +130,8 @@ AFRAME.registerComponent('graph_axis_left_numbers', {
                 value: labels_split[i],
                 height: 0.3,
                 width: 0.3,
-                xOffset: i/(labels_split.length * 2.5)
+                xOffset: i/(labels_split.length * 2.5),
+                color: colour
             });
         }
 
@@ -136,6 +146,7 @@ AFRAME.registerComponent('graph_lines', {
         var dataID = 'data_' + graphID.toString();
         var data = document.getElementById(dataID).innerHTML;
         var dataPoints = data.split(',');
+        var colour = localStorage.getItem('DataLineColour');
         
         for (var i=0; i<(dataPoints.length-1); i++) {
             //console.log("start:",dataPoints[i]);
@@ -148,7 +159,7 @@ AFRAME.registerComponent('graph_lines', {
             this.el.setAttribute(lineID, {
                 start: dataPoints[i],
                 end: dataPoints[i+1],
-                color: '#FF5E7A'
+                color: colour
             }); 
         }
 
@@ -161,7 +172,8 @@ AFRAME.registerComponent('graph_lines_csv', {
         leftPoints: {default: []},
         bottomPoints: {default: []},
         id: {default: 0},
-        filePath: {default: ''}
+        filePath: {default: ''},
+        lineColour: {default: '#FF0000'}
     },
 
     init: function () {
@@ -174,6 +186,7 @@ AFRAME.registerComponent('graph_lines_csv', {
         this.data.leftPoints = dataLeft.split(',');
         this.data.bottomPoints = dataBottom.split(',');
         this.data.filePath = document.getElementById('data_csv_'+this.data.id.toString()).innerHTML;
+        this.data.lineColour = localStorage.getItem('DataLineColour');
     },
 
     update: function (oldData) {
@@ -228,7 +241,7 @@ AFRAME.registerComponent('graph_lines_csv', {
             this.el.setAttribute(lineID, {
                 start: startPoint,
                 end: endPoint,
-                color: '#FF5E7A'
+                color: data.lineColour
             }); 
         }
 
@@ -242,7 +255,8 @@ AFRAME.registerComponent('graph_lines_csv2', {
         bottomPoints: {default: []},
         id: {default: 0},
         filePath: {default: ''},
-        lineID: {default: 2}
+        lineID: {default: 2},
+        lineColour: {default: '#FF0000'}
     },
 
     init: function () {
@@ -255,6 +269,7 @@ AFRAME.registerComponent('graph_lines_csv2', {
         this.data.leftPoints = dataLeft.split(',');
         this.data.bottomPoints = dataBottom.split(',');
         this.data.filePath = document.getElementById('data_csv_'+this.data.id.toString()).innerHTML;
+        this.data.lineColour = localStorage.getItem('DataLineColour');
     },
 
     update: function (oldData) {
@@ -309,7 +324,7 @@ AFRAME.registerComponent('graph_lines_csv2', {
             this.el.setAttribute(lineID, {
                 start: startPoint,
                 end: endPoint,
-                color: '#FF5E7A'
+                color: data.lineColour
             }); 
         }
 
@@ -338,7 +353,8 @@ AFRAME.registerComponent('graph_csv_ahh', {
     schema: {
         id: {default: 0},
         leftPoints: {default: []},
-        bottomPoints: {default: []}
+        bottomPoints: {default: []},
+        lineColour: {default: '#FF0000'}
     },
 
     init: function () {
@@ -347,6 +363,7 @@ AFRAME.registerComponent('graph_csv_ahh', {
             var entityID = 'graph_'+this.data.id.toString();
             read_from_csv(entityID, filePath);
         }
+        this.data.lineColour = localStorage.getItem('DataLineColour');
     },
 
     update: function (oldData) {
@@ -380,7 +397,7 @@ AFRAME.registerComponent('graph_csv_ahh', {
                 this.el.setAttribute(lineID, {
                     start: startPoint,
                     end: endPoint,
-                    color: '#FF5E7A'
+                    color: this.data.lineColour
                 }); 
             }
         }
@@ -391,6 +408,8 @@ AFRAME.registerComponent('timetest', {
     init: function () {
         //console.log('Time test start');
         var graphID = this.el.getAttribute('id');
+
+        var colour = localStorage.getItem('DataLineColour');
 
         // Use function to get bottom axis time data
         var dataBottomID = 'data_bottom_' + graphID.toString();
@@ -422,7 +441,7 @@ AFRAME.registerComponent('timetest', {
             this.el.setAttribute(lineID, {
                 start: startPoint,
                 end: endPoint,
-                color: '#FF5E7A'
+                color: colour
             });
         }
 
@@ -486,12 +505,12 @@ AFRAME.registerComponent('image_test', {
           .style("fill", "Red");
 
 
-        html2canvas(document.body,{backgroundColor:null}).then((canvas) => {
-            let a = document.createElement("a");
-            a.download = "graph.png";
-            a.href = canvas.toDataURL("image/png");
-            a.click();
-        })
+        //html2canvas(document.body,{backgroundColor:null}).then((canvas) => {
+            //let a = document.createElement("a");
+            //a.download = "ss.png";
+            //a.href = canvas.toDataURL("image/png");
+            //a.click();
+        //})
     }
 });
 

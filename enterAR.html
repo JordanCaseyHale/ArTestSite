@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Ar Test</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+
+        <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+        <!-- we import arjs version without NFT but with marker + location based support -->
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+        <script src="./js/dataHandler.js"></script>
+        <script src="./js/graph.js"></script>
+        <script src="./js/gesture-handler.js"></script>
+        <script src="./js/gesture-detector.js"></script>
+        <script src="./js/dashboard.js"></script>
+
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.4/html2canvas.min.js"></script>
+	</head>
+    <body style="margin : 0px; overflow: hidden;">
+        <header>
+            <p>AFrameTest 4.17</p>
+        </header>
+
+        <!--<svg id="myPlot" style="width:500px;height:500px"></svg>-->
+
+        <p hidden id="data_csv_1">./ProductionPerformanceBase.csv</p>
+        <p hidden id="data_1"></p>
+        <p hidden id="Axis_Bottom_1">Hour</p>
+        <p hidden id="Axis_Left_1">Quantity Out</p>
+        <p hidden id="Axis_Bottom_Numbers_1">01,02,03,04,05,06,07,08,09,10,11,12</p>
+        <p hidden id="Axis_Left_Numbers_1">0,1000,2000,3000,4000,5000,6000,7000</p>
+
+        <p hidden id="data_csv_2"></p>
+        <p hidden id="data_2">-0.8 0 0.7,-0.7 0 0.4,-0.6 0 0.3,-0.5 0 0,-0.4 0 0.3,-0.3 0 -0.2,-0.2 0 -0.3,-0.1 0 -0.1,0 0 0.4,0.1 0 0.3,0.2 0 0.6,0.3 0 0.7,0.4 0 0.3,0.5 0 0.1,0.6 0 0.3,0.7 0 -0.3,0.8 0 -0.4</p>
+        <p hidden id="Axis_Bottom_2">Time</p>
+        <p hidden id="Axis_Left_2">Temperature</p>
+        <p hidden id="Axis_Bottom_Numbers_2">12:00,12:10,12:20,12:30,12:40</p>
+        <p hidden id="Axis_Left_Numbers_2">70,72.5,75,77.5,80</p>
+
+        <p hidden id="data_csv_3">./test.csv</p>
+        <p hidden id="data_left_3"></p>
+        <p hidden id="data_bottom_3"></p>
+        <p hidden id="Axis_Bottom_3">Time</p>
+        <p hidden id="Axis_Left_3">Temperature</p>
+        <p hidden id="Axis_Bottom_Numbers_3">12:00,12:10,12:20,12:30,12:40</p>
+        <p hidden id="Axis_Left_Numbers_3">70,72.5,75,77.5,80</p>
+
+        <p hidden id="data_csv_4"></p>
+        <p hidden id="data_left_4"></p>
+        <p hidden id="data_bottom_4"></p>
+        <p hidden id="Axis_Bottom_4">Time</p>
+        <p hidden id="Axis_Left_4">Temperature</p>
+        <p hidden id="Axis_Bottom_Numbers_4">12:00,12:10,12:20,12:30,12:40</p>
+        <p hidden id="Axis_Left_Numbers_4">70,72.5,75,77.5,80</p>
+        <p hidden id="Data_Ring_4">60</p>
+        <p hidden id="Data_Progress_Top_4">34</p>
+        <p hidden id="Data_Progress_Bottom_4">71</p>
+
+        <p hidden id="data_csv_5"></p>
+        <p hidden id="data_left_5">74.3,76.4,77.0,78.6,77.9,77.7,77.2,77.2,77.1,76.4,75.1,76.1,76.5</p>
+        <p hidden id="data_bottom_5">2022-02-22T12:00:00,2022-02-22T12:04:00,2022-02-22T12:09:00,2022-02-22T12:11:00,2022-02-22T12:13:00,2022-02-22T12:17:00,2022-02-22T12:22:00,2022-02-22T12:26:00,2022-02-22T12:30:00,2022-02-22T12:33:00,2022-02-22T12:34:00,2022-02-22T12:37:00,2022-02-22T12:40:00</p>
+        <p hidden id="Axis_Bottom_5">Time</p>
+        <p hidden id="Axis_Left_5">Temperature</p>
+        <p hidden id="Axis_Bottom_Numbers_5">12:00,12:10,12:20,12:30,12:40</p>
+        <p hidden id="Axis_Left_Numbers_5">70,72.5,75,77.5,80</p>
+
+
+
+        <!-- a-frame scene -->
+        <a-scene embedded arjs="trackingMethod: best;" renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" id="scene">
+
+            <!-- Data from lighthouse site -->
+            <a-marker type="pattern" url="./pattern-Graph 1.patt" id="marker1">
+                <a-entity id="1" graph></a-entity>
+                <a-entity id="1" graph_axis_left></a-entity>
+                <a-entity id="1" graph_axis_bottom></a-entity>
+                <a-entity id="1" graph_axis_bottom_numbers></a-entity>
+                <a-entity id="1" graph_axis_left_numbers></a-entity>
+                <a-entity id="graph_1" graph_csv_ahh="id: 1"></a-entity>
+            </a-marker>
+
+            <!-- More complex graph example MAYBE BECOME USER CONTROL TIME EXAMPLE-->
+            <a-marker type="pattern" url="./pattern-Graph 2.patt" id="marker2">
+                <a-entity id="2" position="0 0 0" graph></a-entity>
+                <a-entity id="2" position="0 0 0" graph_axis_left></a-entity>
+                <a-entity id="2" position="0 0 0" graph_axis_bottom></a-entity>
+                <a-entity id="2" position="0 0 0" graph_axis_bottom_numbers></a-entity>
+                <a-entity id="2" position="0 0 0" graph_axis_left_numbers></a-entity>
+                <a-entity id="2" position="0 0 0" graph_lines></a-entity>
+                <a-entity id="2" scale="4 4 1" rotation="-90 0 0" geometry="primitive: plane" material="opacity: 0.4; shader: msdf" color="#404040" graph_background></a-entity>
+            </a-marker>
+
+            <!-- Graph data from csv file -->
+            <a-marker type="pattern" url="./pattern-Graph 3.patt" id="marker3">
+                <a-entity id="3" graph></a-entity>
+                <a-entity id="3" graph_axis_left></a-entity>
+                <a-entity id="3" graph_axis_bottom></a-entity>
+                <a-entity id="3" graph_axis_bottom_numbers></a-entity>
+                <a-entity id="3" graph_axis_left_numbers></a-entity>
+                <a-entity id="graph_3" graph_csv_ahh="id: 3"></a-entity>
+            </a-marker>
+
+            <!-- More complex graph using gesture...js TO BECOME DASHBOARD-->
+            <a-marker type="pattern" url="./pattern-Graph 4.patt" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="marker4">
+                <a-entity id="2" position="0 0 0" graph_axis_bottom class="clickable" gesture-handler></a-entity>
+                <!--<a-entity id="image_test" image_test></a-entity>-->
+
+                <!-- background -->
+
+                <!-- Line graph top left -->
+                <a-entity id="4" dashboard_graph_top></a-entity>
+                <a-entity id="4" dashboard_graph_axis_left dashboard_graph_top_axis_left></a-entity>
+                <a-entity id="4" dashboard_graph_axis_bottom dashboard_graph_top_axis_bottom></a-entity>
+                <a-entity id="4" dashboard_graph_axis_bottom_numbers dashboard_graph_top_axis_bottom_numbers></a-entity>
+                <a-entity id="4" dashboard_graph_axis_left_numbers dashboard_graph_top_axis_left_numbers></a-entity>
+
+                <!-- Ring top right -->
+                <a-entity id="4" position="0 0 0" dashboard_ring_background></a-entity>
+                <a-entity id="4" position="0 0 0" dashboard_ring_foreground></a-entity>
+
+                <!-- Progress bars bottom left -->
+                <a-entity id="4" dashboard_progress_background bar_top_back></a-entity>
+                <a-entity id="4" dashboard_progress_foreground bar_top_front></a-entity>
+                <a-entity id="4" dashboard_progress_background bar_bottom_back></a-entity>
+                <a-entity id="4" dashboard_progress_foreground bar_bottom_front></a-entity>
+
+                <!-- Line graph bottom right -->
+
+            </a-marker>
+
+            <!-- More complex graph using dataHandler.js -->
+            <a-marker type="pattern" url="./pattern-Graph 5.patt" id="marker5">
+                <a-entity id="5" position="0 0 0" graph></a-entity>
+                <a-entity id="5" position="0 0 0" graph_axis_left></a-entity>
+                <a-entity id="5" position="0 0 0" graph_axis_bottom></a-entity>
+                <a-entity id="5" position="0 0 0" graph_axis_bottom_numbers></a-entity>
+                <a-entity id="5" position="0 0 0" graph_axis_left_numbers></a-entity>
+                <a-entity id="5" position="0 0 0" timetest></a-entity>
+            </a-marker>
+
+            <!--<a-marker type="pattern" url="./pattern-Graph 5.patt" id="marker5">
+                <a-image src="no_background_graph.png" rotation="-60 0 0"></a-image>
+            </a-marker>-->
+
+            <!-- a-frame camera element -->
+            <a-entity camera></a-entity>
+
+            <a-marker
+                preset="hiro"
+                raycaster="objects: .clickable"
+                emitevents="true"
+                cursor="fuse: false; rayOrigin: mouse;"
+                id="markerA"
+            >
+                <a-entity
+                    id="bowser-model"
+                    geometry="primitive: box"
+                    position="0 0 0"
+                    scale="0.05 0.05 0.05"
+                    class="clickable"
+                    gesture-handler
+                >
+                </a-entity>
+            </a-marker>
+        </a-scene>
+	</body>
+</html>
