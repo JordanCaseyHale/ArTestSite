@@ -7,7 +7,7 @@ AFRAME.registerComponent('dashboard_ring_background', {
             radiusOuter: 0.275
         });
 
-        this.el.setAttribute('position', '0.6 0.6 0');
+        this.el.setAttribute('position', '0.6 0.6 -0.5');
 
         this.el.setAttribute('rotation', '-90 0 0');
 
@@ -36,7 +36,7 @@ AFRAME.registerComponent('dashboard_ring_foreground', {
             thetaLength: thetaData
         });
 
-        this.el.setAttribute('position', '0.6 0.61 0');
+        this.el.setAttribute('position', '0.6 0.61 -0.5');
 
         this.el.setAttribute('rotation', '-90 0 0');
 
@@ -174,7 +174,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom', {
 AFRAME.registerComponent('dashboard_graph_top_axis_bottom', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '-0.6 0 1.25');
+        this.el.setAttribute('position', '-0.6 0 0.2');
     }
 });
 
@@ -243,7 +243,7 @@ AFRAME.registerComponent('dashboard_graph_axis_left_numbers', {
                 value: labels_split[i],
                 height: 0.25,
                 width: 0.25,
-                xOffset: i/(labels_split.length * 1.25),
+                xOffset: i/(labels_split.length * 5),
                 color: colour
             });
         }
@@ -286,7 +286,7 @@ AFRAME.registerComponent('graph_axis_bottom_numbers', {
                 value: labels_split[i],
                 height: 0.25,
                 width: 0.25,
-                xOffset: i/(labels_split.length * 1.25),
+                xOffset: i/(labels_split.length * 5),
                 color: colour
             });
         }
