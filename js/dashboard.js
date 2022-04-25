@@ -199,7 +199,7 @@ AFRAME.registerComponent('dashboard_graph_top_axis_bottom', {
 AFRAME.registerComponent('dashboard_graph_bottom_axis_bottom', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '0.7 0 1.1');
+        this.el.setAttribute('position', '0.7 0 1.15');
     }
 });
 
@@ -314,13 +314,13 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers', {
 AFRAME.registerComponent('dashboard_graph_top_axis_bottom_numbers', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '-0.2 0 0.2');
+        this.el.setAttribute('position', '-0.43 0 0.05');
     }
 });
 
 AFRAME.registerComponent('dashboard_graph_bottom_axis_bottom_numbers', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '0 0 0');
+        this.el.setAttribute('position', '0.88 0 1.05');
     }
 });
