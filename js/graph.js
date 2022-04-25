@@ -455,6 +455,22 @@ AFRAME.registerComponent('graph_background', {
     }
 });
 
+AFRAME.registerComponent('graph_background2', {
+    init: function() {
+        this.el.setAttribute('position', '-0.01 -1 -0.05');
+        this.el.setAttribute('scale', '4 4 1');
+        this.el.setAttribute('rotation', '-90 0 0');
+        this.el.setAttribute('geometry', {
+            primitive: 'plane'
+        });
+        this.el.setAttribute('material', {
+            opacity: '0.4',
+            shader: 'msdf'
+        });
+        this.el.setAttribute('color', '#404040');
+    }
+});
+
 AFRAME.registerComponent('image_test', {
     init: function() {
         // Set Dimensions
