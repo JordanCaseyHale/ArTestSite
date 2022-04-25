@@ -214,6 +214,13 @@ AFRAME.registerComponent('dashboard_graph_top_axis_left', {
     }
 });
 
+AFRAME.registerComponent('dashboard_graph_bottom_axis_left', {
+    init: function () {
+        //position axis
+        this.el.setAttribute('position', '0 0 0');
+    }
+});
+
 AFRAME.registerComponent('dashboard_graph_axis_left_numbers', {
     init: function () {
         var colour = localStorage.getItem('TextColour');
@@ -250,6 +257,13 @@ AFRAME.registerComponent('dashboard_graph_top_axis_left_numbers', {
     }
 });
 
+AFRAME.registerComponent('dashboard_graph_bottom_axis_left_numbers', {
+    init: function () {
+        //position axis
+        this.el.setAttribute('position', '0 0 0');
+    }
+});
+
 AFRAME.registerComponent('graph_axis_bottom_numbers', {
     init: function () {
         var colour = localStorage.getItem('TextColour');
@@ -283,5 +297,12 @@ AFRAME.registerComponent('dashboard_graph_top_axis_bottom_numbers', {
     init: function () {
         //position axis
         this.el.setAttribute('position', '-0.1 0 0.2');
+    }
+});
+
+AFRAME.registerComponent('dashboard_graph_bottom_axis_bottom_numbers', {
+    init: function () {
+        //position axis
+        this.el.setAttribute('position', '0 0 0');
     }
 });
