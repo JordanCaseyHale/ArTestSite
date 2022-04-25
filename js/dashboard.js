@@ -357,3 +357,64 @@ AFRAME.registerComponent('dashboard_graph_bottom_axis_bottom_numbers', {
         this.el.setAttribute('position', '0.88 0 1.05');
     }
 });
+
+AFRAME.registerComponent('dashboard_graph_csv_ahh', {
+    schema: {
+        id: {default: '0'},
+        leftPoints: {default: []},
+        bottomPoints: {default: []},
+        lineColour: {default: '#FF0000'},
+        posXoffset: {default: 0},
+        posYoffset: {default: 0}
+    },
+
+    init: function () {
+        if !(this.data.id.equals('0')) {
+            var filePath = document.getElementById('data_csv_'+this.data.id).innerHTML;
+            var entityID = 'Graph_'+this.data.id.toString();
+            read_from_csv(entityID, filePath);
+        }
+        this.data.lineColour = localStorage.getItem('DataLineColour');
+    },
+
+    update: function (oldData) {
+        console.log('Update hit');
+        if (this.data.leftPoints.length != 0 && this.data.bottomPoints.length != 0) {
+            
+            var startPoint = '0 0 0';
+            var endPoint = '0 0 0';
+
+            // Normalise data points
+            // bottom points through time function
+            let bottomPoints = time_string_to_normalised_points(this.data.bottomPoints);
+            let leftPoints = numbers_to_normalised_points(this.data.leftPoints);
+
+            var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
+
+            for (var i=0; i<(numDataPoints-1); i++) {
+
+                //Create Line ID ( +2 due to axes )
+                var lineID = 'line__'+(i+2).toString();
+
+                // Offset for dashboard location
+                var posXoff = this.data.posXoffset;
+                var posYoff = this.data.posYoffset;
+
+                // Create points half the size and more based on where on dashboard
+                startPoint = `${(bottomPoints.normalisedPoints[i] / 2) + posXoff} 0 ${(leftPoints.normalisedPoints[i] / 2) + posYoff}`;
+                endPoint = `${(bottomPoints.normalisedPoints[i+1] / 2) + posXoff} 0 ${(leftPoints.normalisedPoints[i+1] / 2) + posYoff}`;
+
+                //console.log(lineID);
+                //console.log('startPoint', startPoint);
+                //console.log('endPoint', endPoint);
+
+                // Add Line
+                this.el.setAttribute(lineID, {
+                    start: startPoint,
+                    end: endPoint,
+                    color: this.data.lineColour
+                }); 
+            }
+        }
+    }
+});
