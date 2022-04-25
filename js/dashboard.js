@@ -137,13 +137,31 @@ AFRAME.registerComponent('dashboard_graph_top', {
 
         // Create axes
         this.el.setAttribute('line', {
-            start: '-1 0 -1',
-            end: '-1 0 0',
+            start: '-1.1 0 -1',
+            end: '-1.1 0 0',
             color: colour
         });
         this.el.setAttribute('line__1', {
-            start: '-1 0 0',
-            end: '0 0 0',
+            start: '-1.1 0 0',
+            end: '-0.1 0 0',
+            color: colour
+        });
+    }
+});
+
+AFRAME.registerComponent('dashboard_graph_bottom', {
+    init: function () {
+        var colour = localStorage.getItem('LineColour');
+
+        // Create axes
+        this.el.setAttribute('line', {
+            start: '0.2 0 0',
+            end: '0.2 0 1',
+            color: colour
+        });
+        this.el.setAttribute('line__1', {
+            start: '0.2 0 1',
+            end: '1.2 0 1',
             color: colour
         });
     }
@@ -174,14 +192,14 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom', {
 AFRAME.registerComponent('dashboard_graph_top_axis_bottom', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '-0.6 0 0.2');
+        this.el.setAttribute('position', '-0.7 0 0.2');
     }
 });
 
 AFRAME.registerComponent('dashboard_graph_bottom_axis_bottom', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '0 0 0');
+        this.el.setAttribute('position', '0.7 0 1.1');
     }
 });
 
@@ -210,14 +228,14 @@ AFRAME.registerComponent('dashboard_graph_axis_left', {
 AFRAME.registerComponent('dashboard_graph_top_axis_left', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '-1.3 0 -0.5');
+        this.el.setAttribute('position', '-1.4 0 -0.5');
     }
 });
 
 AFRAME.registerComponent('dashboard_graph_bottom_axis_left', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '0 0 0');
+        this.el.setAttribute('position', '0 0 0.5');
     }
 });
 
@@ -253,14 +271,14 @@ AFRAME.registerComponent('dashboard_graph_axis_left_numbers', {
 AFRAME.registerComponent('dashboard_graph_top_axis_left_numbers', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '-1.1 0 -0.71');
+        this.el.setAttribute('position', '-1.2 0 -0.71');
     }
 });
 
 AFRAME.registerComponent('dashboard_graph_bottom_axis_left_numbers', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '0 0 0');
+        this.el.setAttribute('position', '0.12 0 0.26');
     }
 });
 
@@ -296,7 +314,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers', {
 AFRAME.registerComponent('dashboard_graph_top_axis_bottom_numbers', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '-0.1 0 0.2');
+        this.el.setAttribute('position', '-0.2 0 0.2');
     }
 });
 
