@@ -7,7 +7,7 @@ AFRAME.registerComponent('dashboard_ring_background', {
             radiusOuter: 0.275
         });
 
-        this.el.setAttribute('position', '0.6 0.6 -0.5');
+        this.el.setAttribute('position', '0.7 0.0 -0.55');
 
         this.el.setAttribute('rotation', '-90 0 0');
 
@@ -36,7 +36,7 @@ AFRAME.registerComponent('dashboard_ring_foreground', {
             thetaLength: thetaData
         });
 
-        this.el.setAttribute('position', '0.6 0.61 -0.5');
+        this.el.setAttribute('position', '0.7 0.01 -0.55');
 
         this.el.setAttribute('rotation', '-90 0 0');
 
@@ -76,7 +76,7 @@ AFRAME.registerComponent('dashboard_ring_title', {
 
 AFRAME.registerComponent('dashboard_ring_centre', {
     init: function () {
-        this.el.setAttribute('position', '0.7 0 -0.525');
+        this.el.setAttribute('position', '0.7 0 -0.55');
     }
 })
 
