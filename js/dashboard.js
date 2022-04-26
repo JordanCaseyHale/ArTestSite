@@ -369,7 +369,10 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
     },
 
     init: function () {
-        if (!(this.data.id.toString()).equals('0')) {
+        var id = this.data.id;
+        console.log(id);
+
+        if (!id.equals('0')) {
             var filePath = document.getElementById('data_csv_'+this.data.id).innerHTML;
             var entityID = 'Graph_'+this.data.id.toString();
             read_from_csv(entityID, filePath);
