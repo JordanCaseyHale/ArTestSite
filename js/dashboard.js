@@ -46,6 +46,39 @@ AFRAME.registerComponent('dashboard_ring_foreground', {
     }
 });
 
+AFRAME.registerComponent('dashboard_ring_text', {
+    init: function () {
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Ring_' + graphID.toString();
+        var label = document.getElementById(dataID).innerHTML;
+
+        var colour = localStorage.getItem('TextColour');
+
+        this.el.setAttribute('rotation', '-90 0 0');
+
+        //Add ring title
+        this.el.setAttribute('text', {
+            value: label,
+            align: 'center',
+            height: 0.3,
+            width: 0.3,
+            color: colour
+        });
+    }
+});
+
+AFRAME.registerComponent('dashboard_ring_title', {
+    init: function () {
+        this.el.setAttribute('position', '0.7 0 -0.95');
+    }
+});
+
+AFRAME.registerComponent('dashboard_ring_centre', {
+    init: function () {
+        this.el.setAttribute('position', '0.7 0 -0.525');
+    }
+})
+
 AFRAME.registerComponent('dashboard_progress_background', {
     init: function () {
         //Add background bar
