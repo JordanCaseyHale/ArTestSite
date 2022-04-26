@@ -374,7 +374,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
         if (id != '0') {
             var filePath = document.getElementById('data_csv_'+id).innerHTML;
             var entityID = 'Graph_' + id;
-            read_from_csv(entityID, filePath);
+            dashboard_read_from_csv(entityID, filePath);
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
     },
@@ -420,3 +420,20 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
         }
     }
 });
+
+function dashboard_read_from_csv(entityID, filePath) {
+    d3.csv(filePath, (d) => {
+        let el = document.getElementById(entityID);
+        let graph_data = el.components.dashboard_graph_csv_ahh.data;
+        var dataLeft = graph_data.leftPoints.slice();
+        var dataBottom = graph_data.bottomPoints.slice();
+        
+        values = Object.values(d);
+        dataLeft.push(values[0]);
+        dataBottom.push(values[1]);
+
+        // Update graph line entity
+        console.log('Updating attribute');
+        el.setAttribute('graph_csv_ahh', {leftPoints: dataLeft, bottomPoints: dataBottom});
+    });
+}
