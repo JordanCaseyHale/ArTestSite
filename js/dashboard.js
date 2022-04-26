@@ -370,11 +370,10 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
 
     init: function () {
         var id = this.data.id;
-        console.log(id);
 
-        if (!id.equals('0')) {
-            var filePath = document.getElementById('data_csv_'+this.data.id).innerHTML;
-            var entityID = 'Graph_'+this.data.id.toString();
+        if (id != '0') {
+            var filePath = document.getElementById('data_csv_'+id).innerHTML;
+            var entityID = 'Graph_' + id;
             read_from_csv(entityID, filePath);
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
