@@ -55,6 +55,7 @@ AFRAME.registerComponent('dashboard_ring_text', {
         var colour = localStorage.getItem('TextColour');
 
         this.el.setAttribute('rotation', '-90 0 0');
+        this.el.setAttribute('scale', '7.5 7.5 7.5');
 
         //Add ring title
         this.el.setAttribute('text', {
