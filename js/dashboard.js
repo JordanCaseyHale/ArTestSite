@@ -403,7 +403,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
         maxX: {default: 1},
         maxY: {default: 1},
         minX: {default: 0},
-        minX: {default: 0}
+        minY: {default: 0}
     },
 
     init: function () {
