@@ -433,19 +433,22 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             var startPoint = '0 0 0';
             var endPoint = '0 0 0';
 
+            var bottomPoints = [];
+            var leftPoints = [];
+
             // Normalise data points
             // bottom points through time function
             if (this.data.maxX != 1 && this.data.minX != 0) {
-                let bottomPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints, maxX, minX);
+                bottomPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints, this.data.maxX, this.data.minX);
             }
             else {
-                let bottomPoints = time_string_to_normalised_points(this.data.bottomPoints);
+                bottomPoints = time_string_to_normalised_points(this.data.bottomPoints);
             }
             if (this.data.maxY != 1 && this.data.minY != 0) {
-                let leftPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints, maxY, minY);
+                leftPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints, this.data.maxY, this.data.minY);
             }
             else {
-                let leftPoints = numbers_to_normalised_points(this.data.leftPoints);
+                leftPoints = numbers_to_normalised_points(this.data.leftPoints);
             }
 
             var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
