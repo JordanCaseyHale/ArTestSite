@@ -302,7 +302,7 @@ AFRAME.registerComponent('dashboard_graph_top_axis_left', {
 AFRAME.registerComponent('dashboard_graph_bottom_axis_left', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '0 0 0.5');
+        this.el.setAttribute('position', '0.025 0 0.5');
     }
 });
 
