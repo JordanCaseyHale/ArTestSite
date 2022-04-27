@@ -439,19 +439,19 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             // Normalise data points
             // bottom points through time function
             if (this.data.maxX != 1 && this.data.minX != 0) {
-                bottomPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints, this.data.maxX, this.data.minX);
+                bottomNormPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints, this.data.maxX, this.data.minX);
             }
             else {
-                bottomPoints = time_string_to_normalised_points(this.data.bottomPoints);
+                bottomNormPoints = time_string_to_normalised_points(this.data.bottomPoints);
             }
             if (this.data.maxY != 1 && this.data.minY != 0) {
-                leftPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints, this.data.maxY, this.data.minY);
+                leftNormPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints, this.data.maxY, this.data.minY);
             }
             else {
-                leftPoints = numbers_to_normalised_points(this.data.leftPoints);
+                leftNormPoints = numbers_to_normalised_points(this.data.leftPoints);
             }
 
-            var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
+            var numDataPoints = Math.max(leftNormPoints.length, bottomNormPoints.length);
 
             for (var i=0; i<(numDataPoints-1); i++) {
 
@@ -463,8 +463,8 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 var posYoff = this.data.posYoffset;
 
                 // Create points half the size and more based on where on dashboard
-                startPoint = `${(bottomPoints.normalisedPoints[i] / 2) + posXoff} 0 ${(leftPoints.normalisedPoints[i] / 2) + posYoff}`;
-                endPoint = `${(bottomPoints.normalisedPoints[i+1] / 2) + posXoff} 0 ${(leftPoints.normalisedPoints[i+1] / 2) + posYoff}`;
+                startPoint = `${(bottomNormPoints[i] / 2) + posXoff} 0 ${(leftNormPoints[i] / 2) + posYoff}`;
+                endPoint = `${(bottomNormPoints[i+1] / 2) + posXoff} 0 ${(leftNormPoints[i+1] / 2) + posYoff}`;
 
                 // Add Line
                 this.el.setAttribute(lineID, {
