@@ -433,8 +433,8 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             var startPoint = '0 0 0';
             var endPoint = '0 0 0';
 
-            var bottomPoints = [];
-            var leftPoints = [];
+            var bottomNormPoints = [];
+            var leftNormPoints = [];
 
             // Normalise data points
             // bottom points through time function

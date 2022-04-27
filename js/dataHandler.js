@@ -24,7 +24,7 @@ function time_string_to_normalised_points(dataPoints) {
 		normalisedPoints[i] = ((timeValues[i]-minValue)/(maxValue-minValue) * 2) -1;
 	}
 
-	return { minIndex, maxIndex, normalisedPoints };
+	return normalisedPoints;
 }
 
 function time_string_to_normalised_points_from_id(id) {
@@ -80,7 +80,7 @@ function numbers_to_normalised_points(dataPoints) {
 		normalisedPoints[i] = ((dataPoints[i]-minValue)/(maxValue-minValue) * 2) - 1;
 	}
 
-	return { minIndex, maxIndex, normalisedPoints };
+	return normalisedPoints;
 }
 
 function numbers_to_normalised_points_from_id(id) {
