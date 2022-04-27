@@ -328,7 +328,7 @@ AFRAME.registerComponent('dashboard_graph_axis_left_numbers', {
                 value: labels_split[i],
                 height: 0.25,
                 width: 0.25,
-                xOffset: i/(labels_split.length * 5.5),
+                xOffset: i/((labels_split.length-1) * 5),
                 color: colour
             });
         }
@@ -371,7 +371,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers', {
                 value: labels_split[i],
                 height: 0.25,
                 width: 0.25,
-                xOffset: i/(labels_split.length * 5.5),
+                xOffset: i/((labels_split.length-1) * 5),
                 color: colour
             });
         }
@@ -388,7 +388,7 @@ AFRAME.registerComponent('dashboard_graph_top_axis_bottom_numbers', {
 AFRAME.registerComponent('dashboard_graph_bottom_axis_bottom_numbers', {
     init: function () {
         //position axis
-        this.el.setAttribute('position', '0.88 0 1.05');
+        this.el.setAttribute('position', '0.9 0 1.05');
     }
 });
 
