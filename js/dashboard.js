@@ -399,7 +399,11 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
         bottomPoints: {default: []},
         lineColour: {default: '#FF0000'},
         posXoffset: {default: 0},
-        posYoffset: {default: 0}
+        posYoffset: {default: 0},
+        maxX: {default: 1},
+        maxY: {default: 1},
+        minX: {default: 0},
+        minX: {default: 0}
     },
 
     init: function () {
@@ -409,6 +413,14 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             var filePath = document.getElementById('data_csv_'+id).innerHTML;
             var entityID = 'Graph_' + id;
             dashboard_read_from_csv(entityID, filePath);
+
+            // Check if external max and min points exist
+            var maxMinValues = document.getElementById('data_max_min_x_y_'+id).innerHTML.split(',');
+            if (maxMinValues.length == 4):
+                this.data.maxX = maxMinValues[0];
+                this.data.minX = maxMinValues[1];
+                this.data.maxY = maxMinValues[2];
+                this.data.minY = maxMinValues[3];
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
     },
@@ -422,8 +434,14 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
 
             // Normalise data points
             // bottom points through time function
-            let bottomPoints = time_string_to_normalised_points(this.data.bottomPoints);
-            let leftPoints = numbers_to_normalised_points(this.data.leftPoints);
+            if (this.data.maxX != 1 && this.data.minX != 0):
+                let bottomPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints, maxX, minX);
+            else:
+                let bottomPoints = time_string_to_normalised_points(this.data.bottomPoints);
+            if (this.data.maxY != 1 && this.data.minY != 0):
+                let leftPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints, maxY, minY);
+            else:
+                let leftPoints = numbers_to_normalised_points(this.data.leftPoints);
 
             var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
 
@@ -439,10 +457,6 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 // Create points half the size and more based on where on dashboard
                 startPoint = `${(bottomPoints.normalisedPoints[i] / 2) + posXoff} 0 ${(leftPoints.normalisedPoints[i] / 2) + posYoff}`;
                 endPoint = `${(bottomPoints.normalisedPoints[i+1] / 2) + posXoff} 0 ${(leftPoints.normalisedPoints[i+1] / 2) + posYoff}`;
-
-                //console.log(lineID);
-                //console.log('startPoint', startPoint);
-                //console.log('endPoint', endPoint);
 
                 // Add Line
                 this.el.setAttribute(lineID, {

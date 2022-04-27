@@ -1,6 +1,4 @@
 function time_string_to_normalised_points(dataPoints) {
-	console.log('Time handler');
-
 	// Get the data points into time values
 	const timeValues = [];
 	for (var i=0; i<(dataPoints.length); i++) {
@@ -36,9 +34,38 @@ function time_string_to_normalised_points_from_id(id) {
 	return time_string_to_normalised_points(dataPoints);
 }
 
-function numbers_to_normalised_points(dataPoints) {
-	console.log('Number handler');
+function time_string_to_normalised_points_given_max_min(dataPoints, max, min) {
+	// Get the data points into time values
+	const timeValues = [];
+	for (var i=0; i<(dataPoints.length); i++) {
+		var date = new Date(dataPoints[i]);
 
+		var hours = date.getHours();
+		var mins = date.getMinutes();
+
+		timeValues[i] = (hours * 60) + mins;
+	}
+
+	var maxDate = new Date(max);
+	var maxHours = maxDate.getHours();
+	var maxMins = maxDate.getMinutes();
+	var maxValue = (maxHours * 60) + maxMins;
+
+	var minDate = new Date(min);
+	var minHours = minDate.getHours();
+	var minMins = minDate.getMinutes();
+	var minValue = (minHours * 60) + minMins;
+
+	// points normalised
+	var normalisedPoints = [];
+	for (var i=0; i<timeValues.length; i++) {
+		normalisedPoints[i] = ((timeValues[i]-minValue)/(maxValue-minValue) * 2) -1;
+	}
+
+	return normalisedPoints;
+}
+
+function numbers_to_normalised_points(dataPoints) {
 	// Select Max
 	var maxValue = Math.max.apply(null, dataPoints);
 	var maxIndex = dataPoints.indexOf(maxValue);
@@ -61,6 +88,16 @@ function numbers_to_normalised_points_from_id(id) {
 	var dataPoints = data.split(',');
 
 	return numbers_to_normalised_points(dataPoints);
+}
+
+function numbers_to_normalised_points_given_max_min(dataPoints, max, min) {
+	// normalise points
+	var normalisedPoints = [];
+	for (var i=0; i<dataPoints.length; i++) {
+		normalisedPoints[i] = ((dataPoints[i]-min)/(max-min) * 2) - 1;
+	}
+
+	return normalisedPoints;
 }
 
 function data_from_csv() {
