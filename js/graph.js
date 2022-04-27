@@ -378,7 +378,7 @@ AFRAME.registerComponent('graph_csv_ahh', {
             let bottomPoints = time_string_to_normalised_points(this.data.bottomPoints);
             let leftPoints = numbers_to_normalised_points(this.data.leftPoints);
 
-            var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
+            var numDataPoints = Math.max(leftPoints.length, bottomPoints.length);
 
             for (var i=0; i<(numDataPoints-1); i++) {
 
@@ -386,8 +386,8 @@ AFRAME.registerComponent('graph_csv_ahh', {
                 var lineID = 'line__'+(i+2).toString();
 
                 // Create points
-                startPoint = `${bottomPoints.normalisedPoints[i]} 0 ${leftPoints.normalisedPoints[i]}`;
-                endPoint = `${bottomPoints.normalisedPoints[i+1]} 0 ${leftPoints.normalisedPoints[i+1]}`;
+                startPoint = `${bottomPoints[i]} 0 ${leftPoints[i]}`;
+                endPoint = `${bottomPoints[i+1]} 0 ${leftPoints[i+1]}`;
 
                 //console.log(lineID);
                 //console.log('startPoint', startPoint);
@@ -413,9 +413,6 @@ AFRAME.registerComponent('timetest', {
 
         // Use function to get bottom axis time data
         var dataBottomID = 'data_bottom_' + graphID.toString();
-        //var minIndex = 0;
-        //var maxIndex = 0;
-        //var normalisedPoints = [];
 
         let bottomPoints = time_string_to_normalised_points_from_id(dataBottomID);
 
@@ -423,7 +420,7 @@ AFRAME.registerComponent('timetest', {
         var dataLeftID = 'data_left_' + graphID.toString();
         let leftPoints = numbers_to_normalised_points_from_id(dataLeftID);
 
-        var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
+        var numDataPoints = Math.max(leftPoints.length, bottomPoints.length);
 
         var startPoint = '0 0 0';
         var endPoint = '0 0 0';
@@ -434,8 +431,8 @@ AFRAME.registerComponent('timetest', {
             var lineID = 'line__'+(i+2).toString();
 
             // Create points
-            startPoint = `${bottomPoints.normalisedPoints[i]} 0 ${leftPoints.normalisedPoints[i]}`;
-            endPoint = `${bottomPoints.normalisedPoints[i+1]} 0 ${leftPoints.normalisedPoints[i+1]}`;
+            startPoint = `${bottomPoints[i]} 0 ${leftPoints[i]}`;
+            endPoint = `${bottomPoints[i+1]} 0 ${leftPoints[i+1]}`;
 
             // Add Line
             this.el.setAttribute(lineID, {
