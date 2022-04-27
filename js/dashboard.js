@@ -400,9 +400,9 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
         lineColour: {default: '#FF0000'},
         posXoffset: {default: 0},
         posYoffset: {default: 0},
-        maxX: {default: 1},
+        maxX: {default: '1'},
         maxY: {default: 1},
-        minX: {default: 0},
+        minX: {default: '0'},
         minY: {default: 0}
     },
 
@@ -419,8 +419,8 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             if (maxMinValues.length == 4) {
                 this.data.maxX = maxMinValues[0];
                 this.data.minX = maxMinValues[1];
-                this.data.maxY = maxMinValues[2];
-                this.data.minY = maxMinValues[3];
+                this.data.maxY = parseInt(maxMinValues[2]);
+                this.data.minY = parseInt(maxMinValues[3]);
             }
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
@@ -438,7 +438,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
 
             // Normalise data points
             // bottom points through time function
-            if (this.data.maxX != 1 && this.data.minX != 0) {
+            if (this.data.maxX != '1' && this.data.minX != '0') {
                 bottomNormPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints, this.data.maxX, this.data.minX);
             }
             else {
