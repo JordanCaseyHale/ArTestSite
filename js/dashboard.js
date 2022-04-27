@@ -416,11 +416,12 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
 
             // Check if external max and min points exist
             var maxMinValues = document.getElementById('data_max_min_x_y_'+id).innerHTML.split(',');
-            if (maxMinValues.length == 4):
+            if (maxMinValues.length == 4) {
                 this.data.maxX = maxMinValues[0];
                 this.data.minX = maxMinValues[1];
                 this.data.maxY = maxMinValues[2];
                 this.data.minY = maxMinValues[3];
+            }
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
     },
@@ -434,14 +435,18 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
 
             // Normalise data points
             // bottom points through time function
-            if (this.data.maxX != 1 && this.data.minX != 0):
+            if (this.data.maxX != 1 && this.data.minX != 0) {
                 let bottomPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints, maxX, minX);
-            else:
+            }
+            else {
                 let bottomPoints = time_string_to_normalised_points(this.data.bottomPoints);
-            if (this.data.maxY != 1 && this.data.minY != 0):
+            }
+            if (this.data.maxY != 1 && this.data.minY != 0) {
                 let leftPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints, maxY, minY);
-            else:
+            }
+            else {
                 let leftPoints = numbers_to_normalised_points(this.data.leftPoints);
+            }
 
             var numDataPoints = Math.max(leftPoints.normalisedPoints.length, bottomPoints.normalisedPoints.length);
 
