@@ -19,9 +19,12 @@ function time_string_to_normalised_points(dataPoints) {
 	var minIndex = timeValues.indexOf(minValue);
 
 	// points normalised
+	var zeroToOne = 0;
 	var normalisedPoints = [];
 	for (var i=0; i<timeValues.length; i++) {
-		normalisedPoints[i] = ((timeValues[i]-minValue)/(maxValue-minValue) * 2) -1;
+		zeroToOne = (timeValues[i]-minValue)/(maxValue-minValue);
+		// Invert between zero and one, increase range, then shift range
+		normalisedPoints[i] = ((1-zeroToOne) * 2) -1;
 	}
 
 	return normalisedPoints;
@@ -98,9 +101,12 @@ function numbers_to_normalised_points_from_id(id) {
 
 function numbers_to_normalised_points_given_max_min(dataPoints, max, min) {
 	// normalise points
+	var zeroToOne = 0;
 	var normalisedPoints = [];
 	for (var i=0; i<dataPoints.length; i++) {
-		normalisedPoints[i] = ((dataPoints[i]-min)/(max-min) * 2) - 1;
+		zeroToOne = (dataPoints[i]-min)/(max-min);
+		// Invert between zero and one, increase range, then shift range
+		normalisedPoints[i] = ((1-zeroToOne) * 2) - 1;
 	}
 
 	return normalisedPoints;
