@@ -506,5 +506,6 @@ function dashboard_read_from_csv(entityID, filePath) {
 function update_dashboard_graph(entityID) {
     console.log('interval test');
     var el = document.getElementById(entityID);
-    el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset = el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset + 1;
+    //el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset = el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset + 1;
+    el.setAttribute('dashboard_graph_csv_ahh', {maxDataPointsOffset: (el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset + 1)});
 }
