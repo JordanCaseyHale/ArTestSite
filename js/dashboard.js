@@ -440,27 +440,35 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             var bottomNormPoints = [];
             var leftNormPoints = [];
 
+            var totalNumDataPoints = Math.max(this.data.leftPoints.length, this.data.bottomPoints.length);
+
+            if (this.data.maxDataPoints < totalNumDataPoints && this.data.maxDataPoints > 0) {
+                numDataPoints = this.data.maxDataPoints;
+            }
+
+            var dataPointsOffset = this.data.maxDataPointsOffset;
+
             // Normalise data points
             // bottom points through time function
             if (this.data.maxX == '1' && this.data.minX == '0') {
-                bottomNormPoints = time_string_to_normalised_points(this.data.bottomPoints);
+                if (totalNumDataPoints > numDataPoints) {
+                    bottomNormPoints = time_string_to_normalised_points(this.data.bottomPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)));
+                }
             }
             else {
-                bottomNormPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints, this.data.maxX, this.data.minX);
+                bottomNormPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)), this.data.maxX, this.data.minX);
             }
             if (this.data.maxY == 1 && this.data.minY == 0) {
-                leftNormPoints = numbers_to_normalised_points(this.data.leftPoints);
+                if (totalNumDataPoints > numDataPoints) {
+                    leftNormPoints = numbers_to_normalised_points(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)));
+                }
             }
             else {
-                leftNormPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints, this.data.maxY, this.data.minY);
+                if (totalNumDataPoints > numDataPoints) {
+                    leftNormPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)), this.data.maxY, this.data.minY);
+                }
             }
             
-
-            var numDataPoints = Math.max(leftNormPoints.length, bottomNormPoints.length);
-
-            if (this.data.maxDataPoints < numDataPoints && this.data.maxDataPoints > 0) {
-                numDataPoints = this.data.maxDataPoints;
-            }
 
             for (var i=0; i<(numDataPoints-1); i++) {
 
