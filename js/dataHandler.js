@@ -6,8 +6,9 @@ function time_string_to_normalised_points(dataPoints) {
 
 		var hours = date.getHours();
 		var mins = date.getMinutes();
+		var secs = date.getSeconds();
 
-		timeValues[i] = (hours * 60) + mins
+		timeValues[i] = (hours * 60) + mins + (secs / 60);
 	}
 
 	// Select Max
