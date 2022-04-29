@@ -424,13 +424,14 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 this.data.maxY = parseInt(maxMinValues[2]);
                 this.data.minY = parseInt(maxMinValues[3]);
             }
+
+            setInterval(function (entityID) {
+                console.log('interval test');
+                var el = document.getElementById(entityID);
+                el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset = el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset + 1;
+            }, 10000);
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
-
-        setInterval(function () {
-            console.log('interval test');
-            this.data.maxDataPointsOffset = this.data.maxDataPointsOffset + 1;
-        }, 10000);
     },
 
     update: function (oldData) {
