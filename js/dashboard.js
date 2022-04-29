@@ -454,6 +454,9 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 if (totalNumDataPoints > numDataPoints) {
                     bottomNormPoints = time_string_to_normalised_points(this.data.bottomPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)));
                 }
+                else {
+                    bottomNormPoints = time_string_to_normalised_points(this.data.bottomPoints);
+                }
             }
             else {
                 bottomNormPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)), this.data.maxX, this.data.minX);
@@ -462,10 +465,16 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 if (totalNumDataPoints > numDataPoints) {
                     leftNormPoints = numbers_to_normalised_points(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)));
                 }
+                else {
+                    leftNormPoints = numbers_to_normalised_points(this.data.leftPoints);
+                }
             }
             else {
                 if (totalNumDataPoints > numDataPoints) {
                     leftNormPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)), this.data.maxY, this.data.minY);
+                }
+                else {
+                    leftNormPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints, this.data.maxY, this.data.minY);
                 }
             }
             
