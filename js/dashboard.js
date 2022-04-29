@@ -462,7 +462,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 numDataPoints = this.data.maxDataPoints;
             }
 
-            for (var i=this.data.maxDataPointsOffset; i<(numDataPoints-1); i++) {
+            for (var i=0; i<(numDataPoints-1); i++) {
 
                 //Create Line ID ( +2 due to axes )
                 var lineID = 'line__'+(i+2).toString();
@@ -471,9 +471,12 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 var posXoff = this.data.posXoffset;
                 var posYoff = this.data.posYoffset;
 
+                // Data point offset
+                var offsetIndex = i + this.data.maxDataPoints;
+
                 // Create points half the size and more based on where on dashboard
-                startPoint = `${(bottomNormPoints[i] / 2) + posXoff} 0 ${(leftNormPoints[i] / 2) + posYoff}`;
-                endPoint = `${(bottomNormPoints[i+1] / 2) + posXoff} 0 ${(leftNormPoints[i+1] / 2) + posYoff}`;
+                startPoint = `${(bottomNormPoints[offsetIndex] / 2) + posXoff} 0 ${(leftNormPoints[offsetIndex] / 2) + posYoff}`;
+                endPoint = `${(bottomNormPoints[offsetIndex+1] / 2) + posXoff} 0 ${(leftNormPoints[offsetIndex+1] / 2) + posYoff}`;
 
                 // Add Line
                 this.el.setAttribute(lineID, {
