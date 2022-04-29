@@ -405,7 +405,8 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
         maxX: {default: '1'},
         maxY: {default: 1},
         minX: {default: '0'},
-        minY: {default: 0}
+        minY: {default: 0},
+        interval: {default: null}
     },
 
     init: function () {
@@ -425,7 +426,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 this.data.minY = parseInt(maxMinValues[3]);
             }
 
-            setInterval(update_dashboard_graph, 10000, entityID);
+            this.data.interval = setInterval(update_dashboard_graph, 10000, entityID);
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
     },
@@ -451,6 +452,13 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             }
 
             var dataPointsOffset = this.data.maxDataPointsOffset;
+
+            // If offset is larger than number of points - max points then use the remaining points
+            if (dataPointsOffset > (totalNumDataPoints - this.data.maxDataPoints)) {
+                this.data.maxDataPointsOffset = totalNumDataPoints - this.data.maxDataPoints;
+                clearInterval(this.data.interval);
+            }
+
 
             // Normalise data points
             // bottom points through time function
