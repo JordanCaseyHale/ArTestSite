@@ -49,12 +49,14 @@ function time_string_to_normalised_points_given_max_min(dataPoints, max, min) {
 	var maxDate = new Date(max);
 	var maxHours = maxDate.getHours();
 	var maxMins = maxDate.getMinutes();
-	var maxValue = (maxHours * 60) + maxMins;
+	var maxSecs = maxDate.getSeconds();
+	var maxValue = (maxHours * 60) + maxMins + (maxSecs / 60);
 
 	var minDate = new Date(min);
 	var minHours = minDate.getHours();
 	var minMins = minDate.getMinutes();
-	var minValue = (minHours * 60) + minMins;
+	var minSecs = minDate.getSeconds();
+	var minValue = (minHours * 60) + minMins + (minSecs / 60);
 
 	// points normalised
 	var normalisedPoints = [];

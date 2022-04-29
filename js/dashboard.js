@@ -397,6 +397,8 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
         id: {default: '0'},
         leftPoints: {default: []},
         bottomPoints: {default: []},
+        maxDataPoints: {default: 0},
+        maxDataPointsOffset: {default: 0},
         lineColour: {default: '#FF0000'},
         posXoffset: {default: 0},
         posYoffset: {default: 0},
@@ -425,7 +427,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
 
-        setInterval(function () {console.log('interval test')}, 10000);
+        setInterval(function () {console.log('interval test'); this.data.maxDataPointsOffset += 1;}, 10000);
     },
 
     update: function (oldData) {
@@ -454,9 +456,9 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             }
             
 
-            var numDataPoints = Math.max(leftNormPoints.length, bottomNormPoints.length);
+            var numDataPoints = Math.max(this.data.maxDataPoints ,Math.max(leftNormPoints.length, bottomNormPoints.length));
 
-            for (var i=0; i<(numDataPoints-1); i++) {
+            for (var i=this.data.maxDataPointsOffset; i<(numDataPoints-1); i++) {
 
                 //Create Line ID ( +2 due to axes )
                 var lineID = 'line__'+(i+2).toString();
