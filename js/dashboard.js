@@ -427,7 +427,10 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
 
-        setInterval(function () {console.log('interval test'); this.data.maxDataPointsOffset += 1;}, 10000);
+        setInterval(function () {
+            console.log('interval test');
+            this.data.maxDataPointsOffset = this.data.maxDataPointsOffset + 1;
+        }, 10000);
     },
 
     update: function (oldData) {
@@ -456,7 +459,11 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             }
             
 
-            var numDataPoints = Math.max(this.data.maxDataPoints ,Math.max(leftNormPoints.length, bottomNormPoints.length));
+            var numDataPoints = Math.max(leftNormPoints.length, bottomNormPoints.length);
+
+            if (this.data.maxDataPoints > numDataPoints && this.data.maxDataPoints > 0) {
+                numDataPoints = this.data.maxDataPoints;
+            }
 
             for (var i=this.data.maxDataPointsOffset; i<(numDataPoints-1); i++) {
 
