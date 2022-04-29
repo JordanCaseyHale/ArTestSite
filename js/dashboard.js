@@ -458,7 +458,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
 
             var numDataPoints = Math.max(leftNormPoints.length, bottomNormPoints.length);
 
-            if (this.data.maxDataPoints > numDataPoints && this.data.maxDataPoints > 0) {
+            if (this.data.maxDataPoints < numDataPoints && this.data.maxDataPoints > 0) {
                 numDataPoints = this.data.maxDataPoints;
             }
 
