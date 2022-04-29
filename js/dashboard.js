@@ -425,11 +425,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 this.data.minY = parseInt(maxMinValues[3]);
             }
 
-            setInterval(function (entityID) {
-                console.log('interval test');
-                var el = document.getElementById(entityID);
-                el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset = el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset + 1;
-            }, 10000);
+            setInterval(update_dashboard_graph, 10000, entityID);
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
     },
@@ -505,4 +501,10 @@ function dashboard_read_from_csv(entityID, filePath) {
         console.log('Updating attribute');
         el.setAttribute('dashboard_graph_csv_ahh', {leftPoints: dataLeft, bottomPoints: dataBottom});
     });
+}
+
+function update_dashboard_graph(entityID) {
+    console.log('interval test');
+    var el = document.getElementById(entityID);
+    el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset = el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset + 1;
 }
