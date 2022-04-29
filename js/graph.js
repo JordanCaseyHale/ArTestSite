@@ -333,13 +333,18 @@ AFRAME.registerComponent('graph_lines_csv2', {
 });
 
 function read_from_csv(entityID, filePath) {
+    // Read from CSV, callback function updates AR elements when data is returned
     d3.csv(filePath, (d) => {
+        // Get the graph entity
         let el = document.getElementById(entityID);
         let graph_data = el.components.graph_csv_ahh.data;
+        // Get the current data points on the graph
         var dataLeft = graph_data.leftPoints.slice();
         var dataBottom = graph_data.bottomPoints.slice();
         
+        // Extract values from row 'd'
         values = Object.values(d);
+        // Add the new values to the existing values
         dataLeft.push(values[0]);
         dataBottom.push(values[1]);
 

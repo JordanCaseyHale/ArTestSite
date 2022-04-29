@@ -424,6 +424,8 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             }
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
+
+        setInterval(function () {console.log('interval test')}, 10000);
     },
 
     update: function (oldData) {
