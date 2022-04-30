@@ -442,52 +442,44 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             var leftNormPoints = [];
 
             var totalNumDataPoints = Math.max(this.data.leftPoints.length, this.data.bottomPoints.length);
-            var numDataPoints = 0;
+            var displayDataPoints = 0;
 
             if (this.data.maxDataPoints < totalNumDataPoints && this.data.maxDataPoints > 0) {
-                numDataPoints = this.data.maxDataPoints;
+                displayDataPoints = this.data.maxDataPoints;
             }
             else {
-                numDataPoints = totalNumDataPoints;
+                displayDataPoints = totalNumDataPoints;
             }
 
             var dataPointsOffset = this.data.maxDataPointsOffset;
 
             // If offset is larger than number of points - max points then use the remaining points
-            if (dataPointsOffset > (totalNumDataPoints - this.data.maxDataPoints)) {
-                this.data.maxDataPointsOffset = totalNumDataPoints - this.data.maxDataPoints;
-                clearInterval(this.data.interval);
+            if (totalNumDataPoints > this.data.maxDataPoints) {
+                if (dataPointsOffset > (totalNumDataPoints - this.data.maxDataPoints)) {
+                    dataPointsOffset = totalNumDataPoints - this.data.maxDataPoints;
+                    this.data.maxDataPointsOffset = dataPointsOffset;
+                    //clearInterval(this.data.interval);
+                }
+            }
+            else {
+                dataPointsOffset = 0;
+                this.data.maxDataPointsOffset = dataPointsOffset;
             }
 
 
             // Normalise data points
             // bottom points through time function
             if (this.data.maxX == '1' && this.data.minX == '0') {
-                if (totalNumDataPoints > numDataPoints) {
-                    bottomNormPoints = time_string_to_normalised_points(this.data.bottomPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)));
-                }
-                else {
-                    bottomNormPoints = time_string_to_normalised_points(this.data.bottomPoints);
-                }
+                bottomNormPoints = time_string_to_normalised_points(this.data.bottomPoints.slice(dataPointsOffset, (displayDataPoints+dataPointsOffset)));
             }
             else {
-                bottomNormPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)), this.data.maxX, this.data.minX);
+                bottomNormPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints.slice(dataPointsOffset, (dataPointsOffset+displayDataPoints)), this.data.maxX, this.data.minX);
             }
             if (this.data.maxY == 1 && this.data.minY == 0) {
-                if (totalNumDataPoints > numDataPoints) {
-                    leftNormPoints = numbers_to_normalised_points(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)));
-                }
-                else {
-                    leftNormPoints = numbers_to_normalised_points(this.data.leftPoints);
-                }
+                leftNormPoints = numbers_to_normalised_points(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+displayDataPoints)));
             }
             else {
-                if (totalNumDataPoints > numDataPoints) {
-                    leftNormPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+numDataPoints)), this.data.maxY, this.data.minY);
-                }
-                else {
-                    leftNormPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints, this.data.maxY, this.data.minY);
-                }
+                leftNormPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+displayDataPoints)), this.data.maxY, this.data.minY);
             }
             
 
