@@ -483,7 +483,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             }
             
 
-            for (var i=0; i<(numDataPoints-1); i++) {
+            for (var i=0; i<(displayDataPoints-1); i++) {
 
                 //Create Line ID ( +2 due to axes )
                 var lineID = 'line__'+(i+2).toString();
