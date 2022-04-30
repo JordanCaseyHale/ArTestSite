@@ -454,7 +454,7 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             var dataPointsOffset = this.data.maxDataPointsOffset;
 
             // If offset is larger than number of points - max points then use the remaining points
-            if (totalNumDataPoints > this.data.maxDataPoints) {
+            if (totalNumDataPoints > this.data.maxDataPoints && this.data.maxDataPoints > 0) {
                 if (dataPointsOffset > (totalNumDataPoints - this.data.maxDataPoints)) {
                     dataPointsOffset = totalNumDataPoints - this.data.maxDataPoints;
                     this.data.maxDataPointsOffset = dataPointsOffset;
