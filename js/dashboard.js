@@ -443,7 +443,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
             // if 4 labels add offset
             var offset = 0;
             if (this.data.numberOfLabels == 4) {
-                offset = 0.04;
+                offset = 0.01;
             }
 
             //Add text
