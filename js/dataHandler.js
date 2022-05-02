@@ -59,7 +59,7 @@ function time_string_to_normalised_points_given_max_min(dataPoints, max, min) {
 	var minSecs = minDate.getSeconds();
 	var minValue = (minHours * 60) + minMins + (minSecs / 60);
 
-	// points normalised
+	// Normalise Points using Max and Min values
 	var normalisedPoints = [];
 	for (var i=0; i<timeValues.length; i++) {
 		normalisedPoints[i] = ((timeValues[i]-minValue)/(maxValue-minValue) * 2) -1;
