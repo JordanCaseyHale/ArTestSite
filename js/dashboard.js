@@ -429,7 +429,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
             this.data.numberOfLabels = 4;
         }
 
-        for (var i=this.data.labelUpdateNumber; i<(this.data.numberOfLabels + this.data.labelUpdateNumber); i++) {
+        for (var i=0; i<(this.data.numberOfLabels); i++) {
 
             //Create text ID
             var textID = 'text__'+(i).toString();
@@ -442,7 +442,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
 
             //Add text
             this.el.setAttribute(textID, {
-                value: this.data.labels[i],
+                value: this.data.labels[i + this.data.labelUpdateNumber],
                 height: 0.25,
                 width: 0.25,
                 xOffset: i/((this.data.numberOfLabels-1) * 6.1) + offset,
