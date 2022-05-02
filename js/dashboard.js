@@ -382,7 +382,8 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
     schema: {
         labels: {default: []},
         labelUpdateNumber: {default: 0},
-        numberOfLabels: {default: 5}
+        numberOfLabels: {default: 5},
+        colour: {default: '#FF0000'}
     },
 
     init: function () {
@@ -397,6 +398,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
         this.el.setAttribute('scale', '6 6 6');
 
         this.data.labels = labels_split;
+        this.data.colour = colour;
 
 
         for (var i=0; i<(this.data.numberOfLabels); i++) {
@@ -444,7 +446,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
                 height: 0.25,
                 width: 0.25,
                 xOffset: i/((this.data.numberOfLabels-1) * 6.1) + offset,
-                color: colour
+                color: this.data.colour
             });
         }
 
