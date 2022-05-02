@@ -452,7 +452,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
 });
 
 function update_dashboard_axis(graphID) {
-    var el = document.getelementById(graphID);
+    var el = document.getElementById(graphID);
     el.setAttribute('dashboard_graph_axis_bottom_numbers_updates', {labelUpdateNumber: el.components.dashboard_graph_axis_bottom_numbers_updates.data.labelUpdateNumber + 1});
 }
 
