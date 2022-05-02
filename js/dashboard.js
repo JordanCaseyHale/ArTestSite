@@ -380,6 +380,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers', {
 
 AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
     schema: {
+        labels: {default: []},
         labelUpdateNumber: {default: 0},
         numberOfLabels: {default: 5}
     },
@@ -395,6 +396,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
         this.el.setAttribute('rotation', '-90 0 0');
         this.el.setAttribute('scale', '6 6 6');
 
+        this.data.labels = labels_split;
 
 
         for (var i=0; i<(this.data.numberOfLabels); i++) {
@@ -438,7 +440,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
 
             //Add text
             this.el.setAttribute(textID, {
-                value: labels_split[i],
+                value: this.data.labels[i],
                 height: 0.25,
                 width: 0.25,
                 xOffset: i/((this.data.numberOfLabels-1) * 6.1) + offset,
