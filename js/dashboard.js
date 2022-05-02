@@ -443,7 +443,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
             // if 4 labels add offset
             var offset = 0;
             if (this.data.numberOfLabels == 4) {
-                offset = 0.01;
+                offset = 0.02;
             }
 
             //Add text
@@ -451,7 +451,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
                 value: this.data.labels[i + this.data.labelUpdateNumber],
                 height: 0.25,
                 width: 0.25,
-                xOffset: i/((this.data.numberOfLabels-1) * 6.1) + offset,
+                xOffset: i/((5-1) * 6.1) + offset,
                 color: this.data.colour
             });
         }
