@@ -378,6 +378,82 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers', {
     }
 });
 
+AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
+    schema: {
+        labelUpdateNumber: {default: 0},
+        numberOfLabels: {default: 5}
+    },
+
+    init: function () {
+        var colour = localStorage.getItem('TextColour');
+
+        var graphID = this.el.getAttribute('id');
+        var dataID = 'Axis_Bottom_Numbers_' + graphID.toString();
+        var labels = document.getElementById(dataID).innerHTML;
+        var labels_split = labels.split(',');
+
+        this.el.setAttribute('rotation', '-90 0 0');
+        this.el.setAttribute('scale', '6 6 6');
+
+
+
+        for (var i=0; i<(this.data.numberOfLabels); i++) {
+
+            //Create text ID
+            var textID = 'text__'+(i).toString();
+
+            //Add text
+            this.el.setAttribute(textID, {
+                value: labels_split[i],
+                height: 0.25,
+                width: 0.25,
+                xOffset: i/((labels_split.length-1) * 6.1),
+                color: colour
+            });
+        }
+
+        setInterval(update_dashboard_axis, 10000, graphID);
+    },
+
+    update: function (oldData) {
+        // If even then update offset
+        if (this.data.labelUpdateNumber % 2 == 0) {
+            this.data.numberOfLabels = 5;
+            this.data.labelUpdateNumber = this.data.labelUpdateNumber + 1;
+        }
+        else {
+            this.data.numberOfLabels = 4;
+        }
+
+        for (var i=this.data.labelUpdateNumber; i<(this.data.numberOfLabels + this.data.labelUpdateNumber); i++) {
+
+            //Create text ID
+            var textID = 'text__'+(i).toString();
+
+            // if 4 labels add offset
+            var offset = 0;
+            if (this.data.numberOfLabels == 4) {
+                offset = -0.12;
+            }
+
+            //Add text
+            this.el.setAttribute(textID, {
+                value: labels_split[i],
+                height: 0.25,
+                width: 0.25,
+                xOffset: i/((this.data.numberOfLabels-1) * 6.1) + offset,
+                color: colour
+            });
+        }
+
+    }
+});
+
+function update_dashboard_axis(graphID) {
+    var el = document.getelementById(graphID);
+    el.setAttribute('dashboard_graph_axis_bottom_numbers_updates', {labelUpdateNumber: el.components.dashboard_graph_axis_bottom_numbers_updates.data.labelUpdateNumber + 1});
+}
+
 AFRAME.registerComponent('dashboard_graph_top_axis_bottom_numbers', {
     init: function () {
         //position axis
