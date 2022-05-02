@@ -426,6 +426,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
         }
         else {
             this.data.numberOfLabels = 4;
+            this.el.removeAttribute('text__4');
         }
 
         for (var i=0; i<(this.data.numberOfLabels); i++) {
@@ -436,7 +437,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
             // if 4 labels add offset
             var offset = 0;
             if (this.data.numberOfLabels == 4) {
-                offset = -0.12;
+                offset = 0.12;
             }
 
             //Add text
