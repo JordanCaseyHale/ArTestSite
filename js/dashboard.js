@@ -423,7 +423,6 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
         // If even then update offset
         if (this.data.labelUpdateNumber % 2 == 0) {
             this.data.numberOfLabels = 5;
-            this.data.labelUpdateNumber = this.data.labelUpdateNumber + 1;
         }
         else {
             this.data.numberOfLabels = 4;
