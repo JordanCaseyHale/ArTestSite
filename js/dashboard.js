@@ -420,6 +420,12 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
     },
 
     update: function (oldData) {
+
+        // Cap at legnth of data
+        if (this.data.labelUpdateNumber+5 > this.data.labels.length) {
+            this.data.labelUpdateNumber = this.data.labelUpdateNumber - 1;
+        }
+
         // If even then update offset
         if (this.data.labelUpdateNumber % 2 == 0) {
             this.data.numberOfLabels = 5;
