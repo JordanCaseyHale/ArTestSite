@@ -428,7 +428,7 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
 
         // Skip once update for going from 4 to 5 labels
         if (this.data.labelUpdateNumber % 2 == 0 && this.data.numberOfLabels == 4) {
-            this.data.labelUpdateNumber = this.labelUpdateNumber - 1;
+            this.data.labelUpdateNumber = this.data.labelUpdateNumber - 1;
             this.data.numberOfLabels = 5;
         }
         // If even then update offset
