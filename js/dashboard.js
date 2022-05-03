@@ -381,8 +381,8 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers', {
 AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
     schema: {
         labels: {default: []},
-        labelUpdateNumber: {default: 0},
-        numberOfLabels: {default: 5},
+        labelUpdateNumber: {default: 1},
+        numberOfLabels: {default: 4},
         colour: {default: '#FF0000'}
     },
 
