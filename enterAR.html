@@ -82,7 +82,16 @@
         <p hidden id="Axis_Bottom_Numbers_5">12:00,12:10,12:20,12:30,12:40</p>
         <p hidden id="Axis_Left_Numbers_5">70,72.5,75,77.5,80</p>
 
-
+        <!-- a-frame scene -->
+        <a-scene embedded arjs="trackingMethod: best;" renderer="logarithmicDepthBuffer: true;"
+         vr-mode-ui="enabled: false" id="scene">
+            <a-marker type="pattern" url="./pattern-Graph 1.patt" id="marker1">
+                <!-- Elements to display are placed here -->
+                <a-entity id="graph_1" graph_csv="id: 1"></a-entity>
+            </a-marker>
+            <!-- a-frame camera element -->
+            <a-entity camera></a-entity>
+        </a-scene>
 
         <!-- a-frame scene -->
         <a-scene embedded arjs="trackingMethod: best;" renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" id="scene">

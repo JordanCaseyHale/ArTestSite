@@ -416,7 +416,9 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
             });
         }
 
-        setInterval(update_dashboard_axis, 10000, graphID);
+        var intervalTime = 10000;
+
+        setInterval(update_dashboard_axis, intervalTime, graphID);
     },
 
     update: function (oldData) {
@@ -426,13 +428,15 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
             this.data.labelUpdateNumber = this.data.labelUpdateNumber - 1;
         }
 
-        // Skip once update for going from 4 to 5 labels
+        // When currently displaying 4 labels, change to 5 
+        // and decrease the label offset back to the current amount
         if (this.data.numberOfLabels == 4) {
             this.data.labelUpdateNumber = this.data.labelUpdateNumber - 1;
             this.data.numberOfLabels = 5;
         }
         else {
             this.data.numberOfLabels = 4;
+            // text__4 is created when 5 labels are shown so remove it for 4 labels
             this.el.removeAttribute('text__4');
         }
 
@@ -461,8 +465,12 @@ AFRAME.registerComponent('dashboard_graph_axis_bottom_numbers_updates', {
 });
 
 function update_dashboard_axis(graphID) {
+    // Access entity
     var el = document.getElementById(graphID);
-    el.setAttribute('dashboard_graph_axis_bottom_numbers_updates', {labelUpdateNumber: el.components.dashboard_graph_axis_bottom_numbers_updates.data.labelUpdateNumber + 1});
+    // Get the entity data
+    var elData = el.components.dashboard_graph_axis_bottom_numbers_updates.data;
+    // Increase the entity data for labelUpdateNumber by 1
+    el.setAttribute('dashboard_graph_axis_bottom_numbers_updates', {labelUpdateNumber: elData.labelUpdateNumber + 1});
 }
 
 AFRAME.registerComponent('dashboard_graph_top_axis_bottom_numbers', {
@@ -512,8 +520,9 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 this.data.maxY = parseInt(maxMinValues[2]);
                 this.data.minY = parseInt(maxMinValues[3]);
             }
+            var intervalTime = 10000;
 
-            this.data.interval = setInterval(update_dashboard_graph, 10000, entityID);
+            this.data.interval = setInterval(update_dashboard_graph, intervalTime, entityID);
         }
         this.data.lineColour = localStorage.getItem('DataLineColour');
     },
@@ -545,7 +554,6 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
                 if (dataPointsOffset > (totalNumDataPoints - this.data.maxDataPoints)) {
                     dataPointsOffset = totalNumDataPoints - this.data.maxDataPoints;
                     this.data.maxDataPointsOffset = dataPointsOffset;
-                    //clearInterval(this.data.interval);
                 }
             }
             else {
@@ -554,19 +562,24 @@ AFRAME.registerComponent('dashboard_graph_csv_ahh', {
             }
 
 
+            // Get Data Points that are required
+            var slicedBottomPoints = this.data.bottomPoints.slice(dataPointsOffset, (dataPointsOffset+displayDataPoints));
+            var slicedLeftPoints = this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+displayDataPoints));
+
             // Normalise data points
             // bottom points through time function
             if (this.data.maxX == '1' && this.data.minX == '0') {
-                bottomNormPoints = time_string_to_normalised_points(this.data.bottomPoints.slice(dataPointsOffset, (displayDataPoints+dataPointsOffset)));
+                bottomNormPoints = time_string_to_normalised_points(slicedBottomPoints);
             }
             else {
-                bottomNormPoints = time_string_to_normalised_points_given_max_min(this.data.bottomPoints.slice(dataPointsOffset, (dataPointsOffset+displayDataPoints)), this.data.maxX, this.data.minX);
+                bottomNormPoints = time_string_to_normalised_points_given_max_min(slicedBottomPoints, this.data.maxX, this.data.minX);
             }
+            // left points through number normalisation
             if (this.data.maxY == 1 && this.data.minY == 0) {
-                leftNormPoints = numbers_to_normalised_points(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+displayDataPoints)));
+                leftNormPoints = numbers_to_normalised_points(slicedLeftPoints);
             }
             else {
-                leftNormPoints = numbers_to_normalised_points_given_max_min(this.data.leftPoints.slice(dataPointsOffset, (dataPointsOffset+displayDataPoints)), this.data.maxY, this.data.minY);
+                leftNormPoints = numbers_to_normalised_points_given_max_min(slicedLeftPoints, this.data.maxY, this.data.minY);
             }
             
 
@@ -612,8 +625,10 @@ function dashboard_read_from_csv(entityID, filePath) {
 }
 
 function update_dashboard_graph(entityID) {
-    console.log('interval test');
+    // Get the entity
     var el = document.getElementById(entityID);
-    //el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset = el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset + 1;
-    el.setAttribute('dashboard_graph_csv_ahh', {maxDataPointsOffset: (el.components.dashboard_graph_csv_ahh.data.maxDataPointsOffset + 1)});
+    // Get the entity data
+    var elData = el.components.dashboard_graph_csv_ahh.data;
+    // Update the entity with the increased data offset
+    el.setAttribute('dashboard_graph_csv_ahh', {maxDataPointsOffset: (elData.maxDataPointsOffset + 1)});
 }
